@@ -1,5 +1,11 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: .5rem;
+}
+
+.logoTextWrapper {
+  margin-left: .5rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }

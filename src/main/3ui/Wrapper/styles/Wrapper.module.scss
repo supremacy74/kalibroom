@@ -1,0 +1,10 @@
+.outerWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.innerWrapper {
+  width: min(100%, 90rem);
+  position: relative;
+}

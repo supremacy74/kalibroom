@@ -5,19 +5,33 @@ import {
 	logoIcon,
 	logoTextIcon,
 } from '@/helpers/importIcons'
+import { motion } from 'framer-motion'
 
 interface LogoProps {
 	logoWithoutText?: boolean
+	className?: string
+	isDarkTheme?: boolean
 }
 
 const Logo: FC<LogoProps> = props => {
 	return (
-		<div className={style.logo}>
-			<Image src={logoIcon} alt={'logo'} />
-			{!props.logoWithoutText && (
-				<Image src={logoTextIcon} alt={'logoText'} />
+		<motion.div
+			className={`${style.logo} ${props.className}`}>
+			{!props.isDarkTheme && (
+				<>
+					<Image src={logoIcon} alt={'logo'} />
+					{!props.logoWithoutText && (
+						<motion.div
+							className={style.logoTextWrapper}>
+							<Image src={logoTextIcon} alt={'logoText'} />
+						</motion.div>
+					)}
+				</>
 			)}
-		</div>
+			{!props.isDarkTheme && (
+				<div></div>
+			)}
+		</motion.div>
 	)
 }
 

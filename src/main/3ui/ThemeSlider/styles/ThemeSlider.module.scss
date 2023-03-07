@@ -1,0 +1,45 @@
+.slideButtonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideButton {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  width: 4.5rem;
+  height: 2rem;
+  border-radius: 10rem;
+  outline: var(--colorSignalBlack) solid 1px;
+
+  overflow: hidden;
+  justify-content: flex-end;
+
+  &[data-isOn='true'] {
+    justify-content: flex-start;
+  }
+}
+
+.slideCircle {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--colorAccent);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slideRightImage,
+.slideLeftImage {
+  position: absolute;
+}
+
+.slideRightImage {
+  right: -2.25rem;
+}
+
+.slideLeftImage {
+  left: -2.25rem;
+}
