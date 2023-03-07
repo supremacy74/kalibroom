@@ -1,0 +1,25 @@
+.headerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  width: min(100%, 90rem);
+  min-height: 4rem;
+  gap: 1px;
+  padding: 1px;
+  background: var(--colorStroke);
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: dense;
+}
+
+.part {
+  display: flex;
+  background: var(--colorBackground);
+}
