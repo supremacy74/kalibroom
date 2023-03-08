@@ -1,0 +1,14 @@
+.categoryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+
+  width: min(100%, 180px);
+}
+
+.iconWrapper {
+  display: flex;
+}

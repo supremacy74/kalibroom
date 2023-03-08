@@ -1,0 +1,33 @@
+.contacts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  width: min(100%, 480px);
+  * {
+    font-size: 0.8125rem;
+    white-space: pre;
+  }
+}
+
+.contactsLeft {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.time {
+  color: var(--colorGray);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}

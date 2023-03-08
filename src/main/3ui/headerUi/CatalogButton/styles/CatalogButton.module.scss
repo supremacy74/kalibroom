@@ -1,0 +1,25 @@
+.catalogButton {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+
+  width: min(100%, 220px);
+}
+
+.hamburgerIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 1.5rem;
+  background: transparent;
+}
+
+.hamburgerStick {
+  width: 90%;
+  //height: 0.125rem;
+  height: 1.75px;
+  background: var(--colorFont);
+  border-radius: 1rem;
+}

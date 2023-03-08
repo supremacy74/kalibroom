@@ -17,6 +17,22 @@ body {
 	color: var(--colorWhite);
 }
 
+::-webkit-scrollbar {
+	width: 0.8rem;
+	height: 0.8rem;
+	background: var(--colorBackground);
+	outline: var(--colorStroke) solid 1px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 2rem;
+	border: var(--colorBackground) solid 0.3rem;
+	background: var(--colorFont);
+	&:hover {
+		background: var(--colorGray);
+	}
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -25,11 +41,6 @@ body {
 	color: var(--colorFont);
 	font-family: var(--sansSerifFontFamily);
 	//background: transparent;
-
-	transition:
-		background-color 0.3s cubic-bezier(0.35, 0.35, 0.5, 1),
-		color 0.3s cubic-bezier(0.35, 0.35, 0.5, 1),
-		outline-color 0.3s cubic-bezier(0.35, 0.35, 0.5, 1);
 }
 
 img {

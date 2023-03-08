@@ -1,0 +1,25 @@
+.part {
+	background: var(--colorStroke);
+	display: flex;
+	height: 3.75rem;
+	//gap: 1px;
+	z-index: 1;
+	& > * {
+		background: var(--colorBackground);
+		//width: 100%;
+		outline: var(--colorStroke) solid 1px;
+	}
+}
+
+.logoWrapper {
+	display: flex;
+	align-items: center;
+	padding: 0 2.5rem;
+
+	width: min(100%, 220px);
+}
+
+.catalogButtonWrapper,
+.logo {
+	overflow: hidden;
+}

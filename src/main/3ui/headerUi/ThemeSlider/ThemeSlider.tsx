@@ -15,7 +15,7 @@ const ThemeSlider: FC<ThemeSliderProps> = props => {
     <div className={style.slideButtonWrapper}>
       <motion.button
         onClick={() => props.handleTheme(prev => !prev)}
-        data-isOn={props.isDarkTheme}
+        data--isOn={props.isDarkTheme}
         className={style.slideButton}>
         <motion.div
           layout
