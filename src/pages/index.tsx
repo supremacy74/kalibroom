@@ -4,13 +4,20 @@ import { NextPage } from 'next'
 import { memo, useState } from 'react'
 import Hero from '@/main/1modules/Hero/Hero'
 import ContainerForCells from '@/main/1modules/ContainerForCells/ContainerForCells'
-import { products } from '@/data/products'
+import { arrayOfProducts1 } from '@/data/arrayOfProducts1'
+import LoadMoreButton from "@/main/3ui/LoadMoreButton/LoadMoreButton";
+import Footer from "@/main/1modules/Footer/Footer";
 
 const Home: NextPage = () => {
 	const [productsSelected, handleProductsSelected] =
 		useState<boolean>(false)
 	const [ideasSelected, handleIdeasSelected] =
 		useState<boolean>(false)
+	const [products, setProducts] = useState(arrayOfProducts1)
+
+	const loadMoreProducts = () => {
+		setProducts(prev => [...prev, ...arrayOfProducts1])
+	}
 
 	return (
 		<>
@@ -27,8 +34,10 @@ const Home: NextPage = () => {
 				/>
 				<div className={style.content}>
 					<ContainerForCells array={products} />
+					<LoadMoreButton onClick={() => loadMoreProducts()}/>
 				</div>
 			</main>
+			<Footer />
 		</>
 	)
 }

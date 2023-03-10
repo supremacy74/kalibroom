@@ -1,0 +1,54 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  outline: var(--colorStroke) solid 1px;
+}
+
+.contacts {
+  display: flex;
+  height: 5rem;
+  width: 100%;
+  background: var(--colorStroke);
+  outline: var(--colorStroke) solid 1px;
+  gap: 1px;
+  & > * {
+    //outline: var(--colorStroke) solid 1px;
+    background: var(--colorBackground);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 1rem;
+  }
+}
+
+.mailContact {
+  width: min(100%, 20rem);
+  justify-content: flex-start;
+  padding-left: 2.35rem;
+}
+
+.phoneContact,
+.timeContact {
+  width: min(100%, 16.25rem);
+  text-align: center;
+}
+
+.link {
+  width: min(100%, 9.35rem);
+  transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  &:hover {
+    background: var(--colorSmokyWhite);
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rem 2.5rem ;
+}
+
+.rightPart {
+  display: flex;
+}

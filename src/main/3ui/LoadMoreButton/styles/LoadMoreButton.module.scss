@@ -1,0 +1,18 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--colorSignalBlack);
+  color: var(--colorBackground);
+  border-radius: 10rem;
+  font-size: 1rem;
+  padding: 1rem;
+  width: min(100%, 42rem);
+}
