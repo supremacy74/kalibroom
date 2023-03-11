@@ -9,6 +9,7 @@ import {
 import style from './styles/Header.module.scss'
 import BottomHeaderPart from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
 import TopHeaderPart from '@/main/2components/TopHeaderPart/TopHeaderPart'
+import {setDarkTheme, setLightTheme} from "@/helpers/changeTheme";
 
 interface HeaderProps {
 	isDarkTheme: boolean
@@ -20,25 +21,6 @@ const Header: FC<HeaderProps> = props => {
 		useState<boolean>(false)
 	const [bottomPartVisible, handleBottomPartVisible] =
 		useState<boolean>(true)
-
-	const changeVariableColor = (
-		key: string,
-		value: string
-	) => {
-		document.body.style.setProperty(key, value)
-	}
-
-	const setLightTheme = () => {
-		changeVariableColor('--colorFont', '#1c1c1c')
-		changeVariableColor('--colorBackground', '#fff')
-		changeVariableColor('--colorStroke', '#ebebeb')
-	}
-
-	const setDarkTheme = () => {
-		changeVariableColor('--colorFont', '#fff')
-		changeVariableColor('--colorBackground', '#252525')
-		changeVariableColor('--colorStroke', '#3a3a3a')
-	}
 
 	useEffect(() => {
 		if (!props.isDarkTheme) {

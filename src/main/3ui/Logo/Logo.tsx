@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import style from './styles/Logo.module.scss'
 import Image from 'next/image'
 import {
-	logoIcon,
+	logoIcon, logoIconDark, logoTextDarkIcon,
 	logoTextIcon,
 } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'
@@ -28,8 +28,16 @@ const Logo: FC<LogoProps> = props => {
 					)}
 				</>
 			)}
-			{!props.isDarkTheme && (
-				<div></div>
+			{props.isDarkTheme && (
+				<>
+					<Image src={logoIconDark} alt={'logo'} />
+					{!props.logoWithoutText && (
+						<motion.div
+							className={style.logoTextWrapper}>
+							<Image src={logoTextDarkIcon} alt={'logoText'} />
+						</motion.div>
+					)}
+				</>
 			)}
 		</motion.div>
 	)

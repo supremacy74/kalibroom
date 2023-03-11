@@ -1,4 +1,4 @@
-import {FC, memo, ReactNode} from 'react'
+import {createContext, FC, memo, ReactNode, useContext, useEffect} from 'react'
 import style from './styles/RoundedButtonWithCircle.module.scss'
 import Image from 'next/image'
 import { vectorImage } from '@/helpers/importIcons'
@@ -9,6 +9,7 @@ interface RoundedButtonWithCircleProps {
 	isActive?: boolean
 	onClick?: CallableFunction
 	children?: ReactNode
+	isDarkTheme?: boolean
 }
 
 const RoundedButtonWithCircle: FC<
@@ -21,6 +22,7 @@ const RoundedButtonWithCircle: FC<
 			<div className={style.name}>{props.children}</div>
 			<motion.div
 				variants={circleV}
+				custom={props.isDarkTheme}
 				animate={props.isActive ? 'on' : 'off'}
 				transition={{
 					duration: .3,
@@ -28,7 +30,6 @@ const RoundedButtonWithCircle: FC<
 				}}
 				className={style.circle}>
 				<Image
-
 					className={style.icon}
 					src={vectorImage}
 					alt={'vectorImage'}

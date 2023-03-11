@@ -5,8 +5,8 @@ export const circleV: Variants = {
     background: '#c0ff0d',
 		rotate: '90deg',
 	},
-	off: {
-    background: '#252525',
+	off: (isDarkTheme: boolean) => ({
+		background: isDarkTheme ? '#fff' : '#252525',
 		rotate: '0deg',
-	},
+	}),
 }

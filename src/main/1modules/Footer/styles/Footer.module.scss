@@ -46,9 +46,83 @@
 .main {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   padding: 5rem 2.5rem ;
 }
 
 .rightPart {
   display: flex;
+  width: max(50%, 30rem);
+  justify-content: space-between;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+
+.item {
+  font-size: .8125rem;
+  color: var(--colorGray);
+  width: fit-content;
+  border-bottom: transparent solid 1px;
+  transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  &:hover {
+    border-bottom: var(--colorGray) solid 1px;
+  }
+}
+
+.bottom {
+  height: 3.75rem;
+  outline: var(--colorStroke) solid 1px;
+  background: var(--colorStroke);
+  gap: 1px;
+  display: flex;
+  & > * {
+    background: var(--colorBackground);
+    color: var(--colorGray);
+    font-size: .75rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.copyright {
+  width: min(100%, 23rem);
+  padding-left: 2.5rem;
+}
+
+.paymentMethod {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  width: min(100%, 25.75rem);
+}
+
+.paymentMethodList {
+  display: flex;
+  gap: .5rem;
+}
+
+.bottomLink {
+  display: flex;
+  justify-content: center;
+  width: min(100%, 13.75rem);
+  transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  &:hover {
+    background: var(--colorSmokyWhite);
+  }
 }

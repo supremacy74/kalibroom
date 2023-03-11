@@ -1,11 +1,22 @@
-import {FC, memo} from "react";
+import { FC, memo } from 'react'
 import style from './styles/Footer.module.scss'
-import Link from "next/link";
-import Image from "next/image";
-import {icon3d, telegramIcon, vkIcon, whatsappIcon} from "@/helpers/importIcons";
-import Logo from "@/main/3ui/Logo/Logo";
+import Link from 'next/link'
+import Image from 'next/image'
+import {
+	icon3d,
+	mastercardIcon,
+	telegramIcon, visaIcon,
+	vkIcon,
+	whatsappIcon,
+	worldIcon,
+} from '@/helpers/importIcons'
+import Logo from '@/main/3ui/Logo/Logo'
 
-const Footer: FC = () => {
+interface FooterI {
+	isDarkTheme?: boolean
+}
+
+const Footer: FC<FooterI> = props => {
 	const blocks = [
 		{
 			title: 'Товары',
@@ -34,37 +45,50 @@ const Footer: FC = () => {
 					name: 'Столы',
 					link: '',
 				},
-			]
+			],
 		},
 		{
-			title: 'Товары',
+			title: 'Компания',
 			blockList: [
 				{
-					name: 'Диваны',
+					name: 'О нас',
 					link: '',
 				},
 				{
-					name: 'Кровати',
+					name: 'Шоурум',
 					link: '',
 				},
 				{
-					name: 'Стулья',
+					name: 'В наличии',
 					link: '',
 				},
 				{
-					name: 'Кресла',
+					name: 'Доставка',
+					link: '',
+				},
+			],
+		},
+		{
+			title: 'Услуги',
+			blockList: [
+				{
+					name: 'Сборка мебели',
 					link: '',
 				},
 				{
-					name: 'Аксессуары',
+					name: 'Погрузка',
 					link: '',
 				},
 				{
-					name: 'Столы',
+					name: 'Отправка в другой город',
 					link: '',
 				},
-			]
-		}
+				{
+					name: 'Изготовление на заказ',
+					link: '',
+				},
+			],
+		},
 	]
 
 	return (
@@ -93,18 +117,57 @@ const Footer: FC = () => {
 				</Link>
 			</div>
 			<main className={style.main}>
-				<Logo />
+				<Logo isDarkTheme={props.isDarkTheme}/>
 				<div className={style.rightPart}>
-					<div className={style.block}>
-						<div className={style.blockTitle}>
-
-						</div>
-						<div className={style.blockList}>
-
-						</div>
-					</div>
+					{blocks.map(block => {
+						return (
+							<div className={style.block}>
+								<div className={style.title}>
+									{block.title}
+								</div>
+								<div className={style.list}>
+									{block.blockList.map(item => {
+										return (
+											<Link
+												className={style.item}
+												href={item.link}>
+												{item.name}
+											</Link>
+										)
+									})}
+								</div>
+							</div>
+						)
+					})}
 				</div>
 			</main>
+			<div className={style.bottom}>
+				<div className={style.copyright}>
+					© 2022–2023 ООО «Kalibroom»
+				</div>
+				<div className={style.paymentMethod}>
+					<div className={style.paymentMethodTitle}>
+						Способы оплаты
+					</div>
+					<div className={style.paymentMethodList}>
+						<Image
+							src={mastercardIcon}
+							alt={'mastercardIcon'}
+						/>
+						<Image src={visaIcon} alt={'mastercardIcon'} />
+						<Image src={worldIcon} alt={'mastercardIcon'} />
+					</div>
+				</div>
+				<Link className={style.bottomLink} href={''}>
+					Правила пользования
+				</Link>
+				<Link className={style.bottomLink} href={''}>
+					Политика конфиденциальности
+				</Link>
+				<Link className={style.bottomLink} href={''}>
+					Публичная оферта
+				</Link>
+			</div>
 		</div>
 	)
 }
