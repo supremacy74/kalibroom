@@ -5,7 +5,8 @@ import Image from 'next/image'
 import {
 	icon3d,
 	mastercardIcon,
-	telegramIcon, visaIcon,
+	telegramIcon,
+	visaIcon,
 	vkIcon,
 	whatsappIcon,
 	worldIcon,
@@ -117,18 +118,19 @@ const Footer: FC<FooterI> = props => {
 				</Link>
 			</div>
 			<main className={style.main}>
-				<Logo isDarkTheme={props.isDarkTheme}/>
+				<Logo isDarkTheme={props.isDarkTheme} />
 				<div className={style.rightPart}>
-					{blocks.map(block => {
+					{blocks.map((block, blockIndex) => {
 						return (
-							<div className={style.block}>
+							<div key={blockIndex} className={style.block}>
 								<div className={style.title}>
 									{block.title}
 								</div>
 								<div className={style.list}>
-									{block.blockList.map(item => {
+									{block.blockList.map((item, itemIndex) => {
 										return (
 											<Link
+												key={itemIndex}
 												className={style.item}
 												href={item.link}>
 												{item.name}
@@ -172,4 +174,5 @@ const Footer: FC<FooterI> = props => {
 	)
 }
 
+Footer.displayName = 'Footer'
 export default memo(Footer)

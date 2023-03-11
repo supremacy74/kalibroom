@@ -3,7 +3,7 @@ import '@/fonts/fonts.scss'
 import type { AppProps } from 'next/app'
 import Wrapper from '@/main/3ui/Wrapper/Wrapper'
 import Header from '@/main/1modules/Header/Header'
-import {useState} from 'react'
+import { useState } from 'react'
 import Footer from '@/main/1modules/Footer/Footer'
 
 const App = ({ Component, pageProps }: AppProps) => {

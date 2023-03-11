@@ -7,14 +7,29 @@ export const locationIcon = require('/public/icons/location.svg')
 export const searchIcon = require('/public/icons/search.svg')
 export const heartIcon = require('/public/icons/heart.svg')
 export const hamburgerIcon = require('/public/icons/hamburger.svg')
+
 export const vectorDownIcon = require('/public/icons/vectorDown.svg')
+export const vectorDownDarkIcon = require('/public/icons/vectorDownDark.svg')
+
 export const moonIcon = require('/public/icons/moon.svg')
 export const sunIcon = require('/public/icons/sun.svg')
-export const vectorImage = require('/public/icons/vector.svg')
+
+// export const vectorTopDarkImage = require('/public/icons/vecto')
+export const vectorTopImage = require('/public/icons/vector.svg')
+
+export const iconDark3d = require('/public/icons/3dDark.svg')
 export const icon3d = require('/public/icons/3d.svg')
+
+// messenger icons
 export const vkIcon = require('/public/icons/vk.svg')
+export const vkDarkIcon = require('/public/icons/vkDark.svg')
 export const telegramIcon = require('/public/icons/telegram.svg')
+export const telegramDarkIcon = require('/public/icons/telegramDark.svg')
 export const whatsappIcon = require('/public/icons/whatsapp.svg')
+export const whatsappDarkIcon = require('/public/icons/whatsappDark.svg')
 export const mastercardIcon = require('/public/icons/mastercard.svg')
+export const mastercardDarkIcon = require('/public/icons/mastercardDark.svg')
 export const visaIcon = require('/public/icons/visa.svg')
+export const visaDarkIcon = require('/public/icons/visaDark.svg')
 export const worldIcon = require('/public/icons/world.svg')
+export const worldDarkIcon = require('/public/icons/worldDark.svg')

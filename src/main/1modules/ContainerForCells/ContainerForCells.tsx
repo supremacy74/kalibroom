@@ -39,7 +39,7 @@ const ContainerForCells: FC<
 		<div className={style.container}>
 			{columnsArray.map((columnValue, columnIndex) => {
 				return (
-					<div className={style.column}>
+					<div key={columnIndex} className={style.column}>
 						{props.array.map((value, index) => {
 							if (
 								(columnIndex + index) %
@@ -48,6 +48,7 @@ const ContainerForCells: FC<
 							) {
 								return (
 									<Product
+										key={index}
 										price={value.price}
 										title={value.title}
 										category={`Кресло дизайнерское ${index}`}

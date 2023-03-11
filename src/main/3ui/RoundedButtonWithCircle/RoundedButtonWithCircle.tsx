@@ -1,7 +1,7 @@
 import {createContext, FC, memo, ReactNode, useContext, useEffect} from 'react'
 import style from './styles/RoundedButtonWithCircle.module.scss'
 import Image from 'next/image'
-import { vectorImage } from '@/helpers/importIcons'
+import { vectorTopImage } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'
 import {circleV} from "@/main/3ui/RoundedButtonWithCircle/styles/variants";
 
@@ -31,7 +31,7 @@ const RoundedButtonWithCircle: FC<
 				className={style.circle}>
 				<Image
 					className={style.icon}
-					src={vectorImage}
+					src={vectorTopImage}
 					alt={'vectorImage'}
 				/>
 			</motion.div>
