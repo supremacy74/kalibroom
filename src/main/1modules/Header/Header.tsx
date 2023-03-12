@@ -1,41 +1,46 @@
-import {
-	Dispatch,
-	FC,
-	memo,
-	SetStateAction,
-	useEffect,
-	useState,
-} from 'react'
+import { FC, memo, useEffect, useState } from 'react'
 import style from './styles/Header.module.scss'
 import BottomHeaderPart from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
 import TopHeaderPart from '@/main/2components/TopHeaderPart/TopHeaderPart'
-import {setDarkTheme, setLightTheme} from "@/helpers/changeTheme";
+import {
+	setLightTheme,
+	setDarkTheme,
+} from '@/helpers/changeTheme'
+import {
+	useAppDispatch,
+	useAppSelector,
+} from '@/store/hooks'
+import { setHeaderBottomPartVisible } from '@/store/reducers/headerBottomPart'
 
-interface HeaderProps {
-	isDarkTheme: boolean
-	handleTheme: Dispatch<SetStateAction<boolean>>
-}
+const Header: FC = () => {
+	const [headerBottomIsVisible, handleHeaderBottomVisible] =
+		useState(true)
+	const theme = useAppSelector(
+		state => state.theme.isDarkTheme
+	)
 
-const Header: FC<HeaderProps> = props => {
-	const [catalogIsOpen, handleCatalog] =
-		useState<boolean>(false)
-	const [bottomPartVisible, handleBottomPartVisible] =
-		useState<boolean>(true)
+	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		if (!props.isDarkTheme) {
+		dispatch(
+			setHeaderBottomPartVisible(headerBottomIsVisible)
+		)
+	}, [headerBottomIsVisible])
+
+	useEffect(() => {
+		if (!theme) {
 			setLightTheme()
 		} else {
 			setDarkTheme()
 		}
-	}, [props.isDarkTheme])
+	}, [theme])
 
 	useEffect(() => {
 		document.addEventListener('scroll', () => {
 			if (scrollY > 50) {
-				handleBottomPartVisible(false)
+				handleHeaderBottomVisible(false)
 			} else {
-				handleBottomPartVisible(true)
+				handleHeaderBottomVisible(true)
 			}
 		})
 	}, [])
@@ -43,19 +48,8 @@ const Header: FC<HeaderProps> = props => {
 	return (
 		<div className={style.headerWrapper}>
 			<header className={style.header}>
-				<TopHeaderPart
-					isDarkTheme={props.isDarkTheme}
-					bottomPartVisible={bottomPartVisible}
-					catalogIsOpen={catalogIsOpen}
-					handleCatalog={handleCatalog}
-				/>
-				<BottomHeaderPart
-					bottomPartVisible={bottomPartVisible}
-					catalogIsOpen={catalogIsOpen}
-					handleCatalog={handleCatalog}
-					isDarkTheme={props.isDarkTheme}
-					handleTheme={props.handleTheme}
-				/>
+				<TopHeaderPart />
+				<BottomHeaderPart />
 			</header>
 		</div>
 	)

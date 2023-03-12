@@ -2,44 +2,56 @@ import { FC, memo } from 'react'
 import style from './styles/Logo.module.scss'
 import Image from 'next/image'
 import {
-	logoIcon, logoIconDark, logoTextDarkIcon,
+	logoIcon,
+	logoIconDark,
+	logoTextDarkIcon,
 	logoTextIcon,
 } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'
+import { useAppSelector } from '@/store/hooks'
 
 interface LogoProps {
 	logoWithoutText?: boolean
 	className?: string
-	isDarkTheme?: boolean
 }
 
 const Logo: FC<LogoProps> = props => {
+	const theme = useAppSelector(
+		state => state.theme.isDarkTheme
+	)
+
 	return (
 		<motion.div
 			className={`${style.logo} ${props.className}`}>
-			{!props.isDarkTheme && (
-				<>
-					<Image src={logoIcon} alt={'logo'} />
-					{!props.logoWithoutText && (
-						<motion.div
-							className={style.logoTextWrapper}>
-							<Image src={logoTextIcon} alt={'logoText'} />
-						</motion.div>
-					)}
-				</>
-			)}
-			{props.isDarkTheme && (
-				<>
-					<Image src={logoIconDark} alt={'logo'} />
-					{!props.logoWithoutText && (
-						<motion.div
-							className={style.logoTextWrapper}>
-							<Image src={logoTextDarkIcon} alt={'logoText'} />
-						</motion.div>
-					)}
-				</>
-			)}
+			{!theme && <LightThemeLogo {...props} />}
+			{theme && <DarkThemeLogo {...props} />}
 		</motion.div>
+	)
+}
+
+const LightThemeLogo: FC<LogoProps> = props => {
+	return (
+		<>
+			<Image src={logoIcon} alt={'logo'} />
+			{!props.logoWithoutText && (
+				<motion.div className={style.logoTextWrapper}>
+					<Image src={logoTextIcon} alt={'logoText'} />
+				</motion.div>
+			)}
+		</>
+	)
+}
+
+const DarkThemeLogo: FC<LogoProps> = props => {
+	return (
+		<>
+			<Image src={logoIconDark} alt={'logo'} />
+			{!props.logoWithoutText && (
+				<motion.div className={style.logoTextWrapper}>
+					<Image src={logoTextDarkIcon} alt={'logoText'} />
+				</motion.div>
+			)}
+		</>
 	)
 }
 

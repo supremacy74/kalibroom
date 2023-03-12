@@ -112,6 +112,10 @@
   width: min(100%, 25.75rem);
 }
 
+.paymentMethodTitle {
+  color: var(--colorGray);
+}
+
 .paymentMethodList {
   display: flex;
   gap: .5rem;
@@ -122,6 +126,7 @@
   justify-content: center;
   width: min(100%, 13.75rem);
   transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  text-align: center;
   &:hover {
     background: var(--colorSmokyWhite);
   }

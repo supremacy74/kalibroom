@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import { vectorDownV } from './styles/variants'
 import { getSpringTransition } from '@/helpers/animations'
 import Image from 'next/image'
-import { vectorDownIcon } from '@/helpers/importIcons'
+import {vectorDownDarkIcon, vectorDownIcon} from '@/helpers/importIcons'
+import {useAppSelector} from "@/store/hooks";
 
 interface CategoryButtonI {
 	title: string
@@ -12,6 +13,8 @@ interface CategoryButtonI {
 
 const CategoryButton: FC<CategoryButtonI> = props => {
 	const [isOpen, handleOpen] = useState<boolean>(false)
+
+	const theme = useAppSelector(state => state.theme.isDarkTheme)
 
 	return (
 		<button
@@ -23,11 +26,20 @@ const CategoryButton: FC<CategoryButtonI> = props => {
 				animate={isOpen ? 'on' : 'off'}
 				transition={getSpringTransition(30, 185)}
 				className={style.iconWrapper}>
-				<Image
-					className={style.icon}
-					src={vectorDownIcon}
-					alt={'vectorDownIcon'}
-				/>
+				{!theme && (
+					<Image
+						className={style.icon}
+						src={vectorDownIcon}
+						alt={'vectorDownIcon'}
+					/>
+				)}
+				{theme && (
+					<Image
+						className={style.icon}
+						src={vectorDownDarkIcon}
+						alt={'vectorDownIcon'}
+					/>
+				)}
 			</motion.div>
 		</button>
 	)

@@ -1,4 +1,4 @@
-import { Dispatch, FC, memo, SetStateAction } from 'react'
+import {FC, memo, useEffect} from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import style from './styles/BottomHeaderPart.module.scss'
 import CatalogButton from '@/main/3ui/headerUi/CatalogButton/CatalogButton'
@@ -8,20 +8,12 @@ import ThemeSlider from '@/main/3ui/headerUi/ThemeSlider/ThemeSlider'
 import { bottomHeaderPartV } from '@/main/2components/BottomHeaderPart/styles/variants'
 import {
 	getCommonAnimation,
-	getSpringTransition,
 } from '@/helpers/animations'
+import {useAppSelector} from "@/store/hooks";
 
-interface BottomHeaderPartProps {
-	bottomPartVisible: boolean
-	catalogIsOpen: boolean
-	handleCatalog: Dispatch<SetStateAction<boolean>>
-	isDarkTheme: boolean
-	handleTheme: Dispatch<SetStateAction<boolean>>
-}
+const BottomHeaderPart: FC = () => {
+	const isVisible = useAppSelector(state => state.headerBottomPart.isVisible)
 
-const BottomHeaderPart: FC<
-	BottomHeaderPartProps
-> = props => {
 	const categoryButtons = [
 		'диваны',
 		'кровати',
@@ -32,7 +24,7 @@ const BottomHeaderPart: FC<
 
 	return (
 		<AnimatePresence>
-			{props.bottomPartVisible && (
+			{isVisible && (
 				<motion.div
 					variants={bottomHeaderPartV}
 					{...getCommonAnimation()}
@@ -41,20 +33,14 @@ const BottomHeaderPart: FC<
 						ease: 'easeInOut',
 					}}
 					className={style.part}>
-					<CatalogButton
-						catalogIsOpen={props.catalogIsOpen}
-						handleCatalog={props.handleCatalog}
-					/>
+					<CatalogButton />
 					{categoryButtons.map((value, index) => {
 						return (
 							<CategoryButton key={index} title={value} />
 						)
 					})}
 					<InStockButton />
-					<ThemeSlider
-						handleTheme={props.handleTheme}
-						isDarkTheme={props.isDarkTheme}
-					/>
+					<ThemeSlider />
 				</motion.div>
 			)}
 		</AnimatePresence>

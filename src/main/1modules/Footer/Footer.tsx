@@ -4,139 +4,51 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {
 	icon3d,
+	iconDark3d, mastercardDarkIcon,
 	mastercardIcon,
-	telegramIcon,
+	telegramDarkIcon,
+	telegramIcon, visaDarkIcon,
 	visaIcon,
+	vkDarkIcon,
 	vkIcon,
-	whatsappIcon,
+	whatsappDarkIcon,
+	whatsappIcon, worldDarkIcon,
 	worldIcon,
 } from '@/helpers/importIcons'
 import Logo from '@/main/3ui/Logo/Logo'
+import { footerLinks } from '@/data/footerLinks'
+import { useAppSelector } from '@/store/hooks'
 
-interface FooterI {
-	isDarkTheme?: boolean
-}
-
-const Footer: FC<FooterI> = props => {
-	const blocks = [
-		{
-			title: 'Товары',
-			blockList: [
-				{
-					name: 'Диваны',
-					link: '',
-				},
-				{
-					name: 'Кровати',
-					link: '',
-				},
-				{
-					name: 'Стулья',
-					link: '',
-				},
-				{
-					name: 'Кресла',
-					link: '',
-				},
-				{
-					name: 'Аксессуары',
-					link: '',
-				},
-				{
-					name: 'Столы',
-					link: '',
-				},
-			],
-		},
-		{
-			title: 'Компания',
-			blockList: [
-				{
-					name: 'О нас',
-					link: '',
-				},
-				{
-					name: 'Шоурум',
-					link: '',
-				},
-				{
-					name: 'В наличии',
-					link: '',
-				},
-				{
-					name: 'Доставка',
-					link: '',
-				},
-			],
-		},
-		{
-			title: 'Услуги',
-			blockList: [
-				{
-					name: 'Сборка мебели',
-					link: '',
-				},
-				{
-					name: 'Погрузка',
-					link: '',
-				},
-				{
-					name: 'Отправка в другой город',
-					link: '',
-				},
-				{
-					name: 'Изготовление на заказ',
-					link: '',
-				},
-			],
-		},
-	]
+const Footer: FC = () => {
+	const theme = useAppSelector(
+		state => state.theme.isDarkTheme
+	)
 
 	return (
 		<div className={style.footer}>
-			<div className={style.contacts}>
-				<div className={style.mailContact}>
-					mymailadress@kalibroom.com
-				</div>
-				<div className={style.phoneContact}>
-					Тел:+7 999 999-99-99
-				</div>
-				<div className={style.timeContact}>
-					Работаем: пн-пт с 9 до 21
-				</div>
-				<Link className={style.link} href={''}>
-					<Image src={icon3d} alt={'3d'} />
-				</Link>
-				<Link className={style.link} href={''}>
-					<Image src={vkIcon} alt={'3d'} />
-				</Link>
-				<Link className={style.link} href={''}>
-					<Image src={telegramIcon} alt={'3d'} />
-				</Link>
-				<Link className={style.link} href={''}>
-					<Image src={whatsappIcon} alt={'3d'} />
-				</Link>
-			</div>
+			<Contacts theme={theme} />
 			<main className={style.main}>
-				<Logo isDarkTheme={props.isDarkTheme} />
+				<Logo />
 				<div className={style.rightPart}>
-					{blocks.map((block, blockIndex) => {
+					{footerLinks.map((block, blockIndex) => {
 						return (
 							<div key={blockIndex} className={style.block}>
 								<div className={style.title}>
 									{block.title}
 								</div>
 								<div className={style.list}>
-									{block.blockList.map((item, itemIndex) => {
-										return (
-											<Link
-												key={itemIndex}
-												className={style.item}
-												href={item.link}>
-												{item.name}
-											</Link>
-										)
-									})}
+									{block.blockList.map(
+										(item, itemIndex) => {
+											return (
+												<Link
+													key={itemIndex}
+													className={style.item}
+													href={item.link}>
+													{item.name}
+												</Link>
+											)
+										}
+									)}
 								</div>
 							</div>
 						)
@@ -152,12 +64,26 @@ const Footer: FC<FooterI> = props => {
 						Способы оплаты
 					</div>
 					<div className={style.paymentMethodList}>
-						<Image
-							src={mastercardIcon}
-							alt={'mastercardIcon'}
-						/>
-						<Image src={visaIcon} alt={'mastercardIcon'} />
-						<Image src={worldIcon} alt={'mastercardIcon'} />
+						{!theme && (
+							<>
+								<Image
+									src={mastercardIcon}
+									alt={'mastercardIcon'}
+								/>
+								<Image src={visaIcon} alt={'mastercardIcon'} />
+								<Image src={worldIcon} alt={'mastercardIcon'} />
+							</>
+						)}
+						{theme && (
+							<>
+								<Image
+									src={mastercardDarkIcon}
+									alt={'mastercardIcon'}
+								/>
+								<Image src={visaDarkIcon} alt={'mastercardIcon'} />
+								<Image src={worldDarkIcon} alt={'mastercardIcon'} />
+							</>
+						)}
 					</div>
 				</div>
 				<Link className={style.bottomLink} href={''}>
@@ -170,6 +96,38 @@ const Footer: FC<FooterI> = props => {
 					Публичная оферта
 				</Link>
 			</div>
+		</div>
+	)
+}
+
+const Contacts: FC<{ theme: boolean }> = ({ theme }) => {
+	return (
+		<div className={style.contacts}>
+			<div className={style.mailContact}>
+				mymailadress@kalibroom.com
+			</div>
+			<div className={style.phoneContact}>
+				Тел:+7 999 999-99-99
+			</div>
+			<div className={style.timeContact}>
+				Работаем: пн-пт с 9 до 21
+			</div>
+			<Link className={style.link} href={''}>
+				{!theme && <Image src={icon3d} alt={'3d'} />}
+				{theme && <Image src={iconDark3d} alt={'3d'} />}
+			</Link>
+			<Link className={style.link} href={''}>
+				{!theme && <Image src={vkIcon} alt={'vk'} />}
+				{theme && <Image src={vkDarkIcon} alt={'vk'} />}
+			</Link>
+			<Link className={style.link} href={''}>
+				{!theme && <Image src={telegramIcon} alt={'telegram'} />}
+				{theme && <Image src={telegramDarkIcon} alt={'telegram'} />}
+			</Link>
+			<Link className={style.link} href={''}>
+				{!theme && <Image src={whatsappIcon} alt={'3d'} />}
+				{theme && <Image src={whatsappDarkIcon} alt={'3d'} />}
+			</Link>
 		</div>
 	)
 }

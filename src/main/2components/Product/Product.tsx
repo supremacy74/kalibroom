@@ -1,6 +1,19 @@
-import { FC, memo } from 'react'
+import { FC, memo, useEffect, useState } from 'react'
 import style from './styles/Product.module.scss'
 import Image from 'next/image'
+import CircleButton from '@/main/3ui/CircleButton/CircleButton'
+import {
+	cartActiveIcon,
+	cartHoverIcon,
+	cartIcon,
+	heartDarkIcon,
+} from '@/helpers/importIcons'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import {
+	getSpringTransition,
+} from '@/helpers/animations'
+import { productV } from '@/main/2components/Product/styles/variants'
 
 interface ProductProps {
 	image?: string
@@ -10,9 +23,41 @@ interface ProductProps {
 }
 
 const Product: FC<ProductProps> = props => {
+	const [isActive, handleActive] = useState<boolean>(false)
+	const [height, setHeight] = useState(0)
+
+	useEffect(() => {
+		setHeight(Math.ceil(Math.random() * 20) + 10)
+	}, [])
+
 	return (
-		<div className={style.product}>
-			<div className={style.imageWrapper}>
+		<motion.div
+			variants={productV}
+			transition={getSpringTransition(10, 60)}
+			initial={'off'}
+			whileInView={'on'}
+			className={style.product}>
+			<motion.div
+				animate={
+					isActive
+						? { outline: '#c0ff0d solid 2px' }
+						: { outline: '#c0ff0d00 solid 2px' }
+				}
+				className={style.imageWrapper}>
+				<CircleButton
+					className={style.cartButton}
+					icon={cartIcon}
+					hoverIcon={cartHoverIcon}
+					activeIcon={cartActiveIcon}
+					isActive={isActive}
+					handleActive={handleActive}
+				/>
+				<button className={style.heartButton}>
+					<Image
+						src={heartDarkIcon}
+						alt={'heartDarkIcon'}
+					/>
+				</button>
 				{props.image ? (
 					<Image
 						className={style.image}
@@ -21,13 +66,15 @@ const Product: FC<ProductProps> = props => {
 					/>
 				) : (
 					<div
-						style={{height: `${Math.ceil(Math.random() * 20) + 10 }rem`}}
+						style={{
+							height: `${height}rem`,
+						}}
 						className={style.imageNotFound}>
 						image not found
 					</div>
 				)}
-			</div>
-			<div className={style.bottom}>
+			</motion.div>
+			<Link href={''} className={style.bottom}>
 				<div className={style.text}>
 					<div className={style.title}>{props.title}</div>
 					<div className={style.category}>
@@ -35,8 +82,8 @@ const Product: FC<ProductProps> = props => {
 					</div>
 				</div>
 				<div className={style.price}>{props.price}</div>
-			</div>
-		</div>
+			</Link>
+		</motion.div>
 	)
 }
 
