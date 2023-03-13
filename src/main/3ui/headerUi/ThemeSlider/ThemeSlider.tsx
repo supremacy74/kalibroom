@@ -20,7 +20,7 @@ const ThemeSlider: FC = () => {
 		<div className={style.slideButtonWrapper}>
 			<motion.button
 				onClick={() => dispatch(toggleDarkTheme())}
-				data--isOn={isDarkTheme}
+				data-on={isDarkTheme}
 				className={style.slideButton}>
 				<motion.div
 					layout

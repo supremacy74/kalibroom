@@ -3,7 +3,7 @@
 	display: flex;
 	height: 3.75rem;
 	//gap: 1px;
-	z-index: 1;
+	z-index: 10;
 	& > * {
 		background: var(--colorBackground);
 		//width: 100%;

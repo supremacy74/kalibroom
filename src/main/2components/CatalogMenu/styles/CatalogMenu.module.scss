@@ -1,0 +1,24 @@
+.menu {
+  display: flex;
+  gap: 1px;
+  background: var(--colorStroke);
+  position: absolute;
+  bottom: calc(7.5rem - 100vh);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 7.5rem);
+  z-index: -1;
+}
+
+.nav {
+  width: min(100%, 25rem);
+  display: flex;
+  flex-direction: column;
+  outline: var(--colorStroke) solid 1px;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
