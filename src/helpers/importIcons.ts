@@ -41,6 +41,10 @@ export const sunIcon = require('/public/icons/sun.svg')
 export const vectorTopImage = require('/public/icons/vectorTop.svg')
 export const vectorTopDarkImage = require('/public/icons/vectorDarkTop.svg')
 
+// right arrow
+export const rightArrowIcon = require('/public/icons/rightArrow.svg')
+export const rightArrowDarkIcon = require('/public/icons/rightArrowDark.svg')
+
 // 3d icon
 export const icon3d = require('/public/icons/3d.svg')
 export const iconDark3d = require('/public/icons/3dDark.svg')

@@ -7,13 +7,32 @@ import InStockButton from '@/main/3ui/headerUi/InStockButton/InStockButton'
 import ThemeSlider from '@/main/3ui/headerUi/ThemeSlider/ThemeSlider'
 import { bottomHeaderPartV } from '@/main/2components/BottomHeaderPart/styles/variants'
 import { getCommonAnimation } from '@/helpers/animations'
-import {useAppDispatch, useAppSelector} from '@/store/hooks'
+import {
+	useAppDispatch,
+	useAppSelector,
+} from '@/store/hooks'
 import WideButton from '@/main/3ui/headerUi/WideButton/WideButton'
 import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/catalog'
-import CatalogMenu, {categoriesI} from "@/main/2components/CatalogMenu/CatalogMenu";
+import CatalogMenu from "@/main/2components/CatalogMenu/CatalogMenu";
+
+export interface categoriesI {
+	title: string
+	blocks: {
+		title: string
+		links: {
+			title: string
+			link: string
+		}[]
+	}[]
+}
+
+export interface catalogI {
+	products: categoriesI[]
+	ideas: categoriesI[]
+}
 
 const BottomHeaderPart: FC = () => {
 	const isVisible = useAppSelector(
@@ -39,11 +58,6 @@ const BottomHeaderPart: FC = () => {
 		'кресла',
 	]
 
-	interface catalogI {
-		products: categoriesI[]
-		ideas: categoriesI[],
-	}
-
 	const catalogMenuData: catalogI = {
 		products: [
 			{
@@ -64,7 +78,7 @@ const BottomHeaderPart: FC = () => {
 								title: '4-местные',
 								link: '',
 							},
-						]
+						],
 					},
 					{
 						title: 'По форме',
@@ -81,7 +95,7 @@ const BottomHeaderPart: FC = () => {
 								title: 'Модульные',
 								link: '',
 							},
-						]
+						],
 					},
 					{
 						title: 'По функции',
@@ -102,9 +116,9 @@ const BottomHeaderPart: FC = () => {
 								title: 'Механизм 2',
 								link: '',
 							},
-						]
+						],
 					},
-				]
+				],
 			},
 			{
 				title: 'Кровати',
@@ -134,45 +148,47 @@ const BottomHeaderPart: FC = () => {
 		ideas: [
 			{
 				title: 'Экономия',
-				blocks: []
+				blocks: [],
 			},
 			{
 				title: 'Стиль',
-				blocks: []
+				blocks: [],
 			},
 			{
 				title: 'Цвет',
-				blocks: []
+				blocks: [],
 			},
 			{
 				title: 'Текстура',
-				blocks: []
+				blocks: [],
 			},
 			{
 				title: 'Материал',
-				blocks: []
+				blocks: [],
 			},
 			{
 				title: 'Hand made',
-				blocks: []
+				blocks: [],
 			},
 			{
 				title: 'свет',
-				blocks: []
+				blocks: [],
 			},
-		]
+		],
 	}
 
 	const wideButtons = [
 		{
 			title: 'Товары',
 			active: productsIsOpen,
-			onClick: () => dispatch(toggleCatalogCategoryToProducts()),
+			onClick: () =>
+				dispatch(toggleCatalogCategoryToProducts()),
 		},
 		{
 			title: 'Идеи',
 			active: ideasIsOpen,
-			onClick: () => dispatch(toggleCatalogCategoryToIdeas()),
+			onClick: () =>
+				dispatch(toggleCatalogCategoryToIdeas()),
 		},
 	]
 
@@ -207,7 +223,7 @@ const BottomHeaderPart: FC = () => {
 						})}
 					<InStockButton />
 					<ThemeSlider />
-					<CatalogMenu categories={[]}/>
+					<CatalogMenu categories={catalogMenuData} />
 				</motion.div>
 			)}
 		</AnimatePresence>
