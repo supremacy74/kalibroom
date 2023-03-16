@@ -36,7 +36,7 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 					<div className={style.nav}>
 						{props.categories.map((value, index) => {
 							return (
-								<button className={style.category}>
+								<button key={index} className={style.category}>
 
 								</button>
 							)

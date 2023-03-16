@@ -195,9 +195,10 @@ const BottomHeaderPart: FC = () => {
 							)
 						})}
 					{catalogIsOpen &&
-						wideButtons.map(value => {
+						wideButtons.map((value, index) => {
 							return (
 								<WideButton
+									key={index}
 									onClick={value.onClick}
 									active={value.active}>
 									{value.title}
