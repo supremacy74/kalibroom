@@ -9,7 +9,7 @@ import {
 	setLightTheme,
 } from '@/helpers/changeTheme'
 
-export const headerVisible = (
+export const useHeaderVisible: Function = (
 	headerBottomIsVisible: boolean,
 	handleHeaderBottomVisible: Dispatch<
 		SetStateAction<boolean>

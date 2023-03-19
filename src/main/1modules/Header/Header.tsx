@@ -4,13 +4,13 @@ import BottomHeaderPart from '@/main/2components/BottomHeaderPart/BottomHeaderPa
 import TopHeaderPart from '@/main/2components/TopHeaderPart/TopHeaderPart'
 import CatalogMenu from '@/main/2components/CatalogMenu/CatalogMenu'
 import { catalogMenuData } from '@/data/catalogMenuData'
-import { headerVisible } from '@/main/1modules/Header/helpers/headerVisible'
+import { useHeaderVisible } from '@/main/1modules/Header/helpers/useHeaderVisible'
 
 const Header: FC = () => {
 	const [headerBottomIsVisible, handleHeaderBottomVisible] =
 		useState(true)
 
-	headerVisible(
+	useHeaderVisible(
 		headerBottomIsVisible,
 		handleHeaderBottomVisible
 	)
