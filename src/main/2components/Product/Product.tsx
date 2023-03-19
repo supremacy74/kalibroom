@@ -10,9 +10,7 @@ import {
 } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import {
-	getSpringTransition,
-} from '@/helpers/animations'
+import { getSpringTransition } from '@/helpers/animations'
 import { productV } from '@/main/2components/Product/styles/variants'
 
 interface ProductProps {
