@@ -9,14 +9,20 @@ interface HeroProps {
 	handleIdeasSelected: Dispatch<SetStateAction<boolean>>
 }
 
+const Title: FC = () => {
+	return (
+		<h3 className={style.title}>
+			Переключайтесь между товарами и идеями, чтобы перейти
+			в каталог товаров, либо посмотреть идеи для
+			вдохновения
+		</h3>
+	)
+}
+
 const Hero: FC<HeroProps> = props => {
 	return (
 		<div className={style.hero}>
-			<h3 className={style.title}>
-				Переключайтесь между товарами и идеями, чтобы
-				перейти в каталог товаров, либо посмотреть идеи для
-				вдохновения
-			</h3>
+			<Title />
 			<div className={style.buttons}>
 				<RoundedButtonWithCircle
 					onClick={() => {
@@ -27,12 +33,11 @@ const Hero: FC<HeroProps> = props => {
 					Товары
 				</RoundedButtonWithCircle>
 				<RoundedButtonWithCircle
-          onClick={() => {
+					onClick={() => {
 						props.handleIdeasSelected(prev => !prev)
 						props.handleProductsSelected(false)
-					}
-          }
-          isActive={props.ideasSelected}>
+					}}
+					isActive={props.ideasSelected}>
 					Идеи
 				</RoundedButtonWithCircle>
 			</div>
