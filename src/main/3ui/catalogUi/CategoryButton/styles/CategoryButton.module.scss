@@ -1,0 +1,14 @@
+.category {
+  width: 100%;
+  outline: var(--colorStroke) solid 1px;
+  background: var(--colorBackground);
+  padding: 1.125rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryName {
+  font-size: .875rem;
+  text-transform: uppercase;
+}

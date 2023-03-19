@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from 'react'
+import { FC, memo } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import style from './styles/BottomHeaderPart.module.scss'
 import CatalogButton from '@/main/3ui/headerUi/CatalogButton/CatalogButton'
@@ -16,7 +16,8 @@ import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/catalog'
-import CatalogMenu from "@/main/2components/CatalogMenu/CatalogMenu";
+import CatalogMenu from '@/main/2components/CatalogMenu/CatalogMenu'
+import {catalogMenuData} from "@/data/catalogMenuData";
 
 export interface categoriesI {
 	title: string
@@ -50,133 +51,6 @@ const BottomHeaderPart: FC = () => {
 
 	const dispatch = useAppDispatch()
 
-	const categoryButtons = [
-		'диваны',
-		'кровати',
-		'столы',
-		'стулья',
-		'кресла',
-	]
-
-	const catalogMenuData: catalogI = {
-		products: [
-			{
-				title: 'Диваны',
-				blocks: [
-					{
-						title: 'По размеру',
-						links: [
-							{
-								title: '2-местные',
-								link: '',
-							},
-							{
-								title: '3-местные',
-								link: '',
-							},
-							{
-								title: '4-местные',
-								link: '',
-							},
-						],
-					},
-					{
-						title: 'По форме',
-						links: [
-							{
-								title: 'Прямые диваны',
-								link: '',
-							},
-							{
-								title: 'Угловые',
-								link: '',
-							},
-							{
-								title: 'Модульные',
-								link: '',
-							},
-						],
-					},
-					{
-						title: 'По функции',
-						links: [
-							{
-								title: 'Без спального места',
-								link: '',
-							},
-							{
-								title: 'Со спальным местом',
-								link: '',
-							},
-							{
-								title: 'Механизм 1',
-								link: '',
-							},
-							{
-								title: 'Механизм 2',
-								link: '',
-							},
-						],
-					},
-				],
-			},
-			{
-				title: 'Кровати',
-				blocks: [],
-			},
-			{
-				title: 'стулья',
-				blocks: [],
-			},
-			{
-				title: 'столы',
-				blocks: [],
-			},
-			{
-				title: 'кресла',
-				blocks: [],
-			},
-			{
-				title: 'Пуфы, банкетки и скамьи',
-				blocks: [],
-			},
-			{
-				title: 'Аксессуары',
-				blocks: [],
-			},
-		],
-		ideas: [
-			{
-				title: 'Экономия',
-				blocks: [],
-			},
-			{
-				title: 'Стиль',
-				blocks: [],
-			},
-			{
-				title: 'Цвет',
-				blocks: [],
-			},
-			{
-				title: 'Текстура',
-				blocks: [],
-			},
-			{
-				title: 'Материал',
-				blocks: [],
-			},
-			{
-				title: 'Hand made',
-				blocks: [],
-			},
-			{
-				title: 'свет',
-				blocks: [],
-			},
-		],
-	}
-
 	const wideButtons = [
 		{
 			title: 'Товары',
@@ -205,10 +79,12 @@ const BottomHeaderPart: FC = () => {
 					className={style.part}>
 					<CatalogButton />
 					{!catalogIsOpen &&
-						categoryButtons.map((value, index) => {
-							return (
-								<CategoryButton key={index} title={value} />
-							)
+						catalogMenuData.products.map((value, index) => {
+							if (index < 5) {
+								return (
+									<CategoryButton key={index} title={value.title} index={index} category={value}/>
+								)
+							}
 						})}
 					{catalogIsOpen &&
 						wideButtons.map((value, index) => {

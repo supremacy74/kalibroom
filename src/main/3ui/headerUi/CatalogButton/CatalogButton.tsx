@@ -49,5 +49,5 @@ const CatalogButton: FC = () => {
 	)
 }
 
-CatalogButton.displayName = 'CatalogButton'
+CatalogButton.displayName = 'CategoryButton'
 export default memo(CatalogButton)
