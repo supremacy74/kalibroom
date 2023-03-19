@@ -23,6 +23,13 @@
   font-weight: 500;
   font-size: 1.125rem;
   transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  @media (max-width: 700px) {
+    width: 8.25rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 1rem;
+    width: 6.25rem;
+  }
 }
 
 .circle {

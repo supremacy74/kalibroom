@@ -3,6 +3,7 @@
 	align-items: center;
 	justify-content: center;
 	width: min(100%, 28.125rem);
+	//padding: 1rem 0;
 	color: var(--colorMotherOfPearlLightGray);
 	&[data-active='true'] {
 		color: var(--colorFont);

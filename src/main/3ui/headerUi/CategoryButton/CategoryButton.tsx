@@ -34,12 +34,15 @@ const CategoryButton: FC<CategoryButtonI> = props => {
 	const headerBottomPartIsVisible = useAppSelector(
 		state => state.headerBottomPart.isVisible
 	)
+	const catalogIsOpen = useAppSelector(
+		state => state.catalog.isOpen
+	)
 
 	const dispatch = useAppDispatch()
 	const closeMenu = () =>
 		dispatch(setCatalogCategoryIndexInHeader(-1))
 
-	useOnClickOutside(ref, () => closeMenu())
+	// useOnClickOutside(ref, () => closeMenu())
 
 	return (
 		<button
@@ -88,7 +91,8 @@ const CategoryButton: FC<CategoryButtonI> = props => {
 			</motion.div>
 			<AnimatePresence>
 				{props.index === indexOfCurrentCategoryInHeader &&
-					headerBottomPartIsVisible && (
+					headerBottomPartIsVisible &&
+					!catalogIsOpen && (
 						<CategoryMenu category={props.category} />
 					)}
 			</AnimatePresence>

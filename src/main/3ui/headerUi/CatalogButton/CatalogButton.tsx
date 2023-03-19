@@ -11,9 +11,13 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from '@/store/hooks'
-import { toggleCatalogMenu } from '@/store/reducers/catalog'
+import {setCatalogCategoryIndexInHeader, toggleCatalogMenu} from '@/store/reducers/catalog'
 
-const CatalogButton: FC = () => {
+interface CatalogButtonI {
+	className?: string
+}
+
+const CatalogButton: FC<CatalogButtonI> = (props) => {
 	const catalogIsOpen = useAppSelector(
 		state => state.catalog.isOpen
 	)
@@ -22,9 +26,12 @@ const CatalogButton: FC = () => {
 
 	return (
 		<button
-			onClick={() => dispatch(toggleCatalogMenu())}
-			className={style.catalogButton}>
-			Каталог
+			onClick={() => {
+				dispatch(toggleCatalogMenu())
+				dispatch(setCatalogCategoryIndexInHeader(-1))
+			}}
+			className={`${style.catalogButton} ${props.className}`}>
+			<span className={style.text}>Каталог</span>
 			<div className={style.hamburgerIcon}>
 				<motion.div
 					variants={hamburgerStick1V}

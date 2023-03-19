@@ -4,6 +4,21 @@
   gap: 1.25rem;
 
   width: min(100%, 220px);
+  height: 100%;
+  padding: 0 2.5rem;
+  @media (max-width: 650px) {
+    padding: 0;
+    justify-content: center;
+    max-width: 4rem;
+  }
+}
+
+.text {
+  text-transform: uppercase;
+  font-size: .875rem;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 }
 
 .hamburgerIcon {
@@ -13,6 +28,7 @@
   justify-content: center;
   gap: 3px;
   width: 1.5rem;
+  min-width: 1.5rem;
   background: transparent;
 }
 

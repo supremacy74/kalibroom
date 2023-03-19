@@ -83,6 +83,14 @@ const Product: FC<ProductProps> = props => {
 				</div>
 				<div className={style.price}>{props.price}</div>
 			</Link>
+			<CircleButton
+				className={style.cartButtonMobile}
+				icon={cartIcon}
+				hoverIcon={cartHoverIcon}
+				activeIcon={cartActiveIcon}
+				isActive={isActive}
+				handleActive={handleActive}
+			/>
 		</motion.div>
 	)
 }

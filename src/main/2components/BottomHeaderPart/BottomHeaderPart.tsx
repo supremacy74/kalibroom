@@ -17,7 +17,7 @@ import {
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/catalog'
 import CatalogMenu from '@/main/2components/CatalogMenu/CatalogMenu'
-import {catalogMenuData} from "@/data/catalogMenuData";
+import { catalogMenuData } from '@/data/catalogMenuData'
 
 export interface categoriesI {
 	title: string
@@ -82,7 +82,12 @@ const BottomHeaderPart: FC = () => {
 						catalogMenuData.products.map((value, index) => {
 							if (index < 5) {
 								return (
-									<CategoryButton key={index} title={value.title} index={index} category={value}/>
+									<CategoryButton
+										key={index}
+										title={value.title}
+										index={index}
+										category={value}
+									/>
 								)
 							}
 						})}
@@ -99,7 +104,6 @@ const BottomHeaderPart: FC = () => {
 						})}
 					<InStockButton />
 					<ThemeSlider />
-					<CatalogMenu categories={catalogMenuData} />
 				</motion.div>
 			)}
 		</AnimatePresence>

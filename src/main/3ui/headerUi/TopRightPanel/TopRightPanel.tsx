@@ -13,8 +13,8 @@ const TopRightPanel: FC = () => {
 
 	return (
 		<div className={style.topRightPanel}>
-			<button className={style.buttonWithIcon}>
-				Поиск
+			<button className={`${style.buttonWithIcon} ${style.searchButton}`}>
+				<span className={style.searchText}>Поиск</span>
 				{!theme && (
 					<Image
 						className={style.icon}
@@ -31,7 +31,7 @@ const TopRightPanel: FC = () => {
 				)}
 			</button>
 			<button className={style.buttonWithIcon}>
-				Избранное
+				<span className={style.favoriteText}>Избранное</span>
 				{!theme && (
 					<Image
 						className={style.icon}
@@ -47,8 +47,8 @@ const TopRightPanel: FC = () => {
 					/>
 				)}
 			</button>
-			<button className={style.buttonWithIcon}>
-				Корзина
+			<button className={`${style.buttonWithIcon} ${style.cartButton}`}>
+				<span className={style.cartText}>Корзина</span>
 				<div className={style.cartCounter}>0</div>
 			</button>
 		</div>

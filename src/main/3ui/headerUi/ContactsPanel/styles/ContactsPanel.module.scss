@@ -8,12 +8,25 @@
     font-size: 0.8125rem;
     white-space: pre;
   }
+  @media (max-width: 1200px) {
+    width: min(100%, 400px);
+  }
+  @media (max-width: 1024px) {
+    width: min(100%, 18.75rem);
+    gap: .5rem;
+  }
+  @media (max-width: 730px) {
+    display: none;
+  }
 }
 
 .contactsLeft {
   display: flex;
   align-items: center;
   gap: 2.5rem;
+  @media (max-width: 1280px) {
+    gap: 1.25rem;
+  }
 }
 
 .phone {
@@ -24,10 +37,16 @@
 
 .time {
   color: var(--colorGray);
+  @media (max-width: 1200px) {
+    display: none;
+  }
 }
 
 .location {
   display: flex;
   align-items: center;
   gap: .25rem;
+  @media (max-width: 800px) {
+    display: none;
+  }
 }
