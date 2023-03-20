@@ -41,12 +41,3 @@
     display: none;
   }
 }
-
-.location {
-  display: flex;
-  align-items: center;
-  gap: .25rem;
-  @media (max-width: 800px) {
-    display: none;
-  }
-}

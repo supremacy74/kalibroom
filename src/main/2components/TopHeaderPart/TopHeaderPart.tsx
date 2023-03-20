@@ -17,7 +17,7 @@ const TopHeaderPart: FC = () => {
 		<div className={style.part}>
 			<div
 				className={style.logoWrapper}
-				data-bottomIsVisible={headerBottomPartIsVisible}>
+				data-bottom-is-visible={headerBottomPartIsVisible}>
 				<Logo
 					className={style.logo}
 					logoWithoutText={!headerBottomPartIsVisible}

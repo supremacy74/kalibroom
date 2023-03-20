@@ -2,14 +2,16 @@ import { FC, memo } from 'react'
 import style from './styles/ContactsPanel.module.scss'
 import Image from 'next/image'
 import {
-	locationDarkIcon,
-	locationIcon, phoneDarkIcon,
+	phoneDarkIcon,
 	phoneIcon,
 } from '@/helpers/importIcons'
-import {useAppSelector} from "@/store/hooks";
+import { useAppSelector } from '@/store/hooks'
+import Location from '@/main/3ui/headerUi/Location/Location'
 
 const ContactsPanel: FC = () => {
-	const theme = useAppSelector(state => state.theme.isDarkTheme)
+	const theme = useAppSelector(
+		state => state.theme.isDarkTheme
+	)
 
 	return (
 		<div className={style.contacts}>
@@ -27,15 +29,7 @@ const ContactsPanel: FC = () => {
 				</div>
 				<div className={style.time}>пн-пт с 9 до 21</div>
 			</div>
-			<div className={style.location}>
-				<span className={style.locationText}>Москва</span>
-				{!theme && (
-					<Image src={locationIcon} alt={'location'} />
-				)}
-				{theme && (
-					<Image src={locationDarkIcon} alt={'location'} />
-				)}
-			</div>
+			<Location />
 		</div>
 	)
 }

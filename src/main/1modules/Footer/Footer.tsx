@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useEffect, useState } from 'react'
 import style from './styles/Footer.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -9,6 +9,8 @@ import {
 	mastercardIcon,
 	telegramDarkIcon,
 	telegramIcon,
+	vectorDownDarkIcon,
+	vectorDownIcon,
 	visaDarkIcon,
 	visaIcon,
 	vkDarkIcon,
@@ -19,8 +21,90 @@ import {
 	worldIcon,
 } from '@/helpers/importIcons'
 import Logo from '@/main/3ui/Logo/Logo'
-import { footerLinks } from '@/data/footerLinks'
+import {
+	footerLinks,
+	footerLinksI,
+} from '@/data/footerLinks'
 import { useAppSelector } from '@/store/hooks'
+import Location from '@/main/3ui/headerUi/Location/Location'
+import { motion } from 'framer-motion'
+import {getCommonAnimation} from "@/helpers/animations";
+
+interface FooterBlockI {
+	block: footerLinksI
+}
+
+const FooterBlock: FC<FooterBlockI> = props => {
+	const theme = useAppSelector(
+		state => state.theme.isDarkTheme
+	)
+
+	const [isVisible, handleVisible] =
+		useState<boolean>(false)
+	const [isMobile, handleIiMobile] =
+		useState<boolean>(false)
+
+	const resizeFunction = () => {
+		if (innerWidth > 720) {
+			handleIiMobile(false)
+		} else {
+			handleIiMobile(true)
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('resize', resizeFunction)
+		return () =>
+			window.removeEventListener('resize', resizeFunction)
+	}, [])
+
+	return (
+		<div className={style.block}>
+			<div
+				onClick={() => {
+					if (isMobile) {
+						handleVisible(prev => !prev)
+					}
+				}}
+				className={style.title}>
+				<span>{props.block.title}</span>
+				{!theme && (
+					<Image
+						className={style.titleVector}
+						data-is-visible={isVisible}
+						src={vectorDownIcon}
+						alt={'vectorDownIcon'}
+					/>
+				)}
+				{theme && (
+					<Image
+						className={style.titleVector}
+						data-is-visible={isVisible}
+						src={vectorDownDarkIcon}
+						alt={'vectorDownDarkIcon'}
+					/>
+				)}
+			</div>
+			{(isVisible || !isMobile) && (
+				<motion.div
+					{...getCommonAnimation()}
+					transition={getCommonAnimation()}
+					className={style.list}>
+					{props.block.blockList.map((item, itemIndex) => {
+						return (
+							<Link
+								key={itemIndex}
+								className={style.item}
+								href={item.link}>
+								{item.name}
+							</Link>
+						)
+					})}
+				</motion.div>
+			)}
+		</div>
+	)
+}
 
 const Footer: FC = () => {
 	const theme = useAppSelector(
@@ -31,29 +115,11 @@ const Footer: FC = () => {
 		<div className={style.footer}>
 			<Contacts theme={theme} />
 			<main className={style.main}>
-				<Logo />
+				<Logo className={style.logo} />
 				<div className={style.rightPart}>
 					{footerLinks.map((block, blockIndex) => {
 						return (
-							<div key={blockIndex} className={style.block}>
-								<div className={style.title}>
-									{block.title}
-								</div>
-								<div className={style.list}>
-									{block.blockList.map(
-										(item, itemIndex) => {
-											return (
-												<Link
-													key={itemIndex}
-													className={style.item}
-													href={item.link}>
-													{item.name}
-												</Link>
-											)
-										}
-									)}
-								</div>
-							</div>
+							<FooterBlock key={blockIndex} block={block} />
 						)
 					})}
 				</div>
@@ -118,14 +184,20 @@ const Footer: FC = () => {
 const Contacts: FC<{ theme: boolean }> = ({ theme }) => {
 	return (
 		<div className={style.contacts}>
-			<div className={style.mailContact}>
-				mymailadress@kalibroom.com
-			</div>
-			<div className={style.phoneContact}>
-				Тел:+7 999 999-99-99
-			</div>
-			<div className={style.timeContact}>
-				Работаем: пн-пт с 9 до 21
+			<div className={style.contactsBlock}>
+				<Location className={style.location} />
+				<div
+					className={`${style.mailContact} ${style.contact}`}>
+					mymailadress@kalibroom.com
+				</div>
+				<div
+					className={`${style.phoneContact} ${style.contact}`}>
+					Тел:+7 999 999-99-99
+				</div>
+				<div
+					className={`${style.timeContact} ${style.contact}`}>
+					Работаем: пн-пт с 9 до 21
+				</div>
 			</div>
 			<div className={style.links}>
 				<Link className={style.link} href={''}>

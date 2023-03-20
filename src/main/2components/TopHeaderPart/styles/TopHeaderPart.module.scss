@@ -25,7 +25,7 @@
 
 	width: min(100%, 13.75rem);
 
-	&[data-bottomIsVisible='false'] {
+	&[data-bottom-is-visible='false'] {
 		padding: 0 0 0 2.5rem;
 		min-width: 17.5rem;
 		.catalogButton {

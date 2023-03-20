@@ -1,4 +1,12 @@
-export const footerLinks = [
+export interface footerLinksI {
+  title: string,
+  blockList: {
+    name: string,
+    link: string,
+  }[]
+}
+
+export const footerLinks: footerLinksI[] = [
   {
     title: 'Товары',
     blockList: [
