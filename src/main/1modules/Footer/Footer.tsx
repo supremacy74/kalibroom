@@ -4,15 +4,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {
 	icon3d,
-	iconDark3d, mastercardDarkIcon,
+	iconDark3d,
+	mastercardDarkIcon,
 	mastercardIcon,
 	telegramDarkIcon,
-	telegramIcon, visaDarkIcon,
+	telegramIcon,
+	visaDarkIcon,
 	visaIcon,
 	vkDarkIcon,
 	vkIcon,
 	whatsappDarkIcon,
-	whatsappIcon, worldDarkIcon,
+	whatsappIcon,
+	worldDarkIcon,
 	worldIcon,
 } from '@/helpers/importIcons'
 import Logo from '@/main/3ui/Logo/Logo'
@@ -70,8 +73,14 @@ const Footer: FC = () => {
 									src={mastercardIcon}
 									alt={'mastercardIcon'}
 								/>
-								<Image src={visaIcon} alt={'mastercardIcon'} />
-								<Image src={worldIcon} alt={'mastercardIcon'} />
+								<Image
+									src={visaIcon}
+									alt={'mastercardIcon'}
+								/>
+								<Image
+									src={worldIcon}
+									alt={'mastercardIcon'}
+								/>
 							</>
 						)}
 						{theme && (
@@ -80,8 +89,14 @@ const Footer: FC = () => {
 									src={mastercardDarkIcon}
 									alt={'mastercardIcon'}
 								/>
-								<Image src={visaDarkIcon} alt={'mastercardIcon'} />
-								<Image src={worldDarkIcon} alt={'mastercardIcon'} />
+								<Image
+									src={visaDarkIcon}
+									alt={'mastercardIcon'}
+								/>
+								<Image
+									src={worldDarkIcon}
+									alt={'mastercardIcon'}
+								/>
 							</>
 						)}
 					</div>
@@ -112,22 +127,35 @@ const Contacts: FC<{ theme: boolean }> = ({ theme }) => {
 			<div className={style.timeContact}>
 				Работаем: пн-пт с 9 до 21
 			</div>
-			<Link className={style.link} href={''}>
-				{!theme && <Image src={icon3d} alt={'3d'} />}
-				{theme && <Image src={iconDark3d} alt={'3d'} />}
-			</Link>
-			<Link className={style.link} href={''}>
-				{!theme && <Image src={vkIcon} alt={'vk'} />}
-				{theme && <Image src={vkDarkIcon} alt={'vk'} />}
-			</Link>
-			<Link className={style.link} href={''}>
-				{!theme && <Image src={telegramIcon} alt={'telegram'} />}
-				{theme && <Image src={telegramDarkIcon} alt={'telegram'} />}
-			</Link>
-			<Link className={style.link} href={''}>
-				{!theme && <Image src={whatsappIcon} alt={'3d'} />}
-				{theme && <Image src={whatsappDarkIcon} alt={'3d'} />}
-			</Link>
+			<div className={style.links}>
+				<Link className={style.link} href={''}>
+					{!theme && <Image src={icon3d} alt={'3d'} />}
+					{theme && <Image src={iconDark3d} alt={'3d'} />}
+				</Link>
+				<Link className={style.link} href={''}>
+					{!theme && <Image src={vkIcon} alt={'vk'} />}
+					{theme && <Image src={vkDarkIcon} alt={'vk'} />}
+				</Link>
+				<Link className={style.link} href={''}>
+					{!theme && (
+						<Image src={telegramIcon} alt={'telegram'} />
+					)}
+					{theme && (
+						<Image
+							src={telegramDarkIcon}
+							alt={'telegram'}
+						/>
+					)}
+				</Link>
+				<Link className={style.link} href={''}>
+					{!theme && (
+						<Image src={whatsappIcon} alt={'3d'} />
+					)}
+					{theme && (
+						<Image src={whatsappDarkIcon} alt={'3d'} />
+					)}
+				</Link>
+			</div>
 		</div>
 	)
 }
