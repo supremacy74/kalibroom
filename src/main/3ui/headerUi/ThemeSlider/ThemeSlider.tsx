@@ -8,7 +8,7 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from '@/store/hooks'
-import { toggleDarkTheme } from '@/store/reducers/theme'
+import {setterDarkTheme, toggleDarkTheme} from '@/store/reducers/theme'
 
 const ThemeSlider: FC = () => {
 	const isDarkTheme = useAppSelector(
@@ -19,7 +19,10 @@ const ThemeSlider: FC = () => {
 	return (
 		<div className={style.slideButtonWrapper}>
 			<motion.button
-				onClick={() => dispatch(toggleDarkTheme())}
+				onClick={() => {
+					localStorage.setItem('themeIsDark', JSON.stringify(!isDarkTheme))
+					dispatch(setterDarkTheme(!isDarkTheme))
+				}}
 				data-on={isDarkTheme}
 				className={style.slideButton}>
 				<motion.div

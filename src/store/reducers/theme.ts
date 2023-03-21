@@ -18,12 +18,12 @@ const themeSlice = createSlice({
 		toggleDarkTheme(state: ThemeState) {
 			state.isDarkTheme = !state.isDarkTheme
 		},
-		setDarkTheme(state: ThemeState, action: PayloadAction<boolean>) {
+		setterDarkTheme(state: ThemeState, action: PayloadAction<boolean>) {
 			state.isDarkTheme = action.payload
 		},
 	},
 })
 
-export const { toggleDarkTheme, setDarkTheme } =
+export const { toggleDarkTheme, setterDarkTheme } =
 	themeSlice.actions
 export default themeSlice.reducer

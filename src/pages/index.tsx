@@ -11,13 +11,9 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from '@/store/hooks'
+import Main from '@/main/3ui/Main/Main'
 
 const Home: NextPage = () => {
-	const [productsSelected, handleProductsSelected] =
-		useState<boolean>(false)
-	const [ideasSelected, handleIdeasSelected] =
-		useState<boolean>(false)
-
 	const products = useAppSelector(state => state.products)
 	const dispatch = useAppDispatch()
 
@@ -33,20 +29,15 @@ const Home: NextPage = () => {
 				<title>Kalibroom — Главная</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main className={style.main}>
-				<Hero
-					productsSelected={productsSelected}
-					handleProductsSelected={handleProductsSelected}
-					ideasSelected={ideasSelected}
-					handleIdeasSelected={handleIdeasSelected}
-				/>
+			<Main>
+				<Hero />
 				<div className={style.content}>
 					<ContainerForCells array={products} />
 					<LoadMoreButton
 						onClick={() => loadMoreProducts()}
 					/>
 				</div>
-			</main>
+			</Main>
 		</>
 	)
 }

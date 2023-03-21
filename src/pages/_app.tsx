@@ -6,6 +6,8 @@ import Header from '@/main/1modules/Header/Header'
 import Footer from '@/main/1modules/Footer/Footer'
 import store from '@/store'
 import { Provider } from 'react-redux'
+import {useAppDispatch} from "@/store/hooks";
+import {useEffect} from "react";
 
 const App = ({ Component, pageProps }: AppProps) => {
 	return (

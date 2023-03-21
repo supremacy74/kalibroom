@@ -1,34 +1,25 @@
-const changeVariableColor = (
-	key: string,
-	value: string
-) => {
+const changeColor = (key: string, value: string) => {
 	document.body.style.setProperty(key, value)
 }
 
 export const setLightTheme = () => {
-	changeVariableColor('--colorFont', '#1c1c1c')
-	changeVariableColor('--colorBackground', '#fff')
-	changeVariableColor('--colorStroke', '#ebebeb')
+	changeColor('--colorFont', '#1c1c1c')
+	changeColor('--colorBackground', '#fff')
+	changeColor('--colorStroke', '#ebebeb')
 
-	changeVariableColor('--colorGray', '#3e3d3d')
-	changeVariableColor('--colorSmokyWhite', '#f4f4f4')
-	changeVariableColor('--colorSignalBlack', '#252525')
-	changeVariableColor(
-		'--colorMotherOfPearlDarkGray',
-		'#828282'
-	)
+	changeColor('--colorGray', '#3e3d3d')
+	changeColor('--colorSmokyWhite', '#f4f4f4')
+	changeColor('--colorSignalBlack', '#252525')
+	changeColor('--colorMotherOfPearlDarkGray', '#828282')
 }
 
 export const setDarkTheme = () => {
-	changeVariableColor('--colorFont', '#fff')
-	changeVariableColor('--colorBackground', '#252525')
-	changeVariableColor('--colorStroke', '#3a3a3a')
+	changeColor('--colorFont', '#fff')
+	changeColor('--colorBackground', '#252525')
+	changeColor('--colorStroke', '#3a3a3a')
 
-	changeVariableColor('--colorGray', '#989898')
-	changeVariableColor('--colorSmokyWhite', '#1f1f1f')
-	changeVariableColor('--colorSignalBlack', '#fff')
-	changeVariableColor(
-		'--colorMotherOfPearlDarkGray',
-		'#3E3D3D'
-	)
+	changeColor('--colorGray', '#989898')
+	changeColor('--colorSmokyWhite', '#1f1f1f')
+	changeColor('--colorSignalBlack', '#fff')
+	changeColor('--colorMotherOfPearlDarkGray', '#3E3D3D')
 }

@@ -1,13 +1,7 @@
 import { Dispatch, FC, memo, SetStateAction } from 'react'
 import style from './styles/Hero.module.scss'
 import RoundedButtonWithCircle from '@/main/3ui/RoundedButtonWithCircle/RoundedButtonWithCircle'
-
-interface HeroProps {
-	productsSelected: boolean
-	handleProductsSelected: Dispatch<SetStateAction<boolean>>
-	ideasSelected: boolean
-	handleIdeasSelected: Dispatch<SetStateAction<boolean>>
-}
+import {useRouter} from "next/router";
 
 const Title: FC = () => {
 	return (
@@ -19,25 +13,17 @@ const Title: FC = () => {
 	)
 }
 
-const Hero: FC<HeroProps> = props => {
+const Hero: FC = props => {
 	return (
 		<div className={style.hero}>
 			<Title />
 			<div className={style.buttons}>
 				<RoundedButtonWithCircle
-					onClick={() => {
-						props.handleProductsSelected(prev => !prev)
-						props.handleIdeasSelected(false)
-					}}
-					isActive={props.productsSelected}>
+					link={'/products'}>
 					Товары
 				</RoundedButtonWithCircle>
 				<RoundedButtonWithCircle
-					onClick={() => {
-						props.handleIdeasSelected(prev => !prev)
-						props.handleProductsSelected(false)
-					}}
-					isActive={props.ideasSelected}>
+					link={'/ideas'}>
 					Идеи
 				</RoundedButtonWithCircle>
 			</div>

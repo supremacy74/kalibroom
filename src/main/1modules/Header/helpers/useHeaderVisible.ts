@@ -15,10 +15,6 @@ export const useHeaderVisible: Function = (
 		SetStateAction<boolean>
 	>
 ) => {
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
-
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
@@ -26,14 +22,6 @@ export const useHeaderVisible: Function = (
 			setHeaderBottomPartVisible(headerBottomIsVisible)
 		)
 	}, [headerBottomIsVisible])
-
-	useEffect(() => {
-		if (!theme) {
-			setLightTheme()
-		} else {
-			setDarkTheme()
-		}
-	}, [theme])
 
 	const scrollEventListenerOnHeader = () => {
 		if (scrollY > 50) {
