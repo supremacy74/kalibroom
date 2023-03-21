@@ -38,7 +38,7 @@ const RoundedButtonWithCircle: FC<
 	getCurrentRouter()
 
 	return (
-		<Link href={props.link} className={style.button}>
+		<Link href={getCurrentRouter() ? '/' : props.link} className={style.button}>
 			<div
 				style={
 					getCurrentRouter()
