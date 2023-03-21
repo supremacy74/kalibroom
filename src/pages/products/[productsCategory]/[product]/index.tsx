@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import { memo } from 'react'
 import {useRouter} from "next/router";
 import Head from "next/head";
+import Main from "@/main/3ui/Main/Main";
 
 interface ProductProps {
 
@@ -16,9 +17,9 @@ const Product: NextPage<ProductProps> = props => {
           Kalibroom — {router.query.product}
         </title>
       </Head>
-      <main>
+      <Main>
 
-      </main>
+      </Main>
     </>
   )
 }

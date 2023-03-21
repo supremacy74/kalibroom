@@ -8,12 +8,28 @@ import store from '@/store'
 import { Provider } from 'react-redux'
 import {useAppDispatch} from "@/store/hooks";
 import {useEffect} from "react";
+import WrapperInner from "@/main/3ui/WrapperInner/WrapperInner";
+import Hero from "@/main/1modules/Hero/Hero";
+import {useRouter} from "next/router";
 
 const App = ({ Component, pageProps }: AppProps) => {
+	const router = useRouter()
+
+	const arrayOfHeroVisibleURLs = [
+		'/',
+		'/products',
+		'/ideas'
+	]
+
 	return (
 		<Provider store={store}>
 			<Wrapper>
 				<Header />
+				{arrayOfHeroVisibleURLs.includes(router.pathname) && (
+					<WrapperInner>
+						<Hero />
+					</WrapperInner>
+				)}
 				<Component {...pageProps} />
 				<Footer />
 			</Wrapper>

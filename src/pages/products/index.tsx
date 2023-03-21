@@ -14,7 +14,10 @@ const Products: NextPage<ProductsProps> = props => {
 				<title>Kalibroom — Товары</title>
 			</Head>
 			<Main>
-				<Hero />
+				{/*<Hero />*/}
+				<div className={style.content}>
+
+				</div>
 			</Main>
 		</>
 	)

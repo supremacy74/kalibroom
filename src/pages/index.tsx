@@ -30,7 +30,6 @@ const Home: NextPage = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Main>
-				<Hero />
 				<div className={style.content}>
 					<ContainerForCells array={products} />
 					<LoadMoreButton

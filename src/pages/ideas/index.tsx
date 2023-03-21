@@ -12,7 +12,10 @@ const Ideas: NextPage = () => {
 				<title>Kalibroom — Идеи</title>
 			</Head>
 			<Main>
-				<Hero />
+				{/*<Hero />*/}
+				<div className={style.content}>
+
+				</div>
 			</Main>
 		</>
 	)

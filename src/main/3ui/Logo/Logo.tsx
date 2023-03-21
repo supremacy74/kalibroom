@@ -9,6 +9,7 @@ import {
 } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'
 import { useAppSelector } from '@/store/hooks'
+import Link from 'next/link'
 
 interface LogoProps {
 	logoWithoutText?: boolean
@@ -21,11 +22,12 @@ const Logo: FC<LogoProps> = props => {
 	)
 
 	return (
-		<motion.div
+		<Link
+			href={'/'}
 			className={`${style.logo} ${props.className}`}>
 			{!theme && <LightThemeLogo {...props} />}
 			{theme && <DarkThemeLogo {...props} />}
-		</motion.div>
+		</Link>
 	)
 }
 
