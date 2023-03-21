@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import style from '@/styles/Home.module.scss'
 import { NextPage } from 'next'
-import {memo, useEffect, useState} from 'react'
+import { memo, useState } from 'react'
 import Hero from '@/main/1modules/Hero/Hero'
 import ContainerForCells from '@/main/1modules/ContainerForCells/ContainerForCells'
 import { arrayOfProducts1 } from '@/data/arrayOfProducts1'

@@ -1,4 +1,4 @@
-import { productI } from '@/store/interfaces/product'
+import { productI } from '@/interfaces/product'
 
 const arrayOfProducts: productI[] = []
 

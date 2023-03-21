@@ -30,81 +30,6 @@ import Location from '@/main/3ui/headerUi/Location/Location'
 import { motion } from 'framer-motion'
 import {getCommonAnimation} from "@/helpers/animations";
 
-interface FooterBlockI {
-	block: footerLinksI
-}
-
-const FooterBlock: FC<FooterBlockI> = props => {
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
-
-	const [isVisible, handleVisible] =
-		useState<boolean>(false)
-	const [isMobile, handleIiMobile] =
-		useState<boolean>(false)
-
-	const resizeFunction = () => {
-		if (innerWidth > 720) {
-			handleIiMobile(false)
-		} else {
-			handleIiMobile(true)
-		}
-	}
-
-	useEffect(() => {
-		window.addEventListener('resize', resizeFunction)
-		return () =>
-			window.removeEventListener('resize', resizeFunction)
-	}, [])
-
-	return (
-		<div className={style.block}>
-			<div
-				onClick={() => {
-					if (isMobile) {
-						handleVisible(prev => !prev)
-					}
-				}}
-				className={style.title}>
-				<span>{props.block.title}</span>
-				{!theme && (
-					<Image
-						className={style.titleVector}
-						data-is-visible={isVisible}
-						src={vectorDownIcon}
-						alt={'vectorDownIcon'}
-					/>
-				)}
-				{theme && (
-					<Image
-						className={style.titleVector}
-						data-is-visible={isVisible}
-						src={vectorDownDarkIcon}
-						alt={'vectorDownDarkIcon'}
-					/>
-				)}
-			</div>
-			{(isVisible || !isMobile) && (
-				<motion.div
-					{...getCommonAnimation()}
-					transition={getCommonAnimation()}
-					className={style.list}>
-					{props.block.blockList.map((item, itemIndex) => {
-						return (
-							<Link
-								key={itemIndex}
-								className={style.item}
-								href={item.link}>
-								{item.name}
-							</Link>
-						)
-					})}
-				</motion.div>
-			)}
-		</div>
-	)
-}
 
 const Footer: FC = () => {
 	const theme = useAppSelector(
@@ -177,6 +102,82 @@ const Footer: FC = () => {
 					Публичная оферта
 				</Link>
 			</div>
+		</div>
+	)
+}
+
+interface FooterBlockI {
+	block: footerLinksI
+}
+
+const FooterBlock: FC<FooterBlockI> = props => {
+	const theme = useAppSelector(
+		state => state.theme.isDarkTheme
+	)
+
+	const [isVisible, handleVisible] =
+		useState<boolean>(false)
+	const [isMobile, handleIiMobile] =
+		useState<boolean>(false)
+
+	const resizeFunction = () => {
+		if (innerWidth > 720) {
+			handleIiMobile(false)
+		} else {
+			handleIiMobile(true)
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('resize', resizeFunction)
+		return () =>
+			window.removeEventListener('resize', resizeFunction)
+	}, [])
+
+	return (
+		<div className={style.block}>
+			<div
+				onClick={() => {
+					if (isMobile) {
+						handleVisible(prev => !prev)
+					}
+				}}
+				className={style.title}>
+				<span>{props.block.title}</span>
+				{!theme && (
+					<Image
+						className={style.titleVector}
+						data-is-visible={isVisible}
+						src={vectorDownIcon}
+						alt={'vectorDownIcon'}
+					/>
+				)}
+				{theme && (
+					<Image
+						className={style.titleVector}
+						data-is-visible={isVisible}
+						src={vectorDownDarkIcon}
+						alt={'vectorDownDarkIcon'}
+					/>
+				)}
+			</div>
+			{(isVisible || !isMobile) && (
+				<motion.div
+					{...getCommonAnimation()}
+					transition={getCommonAnimation()}
+					className={style.list}>
+					{props.block.blockList.map((item, itemIndex) => {
+						return (
+							<Link
+								key={itemIndex}
+								className={style.item}
+								href={item.link}>
+								{item.name}
+							</Link>
+						)
+					})}
+				</motion.div>
+			)}
 		</div>
 	)
 }

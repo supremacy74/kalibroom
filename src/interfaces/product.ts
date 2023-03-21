@@ -1,9 +1,18 @@
+import { propertyI } from '@/interfaces/property'
+
+export interface imageI {
+	color: string
+	imageURL: string
+}
+
 export interface productI {
 	id: string
+	slug: string
 	title: string
 	price: string
-	category: string
-	images: string[]
+	categoryId: string
+	images: imageI[]
+	properties: propertyI[]
 }
 
 export interface extendedProductI extends productI {

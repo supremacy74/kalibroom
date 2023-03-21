@@ -1,7 +1,7 @@
 import { FC, memo, useEffect, useState } from 'react'
 import style from './styles/ContainerForCells.module.scss'
 import Product from '@/main/2components/Product/Product'
-import { productI } from '@/store/interfaces/product'
+import { productI } from '@/interfaces/product'
 
 interface ContainerForCellsProps {
 	array: productI[]
