@@ -1,8 +1,12 @@
-import { propertyI } from '@/interfaces/property'
-
 export interface imageI {
 	color: string
 	imageURL: string
+}
+
+export interface propertyI {
+	title: string
+	slug: string
+	image?: string
 }
 
 export interface productI {

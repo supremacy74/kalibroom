@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 import { memo, useState } from 'react'
 import Hero from '@/main/1modules/Hero/Hero'
 import ContainerForCells from '@/main/1modules/ContainerForCells/ContainerForCells'
-import { arrayOfProducts1 } from '@/data/arrayOfProducts1'
+import { arrayOfProducts } from '@/data/arrayOfProducts'
 import LoadMoreButton from '@/main/3ui/LoadMoreButton/LoadMoreButton'
 import { setProducts } from '@/store/reducers/products'
 import {
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
 	const loadMoreProducts = () => {
 		dispatch(
-			setProducts([...products, ...arrayOfProducts1])
+			setProducts([...products, ...arrayOfProducts])
 		)
 	}
 

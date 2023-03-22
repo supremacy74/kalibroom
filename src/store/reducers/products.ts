@@ -3,9 +3,9 @@ import {
 	PayloadAction,
 } from '@reduxjs/toolkit'
 import { productI } from '@/interfaces/product'
-import { arrayOfProducts1 } from '@/data/arrayOfProducts1'
+import { arrayOfProducts } from '@/data/arrayOfProducts'
 
-const initialState: productI[] = arrayOfProducts1
+const initialState: productI[] = arrayOfProducts
 
 const productsSlice = createSlice({
 	name: 'products',

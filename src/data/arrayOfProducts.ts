@@ -1,10 +1,10 @@
 import { productI } from '@/interfaces/product'
 
-const arrayOfProducts: productI[] = []
+const arrayOfProducts1: productI[] = []
 
 for (let i = 0; i < 25; i++)
-	arrayOfProducts.push({
-		id: 'null',
+	arrayOfProducts1.push({
+		id: `${Math.random()}`,
 		title: 'casper arpa',
 		slug: 'casper-arpa',
 		categoryId: 'Кресло дизайнерское',
@@ -13,4 +13,4 @@ for (let i = 0; i < 25; i++)
 		properties: [],
 	})
 
-export const arrayOfProducts1 = arrayOfProducts
+export const arrayOfProducts = arrayOfProducts1

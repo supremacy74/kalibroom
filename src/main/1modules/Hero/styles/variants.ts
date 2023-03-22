@@ -1,4 +1,4 @@
-import {Variants} from "framer-motion";
+import { Variants } from 'framer-motion'
 
 export const titleV: Variants = {
 	on: {
@@ -10,5 +10,5 @@ export const titleV: Variants = {
 		height: '0',
 		marginBottom: '0rem',
 		opacity: 0,
-	}
+	},
 }
