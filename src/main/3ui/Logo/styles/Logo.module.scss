@@ -1,6 +1,9 @@
 .logo {
 	display: flex;
 	align-items: center;
+	&:hover {
+		background: transparent !important;
+	}
 }
 
 .logoTextWrapper {
