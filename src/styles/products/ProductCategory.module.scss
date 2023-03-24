@@ -1,0 +1,23 @@
+.main {
+  margin-top: 9rem;
+  @media (max-width: 1300px) {
+    margin-top: 5rem;
+  }
+}
+
+.breadCrumbs {
+  width: 100%;
+  color: var(--colorDescription);
+  font-size: .8125rem;
+  display: flex;
+  align-items: center;
+  gap: .2rem;
+}
+
+.breadCrumb {
+  border-bottom: transparent solid 1px;
+  text-transform: lowercase;
+  &:hover {
+    border-bottom: var(--colorDescription) solid 1px;
+  }
+}

@@ -3,11 +3,12 @@ import style from './styles/Main.module.scss'
 
 interface MainI {
 	children?: ReactNode
+	className?: string
 }
 
 const Main: FC<MainI> = props => {
 	return (
-		<main className={style.main}>{props.children}</main>
+		<main className={`${style.main} ${props.className}`}>{props.children}</main>
 	)
 }
 
