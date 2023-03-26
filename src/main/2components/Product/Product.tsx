@@ -10,19 +10,19 @@ import {
 } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { getSpringTransition } from '@/helpers/animations'
-import { productV } from '@/main/2components/Product/styles/variants'
+import { inViewAnimation } from '@/helpers/animations'
+import { productI } from '@/interfaces/product'
+import ImageNotFoundBlock from '@/main/3ui/ImageNotFoundBlock/ImageNotFoundBlock'
 
 interface ProductProps {
-	image?: string
-	price: string
-	title: string
-	category: string
+	product: productI
 }
 
 const Product: FC<ProductProps> = props => {
 	const [isActive, handleActive] = useState<boolean>(false)
 	const [height, setHeight] = useState(0)
+	const [currentImage, setCurrentImage] =
+		useState<number>(0)
 
 	useEffect(() => {
 		setHeight(Math.ceil(Math.random() * 20) + 10)
@@ -30,10 +30,7 @@ const Product: FC<ProductProps> = props => {
 
 	return (
 		<motion.div
-			variants={productV}
-			transition={getSpringTransition(10, 60)}
-			initial={'off'}
-			whileInView={'on'}
+			{...inViewAnimation}
 			className={style.product}>
 			<motion.div
 				animate={
@@ -56,30 +53,55 @@ const Product: FC<ProductProps> = props => {
 						alt={'heartDarkIcon'}
 					/>
 				</button>
-				{props.image ? (
-					<Image
-						className={style.image}
-						src={props.image}
-						alt={'productImage'}
-					/>
+				{props.product.images.length ? (
+					<>
+						<Image
+							className={style.image}
+							src={
+								props.product.images[currentImage].imageURL
+							}
+							alt={'productImage'}
+							width={800}
+							height={1200}
+						/>
+						<div className={style.pagination}>
+							{props.product.images.map((value, index) => {
+								return (
+									<div
+										key={index}
+										style={
+											currentImage === index
+												? {
+														background:
+															'var(--colorBackground)',
+												  }
+												: {}
+										}
+										onClick={() => {
+											setCurrentImage(index)
+										}}
+										className={style.paginationDot}
+									/>
+								)
+							})}
+						</div>
+					</>
 				) : (
-					<div
-						style={{
-							height: `${height}rem`,
-						}}
-						className={style.imageNotFound}>
-						image not found
-					</div>
+					<ImageNotFoundBlock height={`${height}rem`} />
 				)}
 			</motion.div>
 			<Link href={''} className={style.bottom}>
 				<div className={style.text}>
-					<div className={style.title}>{props.title}</div>
+					<div className={style.title}>
+						{props.product.title}
+					</div>
 					<div className={style.category}>
-						{props.category}
+						{props.product.categoryId}
 					</div>
 				</div>
-				<div className={style.price}>{props.price}</div>
+				<div className={style.price}>
+					{props.product.price}
+				</div>
 			</Link>
 			<CircleButton
 				className={style.cartButtonMobile}

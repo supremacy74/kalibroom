@@ -8,11 +8,7 @@ import WrapperInner from '@/main/3ui/WrapperInner/WrapperInner'
 import Link from 'next/link'
 import { arrayOfCategories } from '@/data/arrayOfCategories'
 
-interface ProductsCategoryProps {}
-
-const ProductsCategory: NextPage<
-	ProductsCategoryProps
-> = props => {
+const ProductsCategory: NextPage = props => {
 	const router = useRouter()
 
 	const currentPageRoute = arrayOfCategories.find(

@@ -2,6 +2,7 @@ import { FC, memo, useEffect, useState } from 'react'
 import style from './styles/ContainerForCells.module.scss'
 import Product from '@/main/2components/Product/Product'
 import { productI } from '@/interfaces/product'
+import { motion } from 'framer-motion'
 
 interface ContainerForCellsProps {
 	array: productI[]
@@ -39,24 +40,18 @@ const ContainerForCells: FC<
 		<div className={style.container}>
 			{columnsArray.map((columnValue, columnIndex) => {
 				return (
-					<div key={columnIndex} className={style.column}>
-						{props.array.map((value, index) => {
+					<motion.div key={columnIndex} className={style.column}>
+						{props.array.map((product, index) => {
 							if (
-								(columnIndex + index) %
-									columnsArray.length ===
-								0
+								columnIndex ===
+								index % columnsArray.length
 							) {
 								return (
-									<Product
-										key={index}
-										price={value.price}
-										title={value.title}
-										category={`Кресло дизайнерское ${index}`}
-									/>
+									<Product key={index} product={product} />
 								)
 							}
 						})}
-					</div>
+					</motion.div>
 				)
 			})}
 		</div>

@@ -6,7 +6,7 @@ import {
 	phoneIcon,
 } from '@/helpers/importIcons'
 import { useAppSelector } from '@/store/hooks'
-import Location from '@/main/3ui/headerUi/Location/Location'
+import Location from '@/main/3ui/Location/Location'
 
 const ContactsPanel: FC = () => {
 	const theme = useAppSelector(

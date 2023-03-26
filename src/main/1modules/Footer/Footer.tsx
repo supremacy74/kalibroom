@@ -26,7 +26,7 @@ import {
 	footerLinksI,
 } from '@/data/footerLinks'
 import { useAppSelector } from '@/store/hooks'
-import Location from '@/main/3ui/headerUi/Location/Location'
+import Location from '@/main/3ui/Location/Location'
 import { motion } from 'framer-motion'
 import {getCommonAnimation} from "@/helpers/animations";
 

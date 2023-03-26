@@ -11,7 +11,7 @@ import {
 } from '@/helpers/animations'
 import { catalogMenuV } from '@/main/2components/CatalogMenu/styles/variants'
 import { catalogI } from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
-import CatalogButton from '@/main/3ui/catalogUi/CategoryButton/CategoryButton'
+import CatalogButton from '@/main/3ui/CategoryButton/CategoryButton'
 import Link from 'next/link'
 import {
 	toggleCatalogCategoryToIdeas,

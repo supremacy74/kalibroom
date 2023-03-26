@@ -1,4 +1,4 @@
-import { Transition } from 'framer-motion'
+import { Transition, Variants } from 'framer-motion'
 
 export const getCommonAnimation = (
 	initial: string = 'off',
@@ -20,6 +20,24 @@ export const getSpringTransition = (
 		damping,
 		stiffness,
 		restDelta: 0.1,
-		type: 'spring'
+		type: 'spring',
 	}
+}
+
+export const inViewAnimationV: Variants = {
+	on: {
+		y: '0rem',
+		opacity: 1,
+	},
+	off: {
+		y: `5rem`,
+		opacity: 0,
+	},
+}
+
+export const inViewAnimation = {
+	variants: inViewAnimationV,
+	transition: getSpringTransition(10, 60),
+	initial: 'off',
+	whileInView: 'on',
 }

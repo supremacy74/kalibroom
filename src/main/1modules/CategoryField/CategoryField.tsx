@@ -56,29 +56,20 @@ interface PropertyBlockI {
 }
 
 const PropertyBlock: FC<PropertyBlockI> = props => {
-	const image = props.property.image
-	let preparedImage = null
-
-	if (image) {
-		try {
-			preparedImage = require(image)
-		} catch (e) {
-			console.error(e)
-		}
-	}
-
 	return (
 		<Link
 			href={`/products/${props.category.slug}?${props.property.slug}`}
 			className={style.propertyBlock}>
-			{preparedImage && (
+			{props.property.image && (
 				<Image
 					className={style.propertyImage}
-					src={preparedImage}
+					src={props.property.image}
 					alt={props.property.title}
+					width={1024}
+					height={1024}
 				/>
 			)}
-			{!preparedImage && (
+			{!props.property.image && (
 				<div className={style.propertyWithoutImage} />
 			)}
 			<span className={style.propertyTitle}>{props.property.title}</span>
