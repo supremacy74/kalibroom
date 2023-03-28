@@ -1,0 +1,37 @@
+.skeleton {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #888;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: -1;
+	&:before {
+		content: '';
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		background: linear-gradient(
+			90deg,
+			#888 20%,
+			#999 30%,
+			#989898 35%,
+			#888 80%
+		);
+		opacity: 0.75;
+		animation: skeleton 3.5s infinite ease-in-out;
+		rotate: 45deg;
+	}
+
+	@keyframes skeleton {
+		0% {
+			transform: translateX(100%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+}
