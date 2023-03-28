@@ -90,7 +90,7 @@ const Images: FC<ImagesI> = props => {
 				<>
 					{props.product.images.map((image, index) => {
 						return (
-							<AnimatePresence>
+							<AnimatePresence key={index}>
 								{props.currentImage === index && (
 									<motion.div
 										data-is-loaded={props.isLoaded}
