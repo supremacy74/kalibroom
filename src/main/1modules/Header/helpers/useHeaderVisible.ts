@@ -24,7 +24,7 @@ export const useHeaderVisible: Function = (
 	}, [headerBottomIsVisible])
 
 	const scrollEventListenerOnHeader = () => {
-		if (scrollY > 50) {
+		if (scrollY > 60) {
 			handleHeaderBottomVisible(false)
 		} else if (innerWidth >= 1300) {
 			handleHeaderBottomVisible(true)

@@ -9,7 +9,7 @@ for (let i = 0; i < 25; i++) {
 			id: `${Math.random()}`,
 			title: 'INDUSTRIAL',
 			slug: 'industrial',
-			categoryId: 'Диван',
+			categoryId: 1,
 			price: '214 300 ₽',
 			images: [
 				{
@@ -41,7 +41,7 @@ for (let i = 0; i < 25; i++) {
 			id: `${Math.random()}`,
 			title: 'OKSITANIA',
 			slug: 'oksitania',
-			categoryId: 'Кровать',
+			categoryId: 2,
 			price: '147 000 ₽',
 			images: [
 				{

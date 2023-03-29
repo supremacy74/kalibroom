@@ -17,7 +17,10 @@ import {
 } from '@/helpers/importIcons'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import { getSpringTransition, inViewAnimation } from '@/helpers/animations'
+import {
+	getSpringTransition,
+	inViewAnimation,
+} from '@/helpers/animations'
 import { productI } from '@/interfaces/product'
 import ImageNotFoundBlock from '@/main/3ui/ImageNotFoundBlock/ImageNotFoundBlock'
 import Skeleton from '@/main/3ui/Skeleton/Skeleton'
@@ -38,7 +41,11 @@ const Product: FC<ProductProps> = props => {
 			{...inViewAnimation}
 			className={style.product}>
 			<motion.div
-				animate={isLoaded ? {height: 'auto'} : {height: '15rem'}}
+				animate={
+					isLoaded
+						? { height: 'auto' }
+						: { height: '15rem' }
+				}
 				data-is-active={isActive}
 				transition={getSpringTransition(20, 50, -1)}
 				className={style.imageWrapper}>
@@ -124,7 +131,9 @@ interface BottomI {
 const Bottom: FC<BottomI> = props => {
 	return (
 		<>
-			<Link href={''} className={style.bottom}>
+			<Link
+				href={`/products/${props.product.categoryId}/${props.product.slug}`}
+				className={style.bottom}>
 				<div className={style.text}>
 					<div className={style.title}>
 						{props.product.title}

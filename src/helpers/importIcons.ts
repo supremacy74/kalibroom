@@ -49,6 +49,18 @@ export const rightArrowDarkIcon = require('/public/icons/rightArrowDark.svg')
 export const icon3d = require('/public/icons/3d.svg')
 export const iconDark3d = require('/public/icons/3dDark.svg')
 
+// increase
+export const increaseIcon = require('/public/icons/increase.svg')
+export const increaseDarkIcon = require('/public/icons/increaseDark.svg')
+
+// cube
+export const cubeIcon = require('/public/icons/cube.svg')
+export const cubeDarkIcon = require('/public/icons/cubeDark.svg')
+
+// instruction
+export const instructionIcon = require('/public/icons/instruction.svg')
+export const instructionDarkIcon = require('/public/icons/instructionDark.svg')
+
 // messenger icons
 export const vkIcon = require('/public/icons/vk.svg')
 export const vkDarkIcon = require('/public/icons/vkDark.svg')
