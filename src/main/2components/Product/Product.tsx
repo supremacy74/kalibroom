@@ -40,7 +40,7 @@ const Product: FC<ProductProps> = props => {
 			<motion.div
 				animate={isLoaded ? {height: 'auto'} : {height: '15rem'}}
 				data-is-active={isActive}
-				transition={getSpringTransition(20, 50)}
+				transition={getSpringTransition(20, 50, -1)}
 				className={style.imageWrapper}>
 				<Skeleton />
 				<ImageLayout

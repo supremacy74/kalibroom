@@ -30,7 +30,7 @@
 	width: 20%;
 	z-index: -2;
 	opacity: 0;
-	transition: 0.35s opacity cubic-bezier(0.35, 0.35, 0, 1);
+	transition: 0.65s opacity cubic-bezier(0.35, 0.35, 0, 1);
 	&:hover {
 		opacity: 1;
 	}
@@ -41,12 +41,12 @@
 
 .layoutLeftButton {
 	left: 0;
-	background: linear-gradient(90deg, #8888, #8880);
+	background: linear-gradient(90deg, #0008, #8880);
 }
 
 .rightLeftButton {
 	right: 0;
-	background: linear-gradient(-90deg, #8888, #8880);
+	background: linear-gradient(-90deg, #0008, #8880);
 }
 
 .imageLayout {
@@ -62,7 +62,7 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
-	transition: 0.4s cubic-bezier(0.35, 0.35, 0, 1);
+	transition: 0.5s cubic-bezier(0.35, 0.35, 0, 1);
 	opacity: 0;
 	&[data-is-loaded='true'] {
 		opacity: 1;

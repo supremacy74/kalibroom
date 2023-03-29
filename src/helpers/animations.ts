@@ -14,12 +14,13 @@ export const getCommonAnimation = (
 
 export const getSpringTransition = (
 	damping: number = 7,
-	stiffness: number = 40
+	stiffness: number = 40,
+	restDelta: number = 0.1,
 ): Transition => {
 	return {
 		damping,
 		stiffness,
-		restDelta: 0.1,
+		restDelta,
 		type: 'spring',
 	}
 }
