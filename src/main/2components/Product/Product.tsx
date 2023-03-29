@@ -17,7 +17,7 @@ import {
 } from '@/helpers/importIcons'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import { inViewAnimation } from '@/helpers/animations'
+import { getSpringTransition, inViewAnimation } from '@/helpers/animations'
 import { productI } from '@/interfaces/product'
 import ImageNotFoundBlock from '@/main/3ui/ImageNotFoundBlock/ImageNotFoundBlock'
 import Skeleton from '@/main/3ui/Skeleton/Skeleton'
@@ -38,12 +38,9 @@ const Product: FC<ProductProps> = props => {
 			{...inViewAnimation}
 			className={style.product}>
 			<motion.div
-				animate={
-					isActive
-						? { outline: '#c0ff0d solid 2px' }
-						: { outline: '#c0ff0d00 solid 2px' }
-				}
-				data-is-loaded={isLoaded}
+				animate={isLoaded ? {height: 'auto'} : {height: '15rem'}}
+				data-is-active={isActive}
+				transition={getSpringTransition(20, 50)}
 				className={style.imageWrapper}>
 				<Skeleton />
 				<ImageLayout
@@ -162,6 +159,27 @@ interface ImageLayoutI {
 }
 
 const ImageLayout: FC<ImageLayoutI> = props => {
+	const handleImageLeft = () => {
+		if (props.currentImage > 0) {
+			props.setCurrentImage(prev => prev - 1)
+		} else {
+			props.setCurrentImage(props.product.images.length - 1)
+		}
+		props.handleIsLoaded(false)
+	}
+
+	const handleImageRight = () => {
+		if (
+			props.currentImage <
+			props.product.images.length - 1
+		) {
+			props.setCurrentImage(prev => prev + 1)
+		} else {
+			props.setCurrentImage(0)
+		}
+		props.handleIsLoaded(false)
+	}
+
 	return (
 		<div className={style.imageLayout}>
 			<CircleButton
@@ -171,6 +189,14 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 				activeIcon={cartActiveIcon}
 				isActive={props.isActive}
 				handleActive={props.handleActive}
+			/>
+			<button
+				onClick={() => handleImageLeft()}
+				className={style.layoutLeftButton}
+			/>
+			<button
+				onClick={() => handleImageRight()}
+				className={style.rightLeftButton}
 			/>
 			<button className={style.heartButton}>
 				<Image src={heartDarkIcon} alt={'heartDarkIcon'} />
