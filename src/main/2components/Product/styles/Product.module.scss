@@ -8,8 +8,9 @@
 .imageWrapper {
 	width: 100%;
 	height: auto;
-	overflow: hidden;
+	overflow: clip;
 	border-radius: 1.25rem;
+	-webkit-border-radius: 1.25rem;
 	position: relative;
 	min-height: 14rem;
 	max-height: max(70vh, 30rem);
@@ -20,6 +21,12 @@
 	&[data-is-active='true'] {
 		outline: #c0ff0d solid 2px;
 	}
+}
+
+.skeleton {
+	overflow: hidden;
+	border-radius: 1.25rem;
+	-webkit-border-radius: 1.25rem;
 }
 
 .rightLeftButton,
@@ -102,6 +109,9 @@
 	min-height: 100%;
 	max-height: 80vh;
 	object-fit: cover;
+	border-radius: 1.25rem;
+	-webkit-border-radius: 1.25rem;
+	overflow: hidden;
 }
 
 .bottom {

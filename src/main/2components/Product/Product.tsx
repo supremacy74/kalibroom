@@ -44,12 +44,15 @@ const Product: FC<ProductProps> = props => {
 				animate={
 					isLoaded
 						? { height: 'auto' }
-						: { height: '15rem' }
+						: { height: '10rem' }
 				}
 				data-is-active={isActive}
-				transition={getSpringTransition(20, 50, -1)}
+				transition={{
+					...getSpringTransition(20, 50, -1),
+					delay: .2
+				}}
 				className={style.imageWrapper}>
-				<Skeleton />
+				<Skeleton className={style.skeleton}/>
 				<ImageLayout
 					isActive={isActive}
 					handleActive={handleActive}

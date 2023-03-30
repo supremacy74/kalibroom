@@ -43,7 +43,8 @@ const Header: FC = () => {
 
 const Content: FC = () => {
 	return (
-		<div className={style.content}>
+		<div
+			className={style.content}>
 			<MainContent />
 		</div>
 	)

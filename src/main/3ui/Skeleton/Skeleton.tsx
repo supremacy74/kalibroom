@@ -1,8 +1,12 @@
 import { FC, memo } from 'react'
 import style from './styles/Skeleton.module.scss'
 
-const Skeleton: FC = () => {
-	return <div className={style.skeleton} />
+interface SkeletonI {
+	className?: string
+}
+
+const Skeleton: FC<SkeletonI> = props => {
+	return <div className={`${style.skeleton} ${props.className}`} />
 }
 
 Skeleton.displayName = 'Skeleton'
