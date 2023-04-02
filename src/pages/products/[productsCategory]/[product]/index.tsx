@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { FC, memo } from 'react'
+import {FC, memo, useState} from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Main from '@/main/3ui/Main/Main'
@@ -12,6 +12,8 @@ import {
 	increaseDarkIcon,
 	increaseIcon,
 } from '@/helpers/importIcons'
+import { motion } from 'framer-motion'
+import {getSpringTransition} from "@/helpers/animations";
 
 interface ProductProps {}
 
@@ -43,8 +45,7 @@ const Header: FC = () => {
 
 const Content: FC = () => {
 	return (
-		<div
-			className={style.content}>
+		<div className={style.content}>
 			<MainContent />
 		</div>
 	)
@@ -54,13 +55,40 @@ const MainContent: FC = () => {
 	const theme = useAppSelector(
 		state => state.theme.isDarkTheme
 	)
+	const [currentImage, setCurrentImage] = useState<number>(0)
+
+	const arrayOfButtons = [
+		1, 2, 3, 4
+	]
+
+	const router = useRouter()
 
 	return (
 		<div className={style.mainContent}>
 			<div className={style.contentWithImage}>
-				<div className={style.imagesSelector}></div>
+				<div className={style.imagesSelector}>
+					{arrayOfButtons.map((image, index) => {
+						return (
+							<button
+								onClick={() => setCurrentImage(index)}
+								className={style.imageSelectorButton}>
+
+								{currentImage === index && (
+									<motion.div
+										layoutId={'currentImage'}
+										transition={{
+											...getSpringTransition(20, 70)
+										}}
+										className={style.imageSelectorBorder} />
+								)}
+							</button>
+						)
+					})}
+				</div>
 				<div className={style.imageBlock}>
-					<div className={style.currentImage}></div>
+					<div className={style.currentImage}>
+
+					</div>
 					<div className={style.imageBlockButtons}>
 						<button className={style.imageBlockButton}>
 							<span className={style.imageBlockText}>
@@ -120,6 +148,44 @@ const MainContent: FC = () => {
 									alt={'cubeDarkIcon'}
 								/>
 							)}
+						</button>
+					</div>
+				</div>
+			</div>
+			<div className={style.contentWithText}>
+				<div className={style.top}>
+					<h3 className={style.title}>
+						{router.query.product}
+					</h3>
+					<p className={style.category}>
+						category
+					</p>
+				</div>
+				<div className={style.pricePart}>
+					<div className={style.pricePartTop}>
+						<div className={style.price}>
+							<span className={style.currentPrice}>
+								19 790 ₽
+							</span>
+							<span className={style.priceWithoutDiscount}>
+								24 990 ₽
+							</span>
+						</div>
+						<div className={style.installmentPlan}>
+							<span className={style.installmentPlanText}>
+								2 175P/месяц Рассрочка
+							</span>
+							<button className={style.installmentPlanQuestion}>
+
+							</button>
+						</div>
+					</div>
+					<div className={style.pricePartButtons}>
+						<button className={style.buyButton}>
+							В корзину
+						</button>
+						<button className={style.buyOneClickButton}>
+							Купить в 1 клик
 						</button>
 					</div>
 				</div>

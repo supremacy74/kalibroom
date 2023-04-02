@@ -1,52 +1,119 @@
 .main {
-  margin-top: 7.6rem;
-  padding: 0;
-  gap: 2.5rem;
+	margin-top: 7.6rem;
+	padding: 0;
+	gap: 2.5rem;
 }
 
 .header {
-  width: 100%;
-  display: flex;
-  height: 3.75rem;
-  outline: var(--colorStroke) solid 1px;
+	width: 100%;
+	display: flex;
+	height: 3.75rem;
+	outline: var(--colorStroke) solid 1px;
 }
 
 .headerPart {
-  background: var(--colorSmokyWhite);
-  width: 50%;
-  height: 100%;
-  outline: var(--colorStroke) solid 1px;
+	background: var(--colorSmokyWhite);
+	width: 50%;
+	height: 100%;
+	outline: var(--colorStroke) solid 1px;
 }
 
 .content {
-  width: 100%;
-  min-height: 50rem;
-  //background: #0001;
-  display: flex;
-  flex-direction: column;
-  gap: 7.5rem;
+	width: 100%;
+	min-height: 50rem;
+	//background: #0001;
+	display: flex;
+	flex-direction: column;
+	gap: 7.5rem;
+	padding: 0 2.5rem;
 }
 
 .mainContent {
-  display: flex;
+	display: flex;
+	gap: 3rem;
+}
+
+.contentWithImage {
+	display: flex;
+	gap: 2.1875rem;
+}
+
+.imagesSelector {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.imageSelectorButton {
+	width: 3.625rem;
+	height: 4.5rem;
+	border-radius: .3125rem;
+	background: var(--colorStroke);
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.imageSelectorBorder {
+	position: absolute;
+	border: var(--colorFont) solid 1px;
+	width: calc(100% + 6px);
+	height: calc(100% + 8px);
+	border-radius: inherit;
+	z-index: 5;
+}
+
+.imageBlock {
+	max-width: 36.25rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.currentImage {
+	width: 100%;
+	min-height: 20rem;
+	background: var(--colorStroke);
+	border-radius: 1.875rem;
 }
 
 .imageBlockButtons {
-  width: 100%;
-  height: 3.5rem;
-  display: flex;
-  background: var(--colorStroke);
-  gap: 1px;
-  padding: 1px 0;
+	width: 100%;
+	height: 3.5rem;
+	display: flex;
+	background: var(--colorStroke);
+	gap: 1px;
+	padding: 1px 0;
 }
 
 .imageBlockButton {
   width: 100%;
-  height: 100%;
-  padding: 0 1.125rem;
-  white-space: pre;
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-  background: var(--colorBackground);
+	height: 100%;
+	padding: 0 1.125rem;
+	white-space: pre;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	background: var(--colorBackground);
+	transition: 0.3s cubic-bezier(0.35, 0.35, 0.5, 1);
+	font-size: 0.8125rem;
+	&:hover {
+		background: var(--colorSmokyWhite);
+	}
+}
+
+
+.contentWithText {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+}
+
+.title {
+	font-size: 2.5rem;
+	text-transform: uppercase;
+	font-weight: 400;
 }
