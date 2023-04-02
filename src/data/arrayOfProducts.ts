@@ -3,7 +3,7 @@ import { getRandom } from '@/helpers/commonFunctions'
 
 const arrayOfProducts1: productI[] = []
 
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 10; i++) {
 	if (i % 2) {
 		arrayOfProducts1.push({
 			id: `${Math.random()}`,
