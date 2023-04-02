@@ -146,6 +146,7 @@ const Sizes: FC<PropertyI> = props => {
 			{props.product.size.map((value, index) => {
 				return (
 					<button
+						key={index}
 						data-is-current-size={currentSize === index}
 						className={style.handlerSize}
 						onClick={() => {
@@ -169,6 +170,7 @@ const ColorAndMaterialBody: FC<PropertyI> = props => {
 			{props.product.colors.map((value, index) => {
 				return (
 					<button
+						key={index}
 						className={style.handlerColor}
 						onClick={() => {
 							setCurrentColor(index)
