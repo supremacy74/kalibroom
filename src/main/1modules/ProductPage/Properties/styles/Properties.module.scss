@@ -1,0 +1,134 @@
+.properties {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  gap: 1px;
+  padding: 1px 0;
+  background: var(--colorStroke);
+  & > * {
+    background: var(--colorBackground);
+    //outline: var(--colorStroke) solid 1px;
+  }
+}
+
+.propertyName {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.propertyLink {
+  font-size: 0.8125rem;
+  border-bottom: var(--colorFont) solid 1px;
+}
+
+.colorAndMaterial,
+.sizes {
+  height: 3.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.propertyName {
+  min-width: 10rem;
+  padding-right: .5rem;
+}
+
+.propertyLink {
+  margin-left: auto;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.handlerColor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--colorDescription);
+  border-radius: 50%;
+}
+
+.handlerBorderColor {
+  position: absolute;
+  border-radius: 50%;
+  border: var(--colorFont) solid 1px;
+  width: calc(100% + .5rem);
+  height: calc(100% + .5rem);
+
+}
+
+.handlerImage {
+  border-radius: 50%;
+}
+
+.handlerSize {
+  padding: .5rem .9rem;
+  border-radius: 10rem;
+  border: var(--colorStroke) solid 1px;
+  transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  &[data-is-current-size='true'] {
+    border: transparent solid 1px;
+  }
+}
+
+.handlerSizeText {
+  font-size: 0.8125rem;
+}
+
+.delivery {
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.deliveryCount {
+  color: var(--colorAccent);
+  font-size: 1rem;
+}
+
+.deliveryLink {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1rem;
+  transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  &:hover {
+    gap: 1rem;
+  }
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordionTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.5rem;
+}
+
+.accordionImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  &[data-is-expand='true'] {
+    rotate: 180deg;
+  }
+}
+
+.accordionBottom {
+  overflow: hidden;
+}
