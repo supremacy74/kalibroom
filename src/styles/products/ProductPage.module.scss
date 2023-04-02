@@ -19,16 +19,12 @@
 }
 
 .content {
-	width: 100%;
-	min-height: 50rem;
-	//background: #0001;
-	display: flex;
-	flex-direction: column;
+	//align-items: flex-end;
 	gap: 7.5rem;
-	padding: 0 2.5rem;
 }
 
 .mainContent {
+	width: 100%;
 	display: flex;
 	gap: 3rem;
 }
@@ -110,10 +106,105 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2.5rem;
+	width: 100%;
+}
+
+.top {
+	display: flex;
+	flex-direction: column;
+	gap: .25rem;
 }
 
 .title {
 	font-size: 2.5rem;
 	text-transform: uppercase;
 	font-weight: 400;
+}
+
+.category {
+	font-size: .875rem;
+}
+
+.pricePart {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.pricePartTop {
+	display: flex;
+	justify-content: space-between;
+}
+
+.price {
+	display: flex;
+	align-items: flex-end;
+	gap: .5rem;
+}
+
+.currentPrice {
+	font-size: 1.5rem;
+}
+
+.priceWithoutDiscount {
+	font-size: .875rem;
+	text-decoration: line-through;
+	color: var(--colorMotherOfPearlLightGray);
+	margin-bottom: .1875rem;
+}
+
+.installmentPlan {
+	display: flex;
+	align-items: center;
+	gap: .25rem;
+}
+
+.installmentPlanText {
+	font-size: .75rem;
+	color: var(--colorDescription);
+}
+
+.questionButton {
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.questionIcon {
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.pricePartButtons {
+	display: flex;
+	gap: 1rem;
+	font-size: 1rem;
+
+}
+
+.buyButton,
+.buyOneClickButton {
+	font-size: inherit;
+	border-radius: 10rem;
+	transition: .3s cubic-bezier(0.35, 0.35, 0.5, 1);
+	padding: 1.125rem;
+	white-space: pre;
+	&:hover {
+		transform: translateY(-.5rem);
+	}
+	&:active {
+		transition-duration: .1s;
+		transform: translateY(0rem);
+	}
+}
+
+.buyButton {
+	background: var(--colorFont);
+	color: var(--colorBackground);
+	border: transparent solid 1px;
+	width: 80%;
+}
+
+.buyOneClickButton {
+	border: var(--colorFont) solid 1px;
+	width: 40%;
 }

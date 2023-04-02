@@ -31,7 +31,7 @@ export const inViewAnimationV: Variants = {
 		opacity: 1,
 	},
 	off: {
-		y: `5rem`,
+		y: `2.5rem`,
 		opacity: 0,
 	},
 }

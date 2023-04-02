@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import style from '@/styles/Home.module.scss'
 import { NextPage } from 'next'
-import { memo } from 'react'
 import ContainerForCells from '@/main/1modules/ContainerForCells/ContainerForCells'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 import LoadMoreButton from '@/main/3ui/LoadMoreButton/LoadMoreButton'
@@ -41,4 +40,4 @@ const Home: NextPage = () => {
 }
 
 Home.displayName = 'Home'
-export default memo(Home)
+export default Home

@@ -4,11 +4,10 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Main from '@/main/3ui/Main/Main'
 import style from '@/styles/products/ProductCategory.module.scss'
-import WrapperInner from '@/main/3ui/WrapperInner/WrapperInner'
 import Link from 'next/link'
 import { arrayOfCategories } from '@/data/arrayOfCategories'
 
-const ProductsCategory: NextPage = props => {
+const ProductsCategory: NextPage = () => {
 	const router = useRouter()
 
 	const currentPageRoute = arrayOfCategories.find(
@@ -50,4 +49,4 @@ const ProductsCategory: NextPage = props => {
 }
 
 ProductsCategory.displayName = 'ProductsCategory'
-export default memo(ProductsCategory)
+export default ProductsCategory

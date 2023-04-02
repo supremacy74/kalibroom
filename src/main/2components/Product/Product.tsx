@@ -49,10 +49,10 @@ const Product: FC<ProductProps> = props => {
 				data-is-active={isActive}
 				transition={{
 					...getSpringTransition(20, 50, -1),
-					delay: .2
+					delay: 0.2,
 				}}
 				className={style.imageWrapper}>
-				<Skeleton className={style.skeleton}/>
+				<Skeleton className={style.skeleton} />
 				<ImageLayout
 					isActive={isActive}
 					handleActive={handleActive}
@@ -88,7 +88,7 @@ const Images: FC<ImagesI> = props => {
 	const [height, setHeight] = useState(0)
 
 	useEffect(() => {
-		setHeight(Math.ceil(Math.random() * 20) + 10)
+		setHeight(Math.ceil(Math.random() * 20) + 15)
 	}, [])
 
 	return (
@@ -119,7 +119,10 @@ const Images: FC<ImagesI> = props => {
 					})}
 				</>
 			) : (
-				<ImageNotFoundBlock height={`${height}rem`} />
+				<ImageNotFoundBlock
+					height={`${height}rem`}
+					onLoad={props.handleIsLoaded}
+				/>
 			)}
 		</>
 	)
@@ -202,14 +205,18 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 				isActive={props.isActive}
 				handleActive={props.handleActive}
 			/>
-			<button
-				onClick={() => handleImageLeft()}
-				className={style.layoutLeftButton}
-			/>
-			<button
-				onClick={() => handleImageRight()}
-				className={style.rightLeftButton}
-			/>
+			{props.product.images.length ? (
+				<>
+					<button
+						onClick={() => handleImageLeft()}
+						className={style.layoutLeftButton}
+					/>
+					<button
+						onClick={() => handleImageRight()}
+						className={style.rightLeftButton}
+					/>
+				</>
+			) : null}
 			<button className={style.heartButton}>
 				<Image src={heartDarkIcon} alt={'heartDarkIcon'} />
 			</button>

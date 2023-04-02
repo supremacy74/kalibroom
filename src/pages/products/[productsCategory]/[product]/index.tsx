@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import {FC, memo, useState} from 'react'
+import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Main from '@/main/3ui/Main/Main'
@@ -11,13 +11,17 @@ import {
 	cubeIcon,
 	increaseDarkIcon,
 	increaseIcon,
+	instructionDarkIcon,
+	instructionIcon,
+	questionIcon,
 } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'
-import {getSpringTransition} from "@/helpers/animations";
+import { getSpringTransition } from '@/helpers/animations'
+import WrapperInner from '@/main/3ui/WrapperInner/WrapperInner'
 
 interface ProductProps {}
 
-const Product: NextPage<ProductProps> = props => {
+const Product: NextPage<ProductProps> = () => {
 	const router = useRouter()
 	return (
 		<>
@@ -45,9 +49,9 @@ const Header: FC = () => {
 
 const Content: FC = () => {
 	return (
-		<div className={style.content}>
+		<WrapperInner className={style.content}>
 			<MainContent />
-		</div>
+		</WrapperInner>
 	)
 }
 
@@ -55,11 +59,10 @@ const MainContent: FC = () => {
 	const theme = useAppSelector(
 		state => state.theme.isDarkTheme
 	)
-	const [currentImage, setCurrentImage] = useState<number>(0)
+	const [currentImage, setCurrentImage] =
+		useState<number>(0)
 
-	const arrayOfButtons = [
-		1, 2, 3, 4
-	]
+	const arrayOfButtons = [1, 2, 3, 4]
 
 	const router = useRouter()
 
@@ -72,23 +75,21 @@ const MainContent: FC = () => {
 							<button
 								onClick={() => setCurrentImage(index)}
 								className={style.imageSelectorButton}>
-
 								{currentImage === index && (
 									<motion.div
 										layoutId={'currentImage'}
 										transition={{
-											...getSpringTransition(20, 70)
+											...getSpringTransition(20, 70),
 										}}
-										className={style.imageSelectorBorder} />
+										className={style.imageSelectorBorder}
+									/>
 								)}
 							</button>
 						)
 					})}
 				</div>
 				<div className={style.imageBlock}>
-					<div className={style.currentImage}>
-
-					</div>
+					<div className={style.currentImage}></div>
 					<div className={style.imageBlockButtons}>
 						<button className={style.imageBlockButton}>
 							<span className={style.imageBlockText}>
@@ -109,30 +110,9 @@ const MainContent: FC = () => {
 								/>
 							)}
 						</button>
-						<button
-							className={style.imageBlockButton}>
+						<button className={style.imageBlockButton}>
 							<span className={style.imageBlockText}>
 								Посмотреть в 3D
-							</span>
-              {!theme && (
-                <Image
-                  className={style.imageBlockIcon}
-                  src={cubeIcon}
-                  alt={'cubeIcon'}
-                />
-              )}
-              {theme && (
-                <Image
-                  className={style.imageBlockIcon}
-                  src={cubeDarkIcon}
-                  alt={'cubeDarkIcon'}
-                />
-              )}
-            </button>
-						<button
-							className={style.imageBlockButton}>
-							<span className={style.imageBlockText}>
-								Инструкция по сборке
 							</span>
 							{!theme && (
 								<Image
@@ -149,6 +129,25 @@ const MainContent: FC = () => {
 								/>
 							)}
 						</button>
+						<button className={style.imageBlockButton}>
+							<span className={style.imageBlockText}>
+								Инструкция по сборке
+							</span>
+							{!theme && (
+								<Image
+									className={style.imageBlockIcon}
+									src={instructionIcon}
+									alt={'instructionIcon'}
+								/>
+							)}
+							{theme && (
+								<Image
+									className={style.imageBlockIcon}
+									src={instructionDarkIcon}
+									alt={'instructionDarkIcon'}
+								/>
+							)}
+						</button>
 					</div>
 				</div>
 			</div>
@@ -157,9 +156,7 @@ const MainContent: FC = () => {
 					<h3 className={style.title}>
 						{router.query.product}
 					</h3>
-					<p className={style.category}>
-						category
-					</p>
+					<p className={style.category}>category</p>
 				</div>
 				<div className={style.pricePart}>
 					<div className={style.pricePartTop}>
@@ -175,8 +172,12 @@ const MainContent: FC = () => {
 							<span className={style.installmentPlanText}>
 								2 175P/месяц Рассрочка
 							</span>
-							<button className={style.installmentPlanQuestion}>
-
+							<button className={style.questionButton}>
+								<Image
+									className={style.questionIcon}
+									src={questionIcon}
+									alt={'questionIcon'}
+								/>
 							</button>
 						</div>
 					</div>
@@ -195,4 +196,4 @@ const MainContent: FC = () => {
 }
 
 Product.displayName = 'Product'
-export default memo(Product)
+export default Product

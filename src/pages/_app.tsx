@@ -6,8 +6,6 @@ import Header from '@/main/1modules/Header/Header'
 import Footer from '@/main/1modules/Footer/Footer'
 import store from '@/store'
 import { Provider } from 'react-redux'
-import {useAppDispatch} from "@/store/hooks";
-import {useEffect} from "react";
 import WrapperInner from "@/main/3ui/WrapperInner/WrapperInner";
 import Hero from "@/main/1modules/Hero/Hero";
 import {useRouter} from "next/router";

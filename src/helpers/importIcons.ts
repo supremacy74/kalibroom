@@ -61,6 +61,9 @@ export const cubeDarkIcon = require('/public/icons/cubeDark.svg')
 export const instructionIcon = require('/public/icons/instruction.svg')
 export const instructionDarkIcon = require('/public/icons/instructionDark.svg')
 
+// question
+export const questionIcon = require('/public/icons/question.svg')
+
 // messenger icons
 export const vkIcon = require('/public/icons/vk.svg')
 export const vkDarkIcon = require('/public/icons/vkDark.svg')

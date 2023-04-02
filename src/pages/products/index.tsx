@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import { memo } from 'react'
 import Head from 'next/head'
 import style from '@/styles/products/Products.module.scss'
 import Main from '@/main/3ui/Main/Main'
@@ -31,4 +30,4 @@ const Products: NextPage<ProductsProps> = props => {
 }
 
 Products.displayName = 'Products'
-export default memo(Products)
+export default Products
