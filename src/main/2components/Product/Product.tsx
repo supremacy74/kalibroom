@@ -210,14 +210,18 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 					<button
 						onClick={() => handleImageLeft()}
 						className={style.layoutLeftButton}
+						name={'leftButton'}
 					/>
 					<button
 						onClick={() => handleImageRight()}
 						className={style.rightLeftButton}
+						name={'rightButton'}
 					/>
 				</>
 			) : null}
-			<button className={style.heartButton}>
+			<button
+				className={style.heartButton}
+				name={'heartButton'}>
 				<Image src={heartDarkIcon} alt={'heartDarkIcon'} />
 			</button>
 			<div className={style.pagination}>
