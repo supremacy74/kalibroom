@@ -18,6 +18,7 @@ import {
 import { motion } from 'framer-motion'
 import { getSpringTransition } from '@/helpers/animations'
 import WrapperInner from '@/main/3ui/WrapperInner/WrapperInner'
+import { productI } from '@/interfaces/product'
 
 interface ProductProps {}
 
@@ -192,6 +193,18 @@ const MainContent: FC = () => {
 					</div>
 				</div>
 			</div>
+		</div>
+	)
+}
+
+interface colorAndMaterialI {
+	product: productI
+}
+
+const ColorAndMaterial: FC<colorAndMaterialI> = props => {
+	return (
+		<div className={style.colorAndMaterial}>
+			
 		</div>
 	)
 }

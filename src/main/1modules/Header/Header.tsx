@@ -22,6 +22,7 @@ const Header: FC = () => {
 					<TopHeaderPart />
 					<BottomHeaderPart />
 
+
 					<CatalogMenu categories={catalogMenuData} />
 				</header>
 			</div>
