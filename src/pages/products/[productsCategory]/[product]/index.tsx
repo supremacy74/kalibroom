@@ -73,6 +73,7 @@ const MainContent: FC = () => {
 					{arrayOfButtons.map((image, index) => {
 						return (
 							<button
+								key={index}
 								onClick={() => setCurrentImage(index)}
 								className={style.imageSelectorButton}>
 								{currentImage === index && (
