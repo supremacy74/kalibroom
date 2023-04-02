@@ -106,6 +106,7 @@ const Images: FC<ImagesI> = props => {
 											onLoad={() =>
 												props.handleIsLoaded(true)
 											}
+											quality={90}
 											className={style.image}
 											src={image.imageURL}
 											alt={'productImage'}

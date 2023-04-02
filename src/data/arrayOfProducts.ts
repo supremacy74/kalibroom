@@ -3,7 +3,7 @@ import { getRandom } from '@/helpers/commonFunctions'
 
 const arrayOfProducts1: productI[] = []
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 12; i++) {
 	if (i % 2) {
 		arrayOfProducts1.push({
 			id: `${Math.random()}`,
@@ -15,22 +15,22 @@ for (let i = 0; i < 10; i++) {
 				{
 				imageURL: `https://random.imagecdn.app/${getRandom(
 					900,
-					2400
-				)}/${getRandom(1000, 2600)}`,
+					1400
+				)}/${getRandom(1000, 1600)}`,
 					color: 'gray',
 				},
 				{
 				imageURL: `https://random.imagecdn.app/${getRandom(
 					900,
-					2400
-				)}/${getRandom(1000, 2600)}`,
+					1400
+				)}/${getRandom(1000, 1600)}`,
 					color: 'gray',
 				},
 				{
 				imageURL: `https://random.imagecdn.app/${getRandom(
 					900,
-					2400
-				)}/${getRandom(1000, 2600)}`,
+					1400
+				)}/${getRandom(1000, 1600)}`,
 					color: 'gray',
 				},
 			],
@@ -47,22 +47,22 @@ for (let i = 0; i < 10; i++) {
 				{
 				imageURL: `https://random.imagecdn.app/${getRandom(
 					900,
-					2400
-				)}/${getRandom(1000, 2600)}`,
+					1400
+				)}/${getRandom(1000, 1600)}`,
 					color: 'gray',
 				},
 				{
 				imageURL: `https://random.imagecdn.app/${getRandom(
 					900,
-					2400
-				)}/${getRandom(1000, 2600)}`,
+					1400
+				)}/${getRandom(1000, 1600)}`,
 					color: 'gray',
 				},
 				{
 				imageURL: `https://random.imagecdn.app/${getRandom(
 					900,
-					2400
-				)}/${getRandom(1000, 2600)}`,
+					1400
+				)}/${getRandom(1000, 1600)}`,
 					color: 'gray',
 				},
 			],
