@@ -8,7 +8,7 @@ import Content from "@/main/1modules/ProductPage/Content/Content";
 
 interface ProductProps {}
 
-const Product: NextPage<ProductProps> = () => {
+const ProductPage: NextPage<ProductProps> = () => {
 	const router = useRouter()
 	return (
 		<>
@@ -34,5 +34,5 @@ const Header: FC = () => {
 	)
 }
 
-Product.displayName = 'Product'
-export default Product
+ProductPage.displayName = 'Product'
+export default ProductPage

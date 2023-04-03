@@ -7,6 +7,7 @@ export const setLightTheme = () => {
 	changeColor('--colorBackground', '#fff')
 	changeColor('--colorStroke', '#ebebeb')
 
+	changeColor('--colorFlatFont', '#424242')
 	changeColor('--colorGray', '#3e3d3d')
 	changeColor('--colorSmokyWhite', '#f4f4f4')
 	changeColor('--colorSignalBlack', '#252525')
@@ -18,6 +19,7 @@ export const setDarkTheme = () => {
 	changeColor('--colorBackground', '#252525')
 	changeColor('--colorStroke', '#3a3a3a')
 
+	changeColor('--colorFlatFont', '#E3E3E3')
 	changeColor('--colorGray', '#989898')
 	changeColor('--colorSmokyWhite', '#1f1f1f')
 	changeColor('--colorSignalBlack', '#fff')

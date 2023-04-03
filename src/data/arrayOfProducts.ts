@@ -17,23 +17,23 @@ for (let i = 0; i < 12; i++) {
 		images: [
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
-					900,
+					700,
 					1400
-				)}/${getRandom(1000, 1600)}`,
+				)}/${getRandom(1000, 2000)}`,
 				color: 'gray',
 			},
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
-					900,
+					700,
 					1400
-				)}/${getRandom(1000, 1600)}`,
+				)}/${getRandom(1000, 2000)}`,
 				color: 'gray',
 			},
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
-					900,
+					700,
 					1400
-				)}/${getRandom(1000, 1600)}`,
+				)}/${getRandom(1000, 2000)}`,
 				color: 'gray',
 			},
 		],
@@ -48,23 +48,23 @@ for (let i = 0; i < 12; i++) {
 		images: [
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
-					900,
+					700,
 					1400
-				)}/${getRandom(1000, 1600)}`,
+				)}/${getRandom(1000, 2000)}`,
 				color: 'gray',
 			},
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
-					900,
+					700,
 					1400
-				)}/${getRandom(1000, 1600)}`,
+				)}/${getRandom(1000, 2000)}`,
 				color: 'gray',
 			},
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
-					900,
+					700,
 					1400
-				)}/${getRandom(1000, 1600)}`,
+				)}/${getRandom(1000, 2000)}`,
 				color: 'gray',
 			},
 		],

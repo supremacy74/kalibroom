@@ -119,7 +119,7 @@ const Delivery: FC<PropertyI> = props => {
 			<span className={style.deliveryCount}>
 				В наличии 1 товар
 			</span>
-			<Link className={style.deliveryLink} href={''}>
+			<Link className={style.deliveryLink} href={'#'}>
 				<span>Рассчитать стоимость доставки</span>
 				{!theme && (
 					<Image

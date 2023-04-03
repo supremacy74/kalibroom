@@ -52,6 +52,7 @@ const Product: FC<ProductProps> = props => {
 					delay: 0.2,
 				}}
 				className={style.imageWrapper}>
+				{/*{!isLoaded && <Skeleton className={style.skeleton} />}*/}
 				<Skeleton className={style.skeleton} />
 				<ImageLayout
 					isActive={isActive}

@@ -1,0 +1,16 @@
+.relatedProducts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.main {
+  display: flex;
+  gap: 1rem;
+}
