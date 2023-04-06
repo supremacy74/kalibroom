@@ -5,6 +5,7 @@ export interface imageI {
 
 export interface propertyI {
 	title: string
+	slug: string
 	image?: string
 }
 
