@@ -12,8 +12,8 @@ import CircleButton from '@/main/3ui/CircleButton/CircleButton'
 import {
 	cartActiveIcon,
 	cartHoverIcon,
-	cartIcon,
-	heartDarkIcon,
+	cartIcon, downloadIcon,
+	heartDarkIcon, scoreIcon,
 } from '@/helpers/importIcons'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
@@ -107,7 +107,7 @@ const Images: FC<ImagesI> = props => {
 											onLoad={() =>
 												props.handleIsLoaded(true)
 											}
-											quality={90}
+											quality={80}
 											className={style.image}
 											src={image.imageURL}
 											alt={'productImage'}
@@ -222,6 +222,18 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 			<button className={style.heartButton}>
 				<Image src={heartDarkIcon} alt={'heartDarkIcon'} />
 			</button>
+			<Link className={style.model} href={'#'}>
+				<span className={style.modelText}>
+					3D
+				</span>
+				<Image src={downloadIcon} alt={'downloadIcon'} />
+			</Link>
+			<div className={style.scores}>
+				<Image src={scoreIcon} alt={'scoreIcon'} />
+				<span className={style.scoreText}>
+					+12
+				</span>
+			</div>
 			<div className={style.pagination}>
 				{props.product.images.map((value, index) => {
 					return (

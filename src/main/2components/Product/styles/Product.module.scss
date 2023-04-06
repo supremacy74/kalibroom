@@ -176,3 +176,36 @@
 		transform: scale(1.1);
 	}
 }
+
+.model {
+	position: absolute;
+	right: 1rem;
+	bottom: 1.5rem;
+	border-radius: 10rem;
+	background: var(--colorWhite);
+	display: flex;
+	gap: 0.125rem;
+	align-items: center;
+	padding: 0.125rem 0.25rem 0.125rem .5rem;
+}
+
+.modelText {
+	font-size: 1rem;
+	font-weight: 400;
+	color: #1c1c1c;
+}
+
+.scores {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	position: absolute;
+	top: 1.25rem;
+	left: 1rem;
+}
+
+.scoreText {
+	font-size: 0.75rem;
+	font-weight: 400;
+	color: var(--colorWhite);
+}
