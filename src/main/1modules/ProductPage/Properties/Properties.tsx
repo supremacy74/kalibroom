@@ -1,10 +1,17 @@
 import { FC, memo, ReactNode, useState } from 'react'
 import style from './styles/Properties.module.scss'
-import { extendedProductI } from '@/interfaces/product'
-import { arrayOfProductsExtended } from '@/data/arrayOfProducts'
+import { productI } from '@/interfaces/product'
+import { arrayOfProducts } from '@/data/arrayOfProducts'
 import Image from 'next/image'
-import {AnimatePresence, motion, Variants} from 'framer-motion'
-import {getCommonAnimation, getSpringTransition} from '@/helpers/animations'
+import {
+	AnimatePresence,
+	motion,
+	Variants,
+} from 'framer-motion'
+import {
+	getCommonAnimation,
+	getSpringTransition,
+} from '@/helpers/animations'
 import Link from 'next/link'
 import {
 	rightArrowDarkIcon,
@@ -22,7 +29,7 @@ const Properties: FC = () => {
 			<div className={style.colorAndMaterial}>
 				<PropertyName>Цвет и материал</PropertyName>
 				<ColorAndMaterialBody
-					product={arrayOfProductsExtended[0]}
+					product={arrayOfProducts[0]}
 				/>
 				<PropertyAll onClick={() => {}}>
 					Все цвета
@@ -30,24 +37,32 @@ const Properties: FC = () => {
 			</div>
 			<div className={style.sizes}>
 				<PropertyName>Размер</PropertyName>
-				<Sizes product={arrayOfProductsExtended[0]} />
+				<Sizes product={arrayOfProducts[0]} />
 				<PropertyAll onClick={() => {}}>
 					Все размеры
 				</PropertyAll>
 			</div>
-			<Delivery product={arrayOfProductsExtended[0]} />
+			<Delivery product={arrayOfProducts[0]} />
 			<Accordion name={'характеристики'}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore doloremque, eius error facere minima sint unde. Beatae ea iusto magnam mollitia porro quam recusandae reiciendis, repellendus repudiandae vitae, voluptatibus.
+				Lorem ipsum dolor sit amet, consectetur adipisicing
+				elit. Dicta dolore doloremque, eius error facere
+				minima sint unde. Beatae ea iusto magnam mollitia
+				porro quam recusandae reiciendis, repellendus
+				repudiandae vitae, voluptatibus.
 			</Accordion>
 			<Accordion name={'посмотреть наличие в шоурумах'}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore doloremque, eius error facere minima sint unde. Beatae ea iusto magnam mollitia porro quam recusandae reiciendis, repellendus repudiandae vitae, voluptatibus.
+				Lorem ipsum dolor sit amet, consectetur adipisicing
+				elit. Dicta dolore doloremque, eius error facere
+				minima sint unde. Beatae ea iusto magnam mollitia
+				porro quam recusandae reiciendis, repellendus
+				repudiandae vitae, voluptatibus.
 			</Accordion>
 		</div>
 	)
 }
 
 interface PropertyI {
-	product: extendedProductI
+	product: productI
 }
 
 interface AccordionI {
@@ -69,7 +84,7 @@ const Accordion: FC<AccordionI> = props => {
 		off: {
 			height: '0',
 			marginBottom: '0rem',
-		}
+		},
 	}
 
 	return (
@@ -116,24 +131,33 @@ const Delivery: FC<PropertyI> = props => {
 
 	return (
 		<div className={style.delivery}>
-			<span className={style.deliveryCount}>
-				В наличии 1 товар
-			</span>
-			<Link className={style.deliveryLink} href={'#'}>
-				<span>Рассчитать стоимость доставки</span>
-				{!theme && (
-					<Image
-						src={rightArrowIcon}
-						alt={'rightArrowIcon'}
-					/>
-				)}
-				{theme && (
-					<Image
-						src={rightArrowDarkIcon}
-						alt={'rightArrowDarkIcon'}
-					/>
-				)}
-			</Link>
+			{props.product.quantity && (
+				<>
+					<span className={style.deliveryCount}>
+						В наличии: {props.product.quantity}
+					</span>
+					<Link className={style.deliveryLink} href={'#'}>
+						<span>Рассчитать стоимость доставки</span>
+						{!theme && (
+							<Image
+								src={rightArrowIcon}
+								alt={'rightArrowIcon'}
+							/>
+						)}
+						{theme && (
+							<Image
+								src={rightArrowDarkIcon}
+								alt={'rightArrowDarkIcon'}
+							/>
+						)}
+					</Link>
+				</>
+			)}
+			{!props.product.quantity && (
+				<span className={style.deliveryCount}>
+					В наличии нет товаров
+				</span>
+			)}
 		</div>
 	)
 }
@@ -143,7 +167,7 @@ const Sizes: FC<PropertyI> = props => {
 
 	return (
 		<div className={style.body}>
-			{props.product.size.map((value, index) => {
+			{props.product.sizes?.map((value, index) => {
 				return (
 					<button
 						key={index}
@@ -167,7 +191,7 @@ const ColorAndMaterialBody: FC<PropertyI> = props => {
 
 	return (
 		<div className={style.body}>
-			{props.product.colors.map((value, index) => {
+			{props.product.materials?.map((material, index) => {
 				return (
 					<button
 						key={index}
@@ -177,8 +201,10 @@ const ColorAndMaterialBody: FC<PropertyI> = props => {
 						}}>
 						<Image
 							className={style.handlerImage}
-							src={''}
-							alt={''}
+							src={material.image}
+							alt={material.title}
+							width={40}
+							height={40}
 						/>
 						{currentColor === index && (
 							<motion.div

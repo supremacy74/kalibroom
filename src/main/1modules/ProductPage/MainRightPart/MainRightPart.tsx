@@ -1,36 +1,41 @@
-import { NextPage } from 'next'
-import { memo } from 'react'
+import { FC, memo } from 'react'
 import style from './styles/MainRightPart.module.scss'
 import Image from 'next/image'
 import { questionIcon } from '@/helpers/importIcons'
 import Properties from '@/main/1modules/ProductPage/Properties/Properties'
-import { useRouter } from 'next/router'
+import { productI } from '@/interfaces/product'
+import { createPrice } from '@/helpers/commonFunctions'
 
-interface MainRightPartProps {}
+interface MainRightPartProps {
+	product: productI
+}
 
-const MainRightPart: NextPage<
-	MainRightPartProps
-> = props => {
-	const router = useRouter()
-
+const MainRightPart: FC<MainRightPartProps> = props => {
 	return (
 		<div className={style.mainContentRightPart}>
 			<div className={style.contentWithText}>
 				<div className={style.top}>
 					<h3 className={style.title}>
-						{router.query.product}
+						{props.product.name}
 					</h3>
-					<p className={style.category}>category</p>
+					<p className={style.category}>{props.product.category_id}</p>
 				</div>
 				<div className={style.pricePart}>
 					<div className={style.pricePartTop}>
 						<div className={style.price}>
 							<span className={style.currentPrice}>
-								19 790 ₽
+								{createPrice(props.product.price)} ₽
 							</span>
-							<span className={style.priceWithoutDiscount}>
-								24 990 ₽
-							</span>
+							{props.product.discount && (
+								<span
+									className={style.priceWithoutDiscount}>
+									{createPrice(
+										props.product.price +
+											(props.product.price / 100) *
+												props.product.discount
+									)} ₽
+								</span>
+							)}
 						</div>
 						<div className={style.installmentPlan}>
 							<span className={style.installmentPlanText}>

@@ -1,6 +1,6 @@
 import { FC, memo, useState } from 'react'
 import style from './styles/MainLeftPart.module.scss'
-import { arrayOfProductsExtended } from '@/data/arrayOfProducts'
+import { arrayOfProducts } from '@/data/arrayOfProducts'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { getSpringTransition } from '@/helpers/animations'
@@ -27,7 +27,7 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 	return (
 		<div className={style.contentWithImage}>
 			<div className={style.imagesSelector}>
-				{arrayOfProductsExtended[0].images.map(
+				{arrayOfProducts[0].images.map(
 					(image, index) => {
 						return (
 							<button
@@ -62,7 +62,7 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 					<Image
 						className={style.currentImage}
 						src={
-							arrayOfProductsExtended[0].images[
+							arrayOfProducts[0].images[
 								currentImage
 							].imageURL
 						}
