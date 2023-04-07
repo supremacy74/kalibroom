@@ -13,7 +13,7 @@ export interface productI {
 	id: string
 	slug: string
 	title: string
-	price: string
+	price: number
 	categoryId: number
 	images: imageI[]
 	properties: propertyI[]

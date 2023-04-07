@@ -13,7 +13,7 @@ for (let i = 0; i < 12; i++) {
 		title: 'INDUSTRIAL',
 		slug: 'industrial',
 		categoryId: 1,
-		price: '214 300 ₽',
+		price: 214300,
 		images: [
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
@@ -44,7 +44,7 @@ for (let i = 0; i < 12; i++) {
 		title: 'INDUSTRIAL',
 		slug: 'industrial',
 		categoryId: 1,
-		price: '214 300 ₽',
+		price: 214300,
 		images: [
 			{
 				imageURL: `https://random.imagecdn.app/${getRandom(
