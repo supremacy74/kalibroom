@@ -31,22 +31,6 @@ for (let i = 0; i < 12; i++) {
 				color: 'gray',
 				material: 'material',
 			},
-			{
-				imageURL: `https://random.imagecdn.app/${getRandom(
-					700,
-					1400
-				)}/${getRandom(1000, 2000)}`,
-				color: 'gray',
-				material: 'material',
-			},
-			{
-				imageURL: `https://random.imagecdn.app/${getRandom(
-					700,
-					1400
-				)}/${getRandom(1000, 2000)}`,
-				color: 'gray',
-				material: 'material',
-			},
 		],
 		properties: [],
 		materials: [
@@ -70,18 +54,6 @@ for (let i = 0; i < 12; i++) {
 			},
 		],
 		images_in_interiors: [
-			`https://random.imagecdn.app/${getRandom(
-				700,
-				1400
-			)}/${getRandom(1000, 2000)}`,
-			`https://random.imagecdn.app/${getRandom(
-				700,
-				1400
-			)}/${getRandom(1000, 2000)}`,
-			`https://random.imagecdn.app/${getRandom(
-				700,
-				1400
-			)}/${getRandom(1000, 2000)}`,
 			`https://random.imagecdn.app/${getRandom(
 				700,
 				1400
