@@ -15,7 +15,7 @@ import {
 import { setCatalogCategoryIndexInHeader } from '@/store/reducers/catalog'
 import { useOnClickOutside } from '@/helpers/customHooks'
 import CategoryMenu from '@/main/2components/CategoryMenu/CategoryMenu'
-import { categoriesI } from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
+import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
 
 interface CategoryButtonI {
 	title: string

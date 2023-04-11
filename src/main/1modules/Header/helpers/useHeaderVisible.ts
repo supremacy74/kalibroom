@@ -1,37 +1,24 @@
-import {
-	useAppDispatch,
-	useAppSelector,
-} from '@/store/hooks'
-import { Dispatch, SetStateAction, useEffect } from 'react'
+import { useAppDispatch } from '@/store/hooks'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { setHeaderBottomPartVisible } from '@/store/reducers/headerBottomPart'
-import {
-	setDarkTheme,
-	setLightTheme,
-} from '@/helpers/changeTheme'
+export const useHeaderVisible: Function = () => {
+	const [headerBottomIsVisible, handleHeaderBottomVisible] = useState(true)
 
-export const useHeaderVisible: Function = (
-	headerBottomIsVisible: boolean,
-	handleHeaderBottomVisible: Dispatch<
-		SetStateAction<boolean>
-	>
-) => {
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		dispatch(
-			setHeaderBottomPartVisible(headerBottomIsVisible)
-		)
+		dispatch(setHeaderBottomPartVisible(headerBottomIsVisible))
 	}, [headerBottomIsVisible])
 
-	const scrollEventListenerOnHeader = () => {
-		if (scrollY > 60) {
+	const wheelEventListener = () => {
+		if (scrollY > 300) {
 			handleHeaderBottomVisible(false)
 		} else if (innerWidth >= 1300) {
 			handleHeaderBottomVisible(true)
 		}
 	}
 
-	const resizeEventListenerOnHeader = () => {
+	const resizeEventListener = () => {
 		if (innerWidth <= 1300) {
 			handleHeaderBottomVisible(false)
 		} else {
@@ -44,24 +31,12 @@ export const useHeaderVisible: Function = (
 			handleHeaderBottomVisible(false)
 		}
 
-		document.addEventListener(
-			'scroll',
-			scrollEventListenerOnHeader
-		)
-		window.addEventListener(
-			'resize',
-			resizeEventListenerOnHeader
-		)
+		document.addEventListener('wheel', wheelEventListener)
+		window.addEventListener('resize', resizeEventListener)
 
 		return () => {
-			document.removeEventListener(
-				'scroll',
-				scrollEventListenerOnHeader
-			)
-			window.removeEventListener(
-				'resize',
-				resizeEventListenerOnHeader
-			)
+			document.removeEventListener('wheel', wheelEventListener)
+			window.removeEventListener('resize', resizeEventListener)
 		}
 	}, [])
 }

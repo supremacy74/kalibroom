@@ -5,7 +5,7 @@ import CatalogButton from '@/main/3ui/headerUi/CatalogButton/CatalogButton'
 import CategoryButton from '@/main/3ui/headerUi/CategoryButton/CategoryButton'
 import InStockButton from '@/main/3ui/headerUi/InStockButton/InStockButton'
 import ThemeSlider from '@/main/3ui/headerUi/ThemeSlider/ThemeSlider'
-import { bottomHeaderPartV } from '@/main/2components/BottomHeaderPart/styles/variants'
+import { bottomHeaderPartV } from '@/main/1modules/Header/styles/variants'
 import { getCommonAnimation } from '@/helpers/animations'
 import {
 	useAppDispatch,

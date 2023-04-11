@@ -1,4 +1,4 @@
-import { categoriesI } from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
+import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
 import { FC, memo } from 'react'
 import {
 	useAppDispatch,

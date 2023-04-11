@@ -5,15 +5,13 @@ import Main from '@/main/3ui/Main/Main'
 import { arrayOfCategories } from '@/data/arrayOfCategories'
 import CategoryField from '@/main/1modules/CategoryField/CategoryField'
 
-interface ProductsProps {}
-
-const Products: NextPage<ProductsProps> = props => {
+const Products: NextPage = () => {
 	return (
 		<>
 			<Head>
 				<title>Kalibroom — Товары</title>
 			</Head>
-			<Main>
+			<Main className={style.main}>
 				<div className={style.content}>
 					{arrayOfCategories.map(category => {
 						return (

@@ -10,7 +10,7 @@ import {
 	getSpringTransition,
 } from '@/helpers/animations'
 import { catalogMenuV } from '@/main/2components/CatalogMenu/styles/variants'
-import { catalogI } from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
+import { catalogI } from '@/main/1modules/Header/BottomHeaderPart'
 import CatalogButton from '@/main/3ui/CategoryButton/CategoryButton'
 import Link from 'next/link'
 import {

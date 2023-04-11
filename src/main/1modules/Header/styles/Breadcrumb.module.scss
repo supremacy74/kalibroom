@@ -1,0 +1,17 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  height: 3.5rem;
+  & > * {
+    width: 100%;
+    height: 100%;
+    background: var(--colorSmokyWhite);
+    outline: var(--colorStroke) solid 1px;
+  }
+}
+
+.part {
+  display: flex;
+  align-items: center;
+  padding: 0 2.5rem;
+}

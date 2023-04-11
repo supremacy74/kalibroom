@@ -1,19 +1,20 @@
-import { FC, memo, useState } from 'react'
+import { FC, memo, useEffect } from 'react'
 import style from './styles/Header.module.scss'
-import BottomHeaderPart from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
-import TopHeaderPart from '@/main/2components/TopHeaderPart/TopHeaderPart'
-import CatalogMenu from '@/main/2components/CatalogMenu/CatalogMenu'
-import { catalogMenuData } from '@/data/catalogMenuData'
+import BottomHeaderPart from '@/main/1modules/Header/BottomHeaderPart'
+import TopHeaderPart from '@/main/1modules/Header/TopHeaderPart'
 import { useHeaderVisible } from '@/main/1modules/Header/helpers/useHeaderVisible'
+import Breadcrumb from '@/main/1modules/Header/Breadcrumb'
+import { useRouter } from 'next/router'
+import CatalogMenu from "@/main/2components/CatalogMenu/CatalogMenu";
+import { catalogMenuData } from "@/data/catalogMenuData";
 
 const Header: FC = () => {
-	const [headerBottomIsVisible, handleHeaderBottomVisible] =
-		useState(true)
+	const router = useRouter()
+	useHeaderVisible()
 
-	useHeaderVisible(
-		headerBottomIsVisible,
-		handleHeaderBottomVisible
-	)
+	useEffect(() => {
+		console.log(router.query)
+	}, [router])
 
 	return (
 		<>
@@ -21,6 +22,7 @@ const Header: FC = () => {
 				<header className={style.header}>
 					<TopHeaderPart />
 					<BottomHeaderPart />
+					<Breadcrumb />
 
 
 					<CatalogMenu categories={catalogMenuData} />

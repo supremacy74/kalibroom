@@ -1,4 +1,4 @@
-import { catalogI } from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
+import { catalogI } from '@/main/1modules/Header/BottomHeaderPart'
 
 export const catalogMenuData: catalogI = {
 	products: [

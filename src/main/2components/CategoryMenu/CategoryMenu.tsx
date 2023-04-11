@@ -1,6 +1,6 @@
 import { memo, FC } from 'react'
 import style from './styles/CategoryMenu.module.scss'
-import { categoriesI } from '@/main/2components/BottomHeaderPart/BottomHeaderPart'
+import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
