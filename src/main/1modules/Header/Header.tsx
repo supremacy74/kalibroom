@@ -7,6 +7,8 @@ import Breadcrumb from '@/main/1modules/Header/Breadcrumb'
 import CatalogMenu from '@/main/2components/CatalogMenu/CatalogMenu'
 import { catalogMenuData } from '@/data/catalogMenuData'
 import { useAppSelector } from '@/store/hooks'
+import SearchMenu from "@/main/1modules/Header/SearchMenu";
+import CategoryMenu from "@/main/2components/CategoryMenu/CategoryMenu";
 
 const Header: FC = () => {
 	const paths = useAppSelector(state => state.paths)
@@ -22,8 +24,24 @@ const Header: FC = () => {
 					{paths.length ? <Breadcrumb /> : null}
 
 					<CatalogMenu categories={catalogMenuData} />
+					<CategoriesMenu />
+					<SearchMenu />
 				</header>
 			</div>
+		</>
+	)
+}
+
+const CategoriesMenu = () => {
+	return (
+		<>
+			{catalogMenuData.products.map((category, index) => {
+				if (index < 5) {
+					return (
+						<CategoryMenu category={category} index={index} />
+					)
+				}
+			})}
 		</>
 	)
 }

@@ -1,15 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { FC, memo } from 'react'
 import style from './styles/CatalogMenu.module.scss'
-import {
-	useAppDispatch,
-	useAppSelector,
-} from '@/store/hooks'
-import {
-	getCommonAnimation,
-	getSpringTransition,
-} from '@/helpers/animations'
-import { catalogMenuV } from '@/main/2components/CatalogMenu/styles/variants'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { getCommonAnimation, getSpringTransition } from '@/helpers/animations'
+import { menuV } from '@/helpers/variants'
 import { catalogI } from '@/main/1modules/Header/BottomHeaderPart'
 import CatalogButton from '@/main/3ui/CategoryButton/CategoryButton'
 import Link from 'next/link'
@@ -24,15 +18,9 @@ interface CategoriesMenuI {
 }
 
 const CatalogMenu: FC<CategoriesMenuI> = props => {
-	const catalogIsOpen = useAppSelector(
-		state => state.catalog.isOpen
-	)
-	const productsIsOpen = useAppSelector(
-		state => state.catalog.productsIsOpen
-	)
-	const ideasIsOpen = useAppSelector(
-		state => state.catalog.ideasIsOpen
-	)
+	const catalogIsOpen = useAppSelector(state => state.catalog.isOpen)
+	const productsIsOpen = useAppSelector(state => state.catalog.productsIsOpen)
+	const ideasIsOpen = useAppSelector(state => state.catalog.ideasIsOpen)
 	const indexOfCurrentCategory = useAppSelector(
 		state => state.catalog.indexOfCurrentCategory
 	)
@@ -46,14 +34,12 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 		{
 			title: 'Товары',
 			active: productsIsOpen,
-			onClick: () =>
-				dispatch(toggleCatalogCategoryToProducts()),
+			onClick: () => dispatch(toggleCatalogCategoryToProducts()),
 		},
 		{
 			title: 'Идеи',
 			active: ideasIsOpen,
-			onClick: () =>
-				dispatch(toggleCatalogCategoryToIdeas()),
+			onClick: () => dispatch(toggleCatalogCategoryToIdeas()),
 		},
 	]
 
@@ -62,22 +48,20 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 			{catalogIsOpen && (
 				<motion.div
 					{...getCommonAnimation()}
-					variants={catalogMenuV}
+					variants={menuV}
 					transition={getSpringTransition(10, 30)}
 					className={style.menu}>
 					<div className={style.nav}>
 						{productsIsOpen &&
-							props.categories.products.map(
-								(value, index) => {
-									return (
-										<CatalogButton
-											key={index}
-											index={index}
-											buttonValues={value}
-										/>
-									)
-								}
-							)}
+							props.categories.products.map((value, index) => {
+								return (
+									<CatalogButton
+										key={index}
+										index={index}
+										buttonValues={value}
+									/>
+								)
+							})}
 						{ideasIsOpen &&
 							props.categories.ideas.map((value, index) => {
 								return (
@@ -105,31 +89,27 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 						</div>
 						<div className={style.categoriesInner}>
 							{productsIsOpen &&
-								props.categories.products[
-									indexOfCurrentCategory
-								].blocks.map((block, index) => {
-									return (
-										<div
-											key={index}
-											className={style.block}>
-											<span className={style.blockTitle}>
-												{block.title}
-											</span>
-											<div className={style.links}>
-												{block.links.map((link, index) => {
-													return (
-														<Link
-															key={index}
-															className={style.link}
-															href={link.link}>
-															{link.title}
-														</Link>
-													)
-												})}
+								props.categories.products[indexOfCurrentCategory].blocks.map(
+									(block, index) => {
+										return (
+											<div key={index} className={style.block}>
+												<span className={style.blockTitle}>{block.title}</span>
+												<div className={style.links}>
+													{block.links.map((link, index) => {
+														return (
+															<Link
+																key={index}
+																className={style.link}
+																href={link.link}>
+																{link.title}
+															</Link>
+														)
+													})}
+												</div>
 											</div>
-										</div>
-									)
-								})}
+										)
+									}
+								)}
 						</div>
 					</main>
 				</motion.div>

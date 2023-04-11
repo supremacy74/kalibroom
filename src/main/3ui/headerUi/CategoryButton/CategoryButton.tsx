@@ -4,18 +4,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { vectorDownV } from './styles/variants'
 import { getSpringTransition } from '@/helpers/animations'
 import Image from 'next/image'
-import {
-	vectorDownDarkIcon,
-	vectorDownIcon,
-} from '@/helpers/importIcons'
-import {
-	useAppDispatch,
-	useAppSelector,
-} from '@/store/hooks'
+import { vectorDownDarkIcon, vectorDownIcon } from '@/helpers/importIcons'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { setCatalogCategoryIndexInHeader } from '@/store/reducers/catalog'
 import { useOnClickOutside } from '@/helpers/customHooks'
 import CategoryMenu from '@/main/2components/CategoryMenu/CategoryMenu'
 import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
+import { handleSearchMenu } from "@/store/reducers/search";
 
 interface CategoryButtonI {
 	title: string
@@ -25,22 +20,16 @@ interface CategoryButtonI {
 
 const CategoryButton: FC<CategoryButtonI> = props => {
 	const ref = useRef(null)
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
+	const theme = useAppSelector(state => state.theme.isDarkTheme)
 	const indexOfCurrentCategoryInHeader = useAppSelector(
 		state => state.catalog.indexOfCurrentCategoryInHeader
 	)
 	const headerBottomPartIsVisible = useAppSelector(
 		state => state.headerBottomPart.isVisible
 	)
-	const catalogIsOpen = useAppSelector(
-		state => state.catalog.isOpen
-	)
 
 	const dispatch = useAppDispatch()
-	const closeMenu = () =>
-		dispatch(setCatalogCategoryIndexInHeader(-1))
+	const closeMenu = () => dispatch(setCatalogCategoryIndexInHeader(-1))
 
 	// useOnClickOutside(ref, () => closeMenu())
 
@@ -53,25 +42,19 @@ const CategoryButton: FC<CategoryButtonI> = props => {
 			}}
 			ref={ref}
 			onClick={() => {
-				if (
-					props.index === indexOfCurrentCategoryInHeader
-				) {
+				if (props.index === indexOfCurrentCategoryInHeader) {
 					closeMenu()
+					dispatch(handleSearchMenu(false))
 				} else {
-					dispatch(
-						setCatalogCategoryIndexInHeader(props.index)
-					)
+					dispatch(setCatalogCategoryIndexInHeader(props.index))
+					dispatch(handleSearchMenu(false))
 				}
 			}}
 			className={style.categoryButton}>
 			{props.title}
 			<motion.div
 				variants={vectorDownV}
-				animate={
-					indexOfCurrentCategoryInHeader === props.index
-						? 'on'
-						: 'off'
-				}
+				animate={indexOfCurrentCategoryInHeader === props.index ? 'on' : 'off'}
 				transition={getSpringTransition(30, 185)}
 				className={style.iconWrapper}>
 				{!theme && (
@@ -89,13 +72,6 @@ const CategoryButton: FC<CategoryButtonI> = props => {
 					/>
 				)}
 			</motion.div>
-			<AnimatePresence>
-				{props.index === indexOfCurrentCategoryInHeader &&
-					headerBottomPartIsVisible &&
-					!catalogIsOpen && (
-						<CategoryMenu category={props.category} />
-					)}
-			</AnimatePresence>
 		</button>
 	)
 }

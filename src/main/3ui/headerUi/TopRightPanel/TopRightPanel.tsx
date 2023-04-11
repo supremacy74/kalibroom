@@ -6,14 +6,24 @@ import {
 	heartIcon, searchDarkIcon,
 	searchIcon,
 } from '@/helpers/importIcons'
-import {useAppSelector} from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { toggleSearchMenu } from "@/store/reducers/search";
+import { setCatalogCategoryIndexInHeader, setCatalogMenu } from "@/store/reducers/catalog";
 
 const TopRightPanel: FC = () => {
 	const theme = useAppSelector(state => state.theme.isDarkTheme)
 
+	const dispatch = useAppDispatch()
+
 	return (
 		<div className={style.topRightPanel}>
-			<button className={`${style.buttonWithIcon} ${style.searchButton}`}>
+			<button
+				onClick={() => {
+					dispatch(setCatalogCategoryIndexInHeader(-1))
+					dispatch(toggleSearchMenu())
+					dispatch(setCatalogMenu(false))
+				}}
+				className={`${style.buttonWithIcon} ${style.searchButton}`}>
 				<span className={style.searchText}>Поиск</span>
 				{!theme && (
 					<Image
@@ -26,7 +36,7 @@ const TopRightPanel: FC = () => {
 					<Image
 						className={style.icon}
 						src={searchDarkIcon}
-						alt={'searchIcon'}
+						alt={'searchDarkIcon'}
 					/>
 				)}
 			</button>
@@ -36,14 +46,14 @@ const TopRightPanel: FC = () => {
 					<Image
 						className={style.icon}
 						src={heartIcon}
-						alt={'searchIcon'}
+						alt={'heartIcon'}
 					/>
 				)}
 				{theme && (
 					<Image
 						className={style.icon}
 						src={heartDarkIcon}
-						alt={'searchIcon'}
+						alt={'heartDarkIcon'}
 					/>
 				)}
 			</button>

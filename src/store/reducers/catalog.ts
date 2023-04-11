@@ -26,6 +26,9 @@ const catalogSlice = createSlice({
 		toggleCatalogMenu(state: catalogMenuState) {
 			state.isOpen = !state.isOpen
 		},
+		setCatalogMenu(state: catalogMenuState, action: PayloadAction<boolean>) {
+			state.isOpen = action.payload
+		},
 		toggleCatalogCategoryToProducts(
 			state: catalogMenuState
 		) {
@@ -53,6 +56,7 @@ const catalogSlice = createSlice({
 
 export const {
 	toggleCatalogMenu,
+	setCatalogMenu,
 	toggleCatalogCategoryToProducts,
 	toggleCatalogCategoryToIdeas,
 	setCatalogCategoryIndex,

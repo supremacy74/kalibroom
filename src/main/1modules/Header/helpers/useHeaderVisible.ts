@@ -10,11 +10,33 @@ export const useHeaderVisible: Function = () => {
 		dispatch(setHeaderBottomPartVisible(headerBottomIsVisible))
 	}, [headerBottomIsVisible])
 
-	const wheelEventListener = () => {
-		if (scrollY > 300) {
+	let lastScrollPosition = 0
+
+	// const scrollEventListener = () => {
+	// 	if (lastScrollPosition > scrollY && scrollY < 300) {
+	// 		handleHeaderBottomVisible(true)
+	// 	} else if (lastScrollPosition < scrollY && scrollY > 300) {
+	// 		handleHeaderBottomVisible(false)
+	// 	}
+	//
+	// 	lastScrollPosition = scrollY
+	//
+	// 	setTimeout(() => {
+	// 		lastScrollPosition = scrollY
+	// 	}, 100)
+	//
+	// 	console.log(lastScrollPosition, scrollY)
+	// }
+
+	const wheelEventListener = (e: WheelEvent) => {
+		if (scrollY > 300 && e.deltaY > 0) {
 			handleHeaderBottomVisible(false)
-		} else if (innerWidth >= 1300) {
+		} else if (scrollY < 300 && e.deltaY < 0) {
 			handleHeaderBottomVisible(true)
+		}
+
+		if (innerWidth <= 1300) {
+			handleHeaderBottomVisible(false)
 		}
 	}
 
@@ -31,11 +53,13 @@ export const useHeaderVisible: Function = () => {
 			handleHeaderBottomVisible(false)
 		}
 
-		document.addEventListener('wheel', wheelEventListener)
+		document.addEventListener('wheel', (e: WheelEvent) => wheelEventListener(e))
+		// document.addEventListener('scroll', scrollEventListener)
 		window.addEventListener('resize', resizeEventListener)
 
 		return () => {
-			document.removeEventListener('wheel', wheelEventListener)
+			document.removeEventListener('wheel', (e: WheelEvent) => wheelEventListener(e))
+			// document.removeEventListener('scroll', scrollEventListener)
 			window.removeEventListener('resize', resizeEventListener)
 		}
 	}, [])

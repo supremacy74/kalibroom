@@ -75,6 +75,14 @@ button {
 	cursor: pointer;
 }
 
+input {
+	background: none;
+	outline: none;
+	border: none;
+	font-size: inherit;
+	color: inherit;
+}
+
 input[type='radio'] {
 	cursor: pointer;
 }

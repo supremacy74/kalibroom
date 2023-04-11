@@ -12,6 +12,7 @@ import {
 	useAppSelector,
 } from '@/store/hooks'
 import {setCatalogCategoryIndexInHeader, toggleCatalogMenu} from '@/store/reducers/catalog'
+import { handleSearchMenu } from "@/store/reducers/search";
 
 interface CatalogButtonI {
 	className?: string
@@ -29,6 +30,7 @@ const CatalogButton: FC<CatalogButtonI> = (props) => {
 			onClick={() => {
 				dispatch(toggleCatalogMenu())
 				dispatch(setCatalogCategoryIndexInHeader(-1))
+				dispatch(handleSearchMenu(false))
 			}}
 			className={`${style.catalogButton} ${props.className}`}>
 			<span className={style.text}>Каталог</span>

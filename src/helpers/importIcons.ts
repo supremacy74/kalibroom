@@ -21,6 +21,17 @@ export const locationDarkIcon = require('/public/icons/locationDark.svg')
 export const searchIcon = require('/public/icons/search.svg')
 export const searchDarkIcon = require('/public/icons/searchDark.svg')
 
+export const searchOpacityIcon = require('/public/icons/searchOpacity.svg')
+export const searchOpacityDarkIcon = require('/public/icons/searchOpacityDark.svg')
+
+// time
+export const timeIcon = require('/public/icons/time.svg')
+export const timeDarkIcon = require('/public/icons/timeDark.svg')
+
+// cross
+export const crossIcon = require('/public/icons/cross.svg')
+export const crossDarkIcon = require('/public/icons/crossDark.svg')
+
 // heart
 export const heartIcon = require('/public/icons/heart.svg')
 export const heartDarkIcon = require('/public/icons/heartDark.svg')
@@ -35,7 +46,6 @@ export const vectorDownDarkIcon = require('/public/icons/vectorDownDark.svg')
 // theme icons
 export const moonIcon = require('/public/icons/moon.svg')
 export const sunIcon = require('/public/icons/sun.svg')
-
 
 // vector down
 export const vectorTopImage = require('/public/icons/vectorTop.svg')

@@ -7,16 +7,12 @@ import InStockButton from '@/main/3ui/headerUi/InStockButton/InStockButton'
 import ThemeSlider from '@/main/3ui/headerUi/ThemeSlider/ThemeSlider'
 import { bottomHeaderPartV } from '@/main/1modules/Header/styles/variants'
 import { getCommonAnimation } from '@/helpers/animations'
-import {
-	useAppDispatch,
-	useAppSelector,
-} from '@/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import WideButton from '@/main/3ui/headerUi/WideButton/WideButton'
 import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/catalog'
-import CatalogMenu from '@/main/2components/CatalogMenu/CatalogMenu'
 import { catalogMenuData } from '@/data/catalogMenuData'
 
 export interface categoriesI {
@@ -36,18 +32,10 @@ export interface catalogI {
 }
 
 const BottomHeaderPart: FC = () => {
-	const isVisible = useAppSelector(
-		state => state.headerBottomPart.isVisible
-	)
-	const catalogIsOpen = useAppSelector(
-		state => state.catalog.isOpen
-	)
-	const ideasIsOpen = useAppSelector(
-		state => state.catalog.ideasIsOpen
-	)
-	const productsIsOpen = useAppSelector(
-		state => state.catalog.productsIsOpen
-	)
+	const isVisible = useAppSelector(state => state.headerBottomPart.isVisible)
+	const catalogIsOpen = useAppSelector(state => state.catalog.isOpen)
+	const ideasIsOpen = useAppSelector(state => state.catalog.ideasIsOpen)
+	const productsIsOpen = useAppSelector(state => state.catalog.productsIsOpen)
 
 	const dispatch = useAppDispatch()
 
@@ -55,14 +43,12 @@ const BottomHeaderPart: FC = () => {
 		{
 			title: 'Товары',
 			active: productsIsOpen,
-			onClick: () =>
-				dispatch(toggleCatalogCategoryToProducts()),
+			onClick: () => dispatch(toggleCatalogCategoryToProducts()),
 		},
 		{
 			title: 'Идеи',
 			active: ideasIsOpen,
-			onClick: () =>
-				dispatch(toggleCatalogCategoryToIdeas()),
+			onClick: () => dispatch(toggleCatalogCategoryToIdeas()),
 		},
 	]
 
@@ -78,7 +64,7 @@ const BottomHeaderPart: FC = () => {
 					}}
 					className={style.part}>
 					<CatalogButton />
-					{!catalogIsOpen &&
+					{!catalogIsOpen && setTimeout(() => false, 1000) &&
 						catalogMenuData.products.map((value, index) => {
 							if (index < 5) {
 								return (
