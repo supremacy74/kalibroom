@@ -5,21 +5,22 @@ import ContainerForCells from '@/main/1modules/ContainerForCells/ContainerForCel
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 import LoadMoreButton from '@/main/3ui/LoadMoreButton/LoadMoreButton'
 import { setProducts } from '@/store/reducers/products'
-import {
-	useAppDispatch,
-	useAppSelector,
-} from '@/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import Main from '@/main/3ui/Main/Main'
+import { useEffect } from 'react'
+import { setPaths } from '@/store/reducers/paths'
 
 const Home: NextPage = () => {
 	const products = useAppSelector(state => state.products)
 	const dispatch = useAppDispatch()
 
 	const loadMoreProducts = () => {
-		dispatch(
-			setProducts([...products, ...arrayOfProducts])
-		)
+		dispatch(setProducts([...products, ...arrayOfProducts]))
 	}
+
+	useEffect(() => {
+		dispatch(setPaths([]))
+	}, [])
 
 	return (
 		<>
@@ -30,9 +31,7 @@ const Home: NextPage = () => {
 			<Main>
 				<div className={style.content}>
 					<ContainerForCells array={products} />
-					<LoadMoreButton
-						onClick={() => loadMoreProducts()}
-					/>
+					<LoadMoreButton onClick={() => loadMoreProducts()} />
 				</div>
 			</Main>
 		</>

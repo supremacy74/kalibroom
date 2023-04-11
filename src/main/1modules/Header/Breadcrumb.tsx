@@ -1,24 +1,21 @@
-import { FC, memo, useEffect } from 'react'
+import { FC, memo } from 'react'
 import style from './styles/Breadcrumb.module.scss'
-import { useRouter } from 'next/router'
+import { useAppSelector } from '@/store/hooks'
 import Link from 'next/link'
 
 const Breadcrumb: FC = () => {
-	const router = useRouter()
-	const route = router.asPath.split('/')
-
-	useEffect(() => {
-		console.log(router.asPath.split('/'))
-	}, [router])
+	const paths = useAppSelector(state => state.paths)
 
 	return (
 		<div className={style.breadcrumb}>
 			<div className={style.part}>
-				{route.map((value, index) => {
+				{paths.map((path, index) => {
 					return (
 						<>
-							<Link href={'#'}>{!value ? 'Home' : value}</Link>
-							{!(route.length - 1 === index) && <span>/</span>}
+							<Link className={style.link} href={path.url}>
+								{path.label}
+							</Link>
+							{paths.length - 1 !== index && <span>/</span>}
 						</>
 					)
 				})}

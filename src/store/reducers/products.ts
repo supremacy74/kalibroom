@@ -1,7 +1,4 @@
-import {
-	createSlice,
-	PayloadAction,
-} from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { productI } from '@/interfaces/product'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 
@@ -11,10 +8,7 @@ const productsSlice = createSlice({
 	name: 'products',
 	initialState,
 	reducers: {
-		setProducts(
-			state: productI[],
-			action: PayloadAction<productI[]>
-		) {
+		setProducts(state: productI[], action: PayloadAction<productI[]>) {
 			state.splice(0, state.length, ...action.payload)
 		},
 	},

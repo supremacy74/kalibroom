@@ -1,17 +1,30 @@
 .breadcrumb {
-  display: flex;
-  align-items: center;
-  height: 3.5rem;
-  & > * {
-    width: 100%;
-    height: 100%;
-    background: var(--colorSmokyWhite);
-    outline: var(--colorStroke) solid 1px;
-  }
+	display: flex;
+	align-items: center;
+	height: 3.5rem;
+	& > * {
+		width: 100%;
+		height: 100%;
+		background: var(--colorSmokyWhite);
+		outline: var(--colorStroke) solid 1px;
+	}
 }
 
 .part {
-  display: flex;
-  align-items: center;
-  padding: 0 2.5rem;
+	display: flex;
+	align-items: center;
+	padding: 0 2.5rem;
+	gap: 0.3rem;
+	& > * {
+		color: var(--colorFlatFont);
+		font-size: 0.8125rem;
+		text-transform: lowercase;
+	}
+}
+
+.link {
+	border-bottom: solid transparent 1px;
+	&:hover {
+		border-bottom: solid var(--colorFlatFont) 1px;
+	}
 }
