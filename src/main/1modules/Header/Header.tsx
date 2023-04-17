@@ -38,7 +38,7 @@ const CategoriesMenu = () => {
 			{catalogMenuData.products.map((category, index) => {
 				if (index < 5) {
 					return (
-						<CategoryMenu category={category} index={index} />
+						<CategoryMenu key={index} category={category} index={index} />
 					)
 				}
 			})}

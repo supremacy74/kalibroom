@@ -25,9 +25,7 @@ const Top: FC<CategoryFieldProps> = props => {
 				{props.category.title}
 				<sup>268</sup>
 			</span>
-			<Link
-				className={style.topLink}
-				href={`/products/${props.category.slug}`}>
+			<Link className={style.topLink} href={`/products/${props.category.slug}`}>
 				Все {props.category.title}
 			</Link>
 		</div>
@@ -37,10 +35,10 @@ const Top: FC<CategoryFieldProps> = props => {
 const Field: FC<CategoryFieldProps> = props => {
 	return (
 		<div className={style.field}>
-			{props.category.properties.map(property => {
+			{props.category.properties.map((property, index) => {
 				return (
 					<PropertyBlock
-						key={property.slug}
+						key={index}
 						property={property}
 						category={props.category}
 					/>
@@ -58,21 +56,33 @@ interface PropertyBlockI {
 const PropertyBlock: FC<PropertyBlockI> = props => {
 	return (
 		<Link
+			// @ts-ignore
 			href={`/products/${props.category.slug}?${props.property.slug}`}
 			className={style.propertyBlock}>
-			{props.property.image && (
-				<Image
-					className={style.propertyImage}
-					src={props.property.image}
-					alt={props.property.title}
-					width={1024}
-					height={1024}
-				/>
-			)}
-			{!props.property.image && (
-				<div className={style.propertyWithoutImage} />
-			)}
-			<span className={style.propertyTitle}>{props.property.title}</span>
+			{
+				// @ts-ignore
+				props.property.image && (
+					<Image
+						className={style.propertyImage}
+						// @ts-ignore
+						src={props.property.image}
+						// @ts-ignore
+						alt={props.property.title}
+						width={1024}
+						height={1024}
+					/>
+				)
+			}
+			{
+				// @ts-ignore
+				!props.property.image && <div className={style.propertyWithoutImage} />
+			}
+			<span className={style.propertyTitle}>
+				{
+					// @ts-ignore
+					props.property.title
+				}
+			</span>
 		</Link>
 	)
 }

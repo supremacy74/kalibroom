@@ -106,7 +106,7 @@ const SearchMenu: FC = () => {
 								<div className={style.content}>
 									{history.map((block, index) => {
 										return (
-											<div className={style.historyBlock}>
+											<div key={index} className={style.historyBlock}>
 												<Link className={style.link} href={block.url}>
 													{!theme ? (
 														<Image src={timeIcon} alt={'timeIcon'} />
@@ -137,9 +137,9 @@ const SearchMenu: FC = () => {
 							<div className={style.part}>
 								<h4 className={style.title}>Чаще всего ищут</h4>
 								<div className={style.content}>
-									{mostlySearch.map(block => {
+									{mostlySearch.map((block, index) => {
 										return (
-											<Link className={style.link} href={block.url}>
+											<Link key={index} className={style.link} href={block.url}>
 												{!theme ? (
 													<Image
 														src={searchOpacityIcon}
