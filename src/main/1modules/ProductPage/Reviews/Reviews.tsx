@@ -54,10 +54,7 @@ const Review: FC = () => {
 				<Link className={style.reviewImageLink} href={'#'}>
 					<Image
 						className={style.reviewImage}
-						src={`https://random.imagecdn.app/${getRandom(
-							700,
-							1400
-						)}/${getRandom(1000, 2000)}`}
+						src={``}
 						alt={'image'}
 						width={100}
 						height={100}
@@ -66,10 +63,7 @@ const Review: FC = () => {
 				<Link className={style.reviewImageLink} href={'#'}>
 					<Image
 						className={style.reviewImage}
-						src={`https://random.imagecdn.app/${getRandom(
-							700,
-							1400
-						)}/${getRandom(1000, 2000)}`}
+						src={``}
 						alt={'image'}
 						width={100}
 						height={100}

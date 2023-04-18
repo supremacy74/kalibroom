@@ -16,18 +16,12 @@ for (let i = 0; i < 12; i++) {
 		sizes: ['125 см', '250 см', 'my cock'],
 		images: [
 			{
-				imageURL: `https://random.imagecdn.app/${getRandom(
-					700,
-					1400
-				)}/${getRandom(1000, 2000)}`,
+				imageURL: ``,
 				color: 'gray',
 				material: 'material',
 			},
 			{
-				imageURL: `https://random.imagecdn.app/${getRandom(
-					700,
-					1400
-				)}/${getRandom(1000, 2000)}`,
+				imageURL: ``,
 				color: 'gray',
 				material: 'material',
 			},
@@ -38,38 +32,20 @@ for (let i = 0; i < 12; i++) {
 				colors: ['gray'],
 				title: 'Теплящая кожа',
 				type: 'Кожа',
-				image: `https://random.imagecdn.app/${getRandom(
-					300,
-					500
-				)}/${getRandom(300, 500)}`,
+				image: ``,
 			},
 			{
 				colors: ['gray'],
 				title: 'Теплящая кожа',
 				type: 'Кожа',
-				image: `https://random.imagecdn.app/${getRandom(
-					300,
-					500
-				)}/${getRandom(300, 500)}`,
+				image: ``,
 			},
 		],
 		images_in_interiors: [
-			`https://random.imagecdn.app/${getRandom(
-				700,
-				1400
-			)}/${getRandom(1000, 2000)}`,
-			`https://random.imagecdn.app/${getRandom(
-				700,
-				1400
-			)}/${getRandom(1000, 2000)}`,
-			`https://random.imagecdn.app/${getRandom(
-				700,
-				1400
-			)}/${getRandom(1000, 2000)}`,
-			`https://random.imagecdn.app/${getRandom(
-				700,
-				1400
-			)}/${getRandom(1000, 2000)}`,
+			``,
+			``,
+			``,
+			``,
 		],
 	})
 }
