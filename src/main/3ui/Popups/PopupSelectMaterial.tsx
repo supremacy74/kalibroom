@@ -48,6 +48,7 @@ const PopupSelectMaterial: FC = () => {
 										(value, index) => {
 											return (
 												<Color
+													key={index}
 													hex={value}
 													index={index}
 													currentIndex={currentColor}
@@ -66,6 +67,7 @@ const PopupSelectMaterial: FC = () => {
 										{materials.map((value, index) => {
 											return (
 												<Material
+													key={index}
 													image={value}
 													index={index}
 													currentIndex={currentMaterial}
