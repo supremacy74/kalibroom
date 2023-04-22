@@ -6,6 +6,12 @@
   width: min(100%, 220px);
   height: 100%;
   padding: 0 2.5rem;
+  transition: .3s ease-in-out;
+
+  &:hover {
+    background: var(--colorSmokyWhite);
+  }
+
   @media (max-width: 650px) {
     padding: 0;
     justify-content: center;

@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import Main from '@/main/3ui/Main/Main'
 import { useEffect } from 'react'
 import { setPaths } from '@/store/reducers/paths'
+import Title from "@/main/3ui/Title/Title";
 
 const Home: NextPage = () => {
 	const products = useAppSelector(state => state.products)
@@ -29,9 +30,25 @@ const Home: NextPage = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Main>
-				<div className={style.content}>
-					<ContainerForCells array={products} />
-					<LoadMoreButton onClick={() => loadMoreProducts()} />
+				<div className={style.contents}>
+					<div className={style.contentBlock}>
+						<div className={style.content}>
+							<Title>
+								Товары
+							</Title>
+							<ContainerForCells array={products} />
+						</div>
+						<LoadMoreButton onClick={() => loadMoreProducts()} />
+					</div>
+					<div className={style.contentBlock}>
+						<div className={style.content}>
+							<Title>
+								Идеи
+							</Title>
+							<ContainerForCells array={products} />
+						</div>
+						<LoadMoreButton onClick={() => loadMoreProducts()} />
+					</div>
 				</div>
 			</Main>
 		</>

@@ -1,0 +1,109 @@
+.wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	z-index: 2000;
+	background: #1c1c1c55;
+	backdrop-filter: blur(0.4rem);
+}
+
+.cross {
+	margin-left: auto;
+}
+
+.popupSelectMaterial {
+	width: min(95%, 31.25rem);
+	background: var(--colorBackground);
+	border-radius: 0.25rem;
+	border: var(--colorStroke) solid 1px;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2.25rem;
+}
+
+.sizePopup {
+	width: min(100%, 25rem);
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.5rem 2.5rem;
+}
+
+.topTitle {
+}
+
+.title {
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.main {
+	overflow: hidden auto;
+	height: 40vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	padding-bottom: 2rem;
+	padding-right: 1rem;
+
+	&::-webkit-scrollbar {
+		width: 0.25rem;
+		background: var(--colorSmokyWhite);
+		border-radius: 2rem;
+		border: none;
+		outline: none;
+	}
+	&::-webkit-scrollbar-thumb {
+		border: none;
+		border-radius: 2rem;
+		background: var(--colorFont);
+	}
+}
+
+.materialsMain {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.materialTitle {
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--colorFlatFont);
+}
+
+.block {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.colorsMap {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.375rem;
+}
+
+.materialMap {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.875rem;
+}
+
+.buttons {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.button {
+	width: 100%;
+}

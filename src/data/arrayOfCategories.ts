@@ -14,43 +14,43 @@ for (let i = 0; i < 2; i++) {
 						// @ts-ignore
 						title: '2-местные',
 						slug: '2-seater',
-						image: ``,
+						image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(600, 1200)}`,
 					},
 					{
 						// @ts-ignore
 						title: '3-местные',
 						slug: '3-seater',
-						image: ``,
+						image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(600, 1200)}`,
 					},
 					{
 						// @ts-ignore
 						title: '4-местные',
 						slug: '4-seater',
-						image: ``,
+						image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(600, 1200)}`,
 					},
 					{
 						// @ts-ignore
 						title: 'Прямые',
 						slug: 'straight',
-						image: ``,
+						image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(600, 1200)}`,
 					},
 					{
 						// @ts-ignore
 						title: 'Угловые',
 						slug: 'corner',
-						image: ``,
+						image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(600, 1200)}`,
 					},
 					{
 						// @ts-ignore
 						title: 'Модульные',
 						slug: 'modular',
-						image: ``,
+						image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(600, 1200)}`,
 					},
 					{
 						// @ts-ignore
 						title: 'Без спального места',
 						slug: 'without-a-sleeping-place',
-						image: ``,
+						image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(600, 1200)}`,
 					},
 				],
 			})

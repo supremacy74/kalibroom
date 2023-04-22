@@ -16,12 +16,18 @@ for (let i = 0; i < 12; i++) {
 		sizes: ['125 см', '250 см', 'my cock'],
 		images: [
 			{
-				imageURL: ``,
+				imageURL: `https://source.unsplash.com/${getRandom(
+					400,
+					800
+				)}x${getRandom(600, 1200)}`,
 				color: 'gray',
 				material: 'material',
 			},
 			{
-				imageURL: ``,
+				imageURL: `https://source.unsplash.com/${getRandom(
+					400,
+					800
+				)}x${getRandom(600, 1200)}`,
 				color: 'gray',
 				material: 'material',
 			},
@@ -32,20 +38,38 @@ for (let i = 0; i < 12; i++) {
 				colors: ['gray'],
 				title: 'Теплящая кожа',
 				type: 'Кожа',
-				image: ``,
+				image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(
+					600,
+					1200
+				)}`,
 			},
 			{
 				colors: ['gray'],
 				title: 'Теплящая кожа',
 				type: 'Кожа',
-				image: ``,
+				image: `https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(
+					600,
+					1200
+				)}`,
 			},
 		],
 		images_in_interiors: [
-			``,
-			``,
-			``,
-			``,
+			`https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(
+				600,
+				1200
+			)}`,
+			`https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(
+				600,
+				1200
+			)}`,
+			`https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(
+				600,
+				1200
+			)}`,
+			`https://source.unsplash.com/${getRandom(400, 800)}x${getRandom(
+				600,
+				1200
+			)}/?nature`,
 		],
 	})
 }

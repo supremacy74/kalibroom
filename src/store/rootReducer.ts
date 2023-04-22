@@ -4,6 +4,7 @@ import headerBottomPart from '@/store/reducers/headerBottomPart'
 import products from '@/store/reducers/products'
 import paths from '@/store/reducers/paths'
 import search from '@/store/reducers/search'
+import popups from '@/store/reducers/popups'
 
 import { combineReducers } from 'redux'
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
 	products: products,
 	paths: paths,
 	search: search,
+	popups: popups,
 })
 
 export default rootReducer

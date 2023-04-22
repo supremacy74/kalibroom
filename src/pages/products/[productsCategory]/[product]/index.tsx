@@ -8,6 +8,8 @@ import { useEffect } from 'react'
 import { pathT, setPaths } from '@/store/reducers/paths'
 import { useAppDispatch } from '@/store/hooks'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
+import PopupSelectMaterial from "@/main/3ui/Popups/PopupSelectMaterial";
+import PopupSizes from "@/main/3ui/Popups/PopupSizes";
 
 interface ProductProps {}
 
@@ -45,6 +47,9 @@ const ProductPage: NextPage<ProductProps> = () => {
 			</Head>
 			<Main className={style.main}>
 				<Content />
+
+				<PopupSelectMaterial />
+				{/*<PopupSizes />*/}
 			</Main>
 		</>
 	)

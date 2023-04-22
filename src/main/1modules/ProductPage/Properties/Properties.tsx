@@ -3,15 +3,8 @@ import style from './styles/Properties.module.scss'
 import { productI } from '@/interfaces/product'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 import Image from 'next/image'
-import {
-	AnimatePresence,
-	motion,
-	Variants,
-} from 'framer-motion'
-import {
-	getCommonAnimation,
-	getSpringTransition,
-} from '@/helpers/animations'
+import { AnimatePresence, motion, Variants } from 'framer-motion'
+import { getCommonAnimation, getSpringTransition } from '@/helpers/animations'
 import Link from 'next/link'
 import {
 	rightArrowDarkIcon,
@@ -19,43 +12,45 @@ import {
 	vectorDownDarkIcon,
 	vectorDownIcon,
 } from '@/helpers/importIcons'
-import { useAppSelector } from '@/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import {
+	colorPopupHandleVisible,
+	sizePopupHandleVisible,
+} from '@/store/reducers/popups'
 
 const Properties: FC = () => {
 	// TODO: считывать текущий продукт из состояния в хранилище
+
+	const dispatch = useAppDispatch()
 
 	return (
 		<div className={style.properties}>
 			<div className={style.colorAndMaterial}>
 				<PropertyName>Цвет и материал</PropertyName>
-				<ColorAndMaterialBody
-					product={arrayOfProducts[0]}
-				/>
-				<PropertyAll onClick={() => {}}>
+				<ColorAndMaterialBody product={arrayOfProducts[0]} />
+				<PropertyAll onClick={() => dispatch(colorPopupHandleVisible(true))}>
 					Все цвета
 				</PropertyAll>
 			</div>
 			<div className={style.sizes}>
 				<PropertyName>Размер</PropertyName>
 				<Sizes product={arrayOfProducts[0]} />
-				<PropertyAll onClick={() => {}}>
+				<PropertyAll onClick={() => dispatch(sizePopupHandleVisible(true))}>
 					Все размеры
 				</PropertyAll>
 			</div>
 			<Delivery product={arrayOfProducts[0]} />
 			<Accordion name={'характеристики'}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing
-				elit. Dicta dolore doloremque, eius error facere
-				minima sint unde. Beatae ea iusto magnam mollitia
-				porro quam recusandae reiciendis, repellendus
-				repudiandae vitae, voluptatibus.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
+				doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
+				mollitia porro quam recusandae reiciendis, repellendus repudiandae
+				vitae, voluptatibus.
 			</Accordion>
 			<Accordion name={'посмотреть наличие в шоурумах'}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing
-				elit. Dicta dolore doloremque, eius error facere
-				minima sint unde. Beatae ea iusto magnam mollitia
-				porro quam recusandae reiciendis, repellendus
-				repudiandae vitae, voluptatibus.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
+				doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
+				mollitia porro quam recusandae reiciendis, repellendus repudiandae
+				vitae, voluptatibus.
 			</Accordion>
 		</div>
 	)
@@ -71,9 +66,7 @@ interface AccordionI {
 }
 
 const Accordion: FC<AccordionI> = props => {
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
+	const theme = useAppSelector(state => state.theme.isDarkTheme)
 	const [isExpand, handleExpand] = useState(false)
 
 	const bottomVariants: Variants = {
@@ -93,20 +86,10 @@ const Accordion: FC<AccordionI> = props => {
 				onClick={() => handleExpand(prev => !prev)}
 				className={style.accordionTop}>
 				<PropertyName>{props.name}</PropertyName>
-				<div
-					data-is-expand={isExpand}
-					className={style.accordionImageWrapper}>
-					{!theme && (
-						<Image
-							src={vectorDownIcon}
-							alt={'vectorDownIcon'}
-						/>
-					)}
+				<div data-is-expand={isExpand} className={style.accordionImageWrapper}>
+					{!theme && <Image src={vectorDownIcon} alt={'vectorDownIcon'} />}
 					{theme && (
-						<Image
-							src={vectorDownDarkIcon}
-							alt={'vectorDownDarkIcon'}
-						/>
+						<Image src={vectorDownDarkIcon} alt={'vectorDownDarkIcon'} />
 					)}
 				</div>
 			</button>
@@ -125,9 +108,7 @@ const Accordion: FC<AccordionI> = props => {
 }
 
 const Delivery: FC<PropertyI> = props => {
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
+	const theme = useAppSelector(state => state.theme.isDarkTheme)
 
 	return (
 		<div className={style.delivery}>
@@ -138,25 +119,15 @@ const Delivery: FC<PropertyI> = props => {
 					</span>
 					<Link className={style.deliveryLink} href={'#'}>
 						<span>Рассчитать стоимость доставки</span>
-						{!theme && (
-							<Image
-								src={rightArrowIcon}
-								alt={'rightArrowIcon'}
-							/>
-						)}
+						{!theme && <Image src={rightArrowIcon} alt={'rightArrowIcon'} />}
 						{theme && (
-							<Image
-								src={rightArrowDarkIcon}
-								alt={'rightArrowDarkIcon'}
-							/>
+							<Image src={rightArrowDarkIcon} alt={'rightArrowDarkIcon'} />
 						)}
 					</Link>
 				</>
 			)}
 			{!props.product.quantity && (
-				<span className={style.deliveryCount}>
-					В наличии нет товаров
-				</span>
+				<span className={style.deliveryCount}>В наличии нет товаров</span>
 			)}
 		</div>
 	)
@@ -176,9 +147,7 @@ const Sizes: FC<PropertyI> = props => {
 						onClick={() => {
 							setCurrentSize(index)
 						}}>
-						<span className={style.handlerSizeText}>
-							{value}
-						</span>
+						<span className={style.handlerSizeText}>{value}</span>
 					</button>
 				)
 			})}
@@ -230,22 +199,14 @@ interface AllI extends ComponentWithChildren {
 
 const PropertyAll: FC<AllI> = props => {
 	return (
-		<button
-			className={style.propertyLink}
-			onClick={() => {
-				props.onClick()
-			}}>
+		<button className={style.propertyLink} onClick={() => props.onClick()}>
 			{props.children}
 		</button>
 	)
 }
 
 const PropertyName: FC<ComponentWithChildren> = props => {
-	return (
-		<span className={style.propertyName}>
-			{props.children}
-		</span>
-	)
+	return <span className={style.propertyName}>{props.children}</span>
 }
 
 export default memo(Properties)

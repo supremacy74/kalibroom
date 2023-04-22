@@ -5,6 +5,11 @@
   gap: 1.25rem;
   text-transform: uppercase;
   font-size: 0.875rem;
+  transition: .3s ease-in-out;
+
+  &:hover {
+    background: var(--colorSmokyWhite);
+  }
 
   width: min(100%, 180px);
 }
