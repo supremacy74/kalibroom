@@ -11,9 +11,7 @@ import { arrayOfProducts } from '@/data/arrayOfProducts'
 import PopupSelectMaterial from '@/main/3ui/Popups/PopupSelectMaterial'
 import PopupSizes from '@/main/3ui/Popups/PopupSizes'
 
-interface ProductProps {}
-
-const ProductPage: NextPage<ProductProps> = () => {
+const ProductPage: NextPage = () => {
 	const router = useRouter()
 	const dispatch = useAppDispatch()
 

@@ -23,7 +23,8 @@ const Products: NextPage = () => {
 			},
 		]
 
-		dispatch(setPaths(paths))
+
+		dispatch(setPaths([]))
 	}, [])
 
 	return (

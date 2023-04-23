@@ -4,6 +4,7 @@ import ArraySlider from '@/main/2components/ArraySlider/ArraySlider'
 import Image from 'next/image'
 import { getRandom } from '@/helpers/commonFunctions'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
+import {mainImage} from "@/helpers/importImages";
 
 interface OurFurnitureProps {}
 
@@ -20,10 +21,7 @@ const OurFurniture: FC<OurFurnitureProps> = () => {
 								<Image
 									key={index}
 									className={style.image}
-									src={`https://random.imagecdn.app/${getRandom(
-										1000,
-										1400
-									)}/${getRandom(900, 1500)}`}
+									src={mainImage}
 									alt={'image'}
 									width={900}
 									height={900}

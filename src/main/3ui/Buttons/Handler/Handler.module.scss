@@ -1,0 +1,27 @@
+.labelHandler {
+  width: 2.5rem;
+  height: 1.375rem;
+  border-radius: 10rem;
+  border: var(--colorStroke) solid 1px;
+  background: var(--colorBackground);
+  display: flex;
+  align-items: center;
+  padding: 1px;
+  cursor: pointer;
+  &[data-is-active='true'] {
+    justify-content: flex-end;
+  }
+}
+
+.inputHandler {
+  appearance: none;
+  background: var(--colorWhiteA1);
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  transition: .3s ease-in-out background-color;
+  cursor: pointer;
+  &:checked {
+    background: var(--colorFont);
+  }
+}

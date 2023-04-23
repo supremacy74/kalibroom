@@ -1,26 +1,21 @@
-import { CSSProperties, FC, memo, useEffect, useState } from "react";
+import { CSSProperties, FC, memo, useEffect, useState } from 'react'
 import style from './Popup.module.scss'
 import Image from 'next/image'
 import { crossDarkIcon, crossIcon } from '@/helpers/importIcons'
 import Button from '@/main/3ui/Buttons/Button/Button'
 import PopupWrapper from '@/main/3ui/Popups/PopupWrapper'
 import { AnimatePresence } from 'framer-motion'
-import {useAppDispatch, useAppSelector} from '@/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import Color from '@/main/3ui/Buttons/Color/Color'
 import Material from '@/main/3ui/Buttons/Material/Material'
-import { colorPopupHandleVisible } from "@/store/reducers/popups";
-import { setBodyOverflow } from "@/store/reducers/bodyOverflow";
+import { colorPopupHandleVisible } from '@/store/reducers/popups'
+import { setBodyOverflow } from '@/store/reducers/bodyOverflow'
+import { mainImage } from '@/helpers/importImages'
 
 const PopupSelectMaterial: FC = () => {
 	const isVisible = useAppSelector(state => state.popups.colorPopup.isVisible)
 
-	return (
-		<AnimatePresence>
-			{isVisible && (
-				<Main />
-			)}
-		</AnimatePresence>
-	)
+	return <AnimatePresence>{isVisible && <Main />}</AnimatePresence>
 }
 
 const Main: FC = () => {
@@ -38,15 +33,26 @@ const Main: FC = () => {
 	}
 
 	const colors = ['#c04', '#fa0', '#30f', '#0af', '#6c4']
-	const materials = ['/', '/', '/', '/', '/', '/', '/']
+	const materials = [
+		mainImage,
+		mainImage,
+		mainImage,
+		mainImage,
+		mainImage,
+		mainImage,
+	]
 
 	return (
-		<PopupWrapper style={wrapperStyles} onClick={() => dispatch(colorPopupHandleVisible(false))}>
+		<PopupWrapper
+			style={wrapperStyles}
+			onClick={() => dispatch(colorPopupHandleVisible(false))}>
 			<div className={style.popupSelectMaterial}>
-				<button onClick={() => {
-					dispatch(setBodyOverflow(false))
-					dispatch(colorPopupHandleVisible(false))
-				}} className={style.cross}>
+				<button
+					onClick={() => {
+						dispatch(setBodyOverflow(false))
+						dispatch(colorPopupHandleVisible(false))
+					}}
+					className={style.cross}>
 					{!theme ? (
 						<Image src={crossIcon} alt={'crossIcon'} />
 					) : (

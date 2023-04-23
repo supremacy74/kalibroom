@@ -5,6 +5,7 @@ import { questionIcon } from '@/helpers/importIcons'
 import Properties from '@/main/1modules/ProductPage/Properties/Properties'
 import { productI } from '@/interfaces/product'
 import { createPrice } from '@/helpers/commonFunctions'
+import Button from "@/main/3ui/Buttons/Button/Button";
 
 interface MainRightPartProps {
 	product: productI
@@ -51,12 +52,12 @@ const MainRightPart: FC<MainRightPartProps> = props => {
 						</div>
 					</div>
 					<div className={style.pricePartButtons}>
-						<button className={style.buyButton}>
+						<Button width={'175%'} type={'flat'}>
 							В корзину
-						</button>
-						<button className={style.buyOneClickButton}>
+						</Button>
+						<Button width={'100%'} type={'outline'}>
 							Купить в 1 клик
-						</button>
+						</Button>
 					</div>
 				</div>
 			</div>

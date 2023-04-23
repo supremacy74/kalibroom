@@ -1,4 +1,4 @@
-import { Dispatch, FC, memo, SetStateAction } from 'react'
+import { FC, memo } from 'react'
 import style from './styles/Hero.module.scss'
 import RoundedButtonWithCircle from '@/main/3ui/RoundedButtonWithCircle/RoundedButtonWithCircle'
 import { useRouter } from 'next/router'
@@ -14,7 +14,7 @@ const Title: FC = () => {
 		<motion.h3
 			variants={titleV}
 			{...getCommonAnimation()}
-			transition={getSpringTransition(25, 100)}
+			// transition={getSpringTransition(25, 100)}
 			className={style.title}>
 			Переключайтесь между товарами и идеями, чтобы перейти
 			в каталог товаров, либо посмотреть идеи для

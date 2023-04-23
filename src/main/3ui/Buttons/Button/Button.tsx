@@ -1,7 +1,7 @@
 import { FC, memo, ReactNode } from 'react'
 import style from './Button.module.scss'
 
-type typeButton = 'flat' | 'outline' | 'accentFlat' | 'accentOutline'
+type typeButton = 'flat' | 'outline'
 
 interface typesButton {
 	type: typeButton
@@ -26,14 +26,6 @@ const Button: FC<ButtonI> = props => {
 		{
 			type: 'outline',
 			className: style.outlineButton,
-		},
-		{
-			type: 'accentFlat',
-			className: style.accentFlatButton,
-		},
-		{
-			type: 'accentOutline',
-			className: style.accentOutlineButton,
 		},
 	]
 

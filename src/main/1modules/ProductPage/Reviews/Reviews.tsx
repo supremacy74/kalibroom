@@ -1,17 +1,12 @@
-import {
-	FC,
-	memo,
-} from 'react'
+import { FC, memo } from 'react'
 import style from './styles/Reviews.module.scss'
 import Image from 'next/image'
-import {
-	starDarkIcon,
-	starIcon,
-} from '@/helpers/importIcons'
+import { starDarkIcon, starIcon } from '@/helpers/importIcons'
 import { useAppSelector } from '@/store/hooks'
 import { getRandom } from '@/helpers/commonFunctions'
 import Link from 'next/link'
 import ArraySlider from '@/main/2components/ArraySlider/ArraySlider'
+import {mainImage} from "@/helpers/importImages";
 
 interface ReviewsProps {}
 
@@ -28,14 +23,14 @@ const Reviews: FC<ReviewsProps> = props => {
 }
 
 const Review: FC = () => {
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
+	const theme = useAppSelector(state => state.theme.isDarkTheme)
 
 	return (
 		<div className={style.review}>
 			<div className={style.reviewTop}>
-				<div className={style.avatar}></div>
+				<div className={style.avatar}>
+
+				</div>
 				<div className={style.reviewTitles}>
 					<h4 className={style.name}>Дарья</h4>
 					<span className={style.date}>
@@ -45,16 +40,15 @@ const Review: FC = () => {
 				</div>
 			</div>
 			<div className={style.reviewBody}>
-				Привет. Это я, твой единственный покупатель. Я на
-				протяжении многих лет создавал иллюзию того, что у
-				тебя заказывает много людей диваны, но это был я.
-				Сейчас напишу со всех аккаунтов.
+				Привет. Это я, твой единственный покупатель. Я на протяжении многих лет
+				создавал иллюзию того, что у тебя заказывает много людей диваны, но это
+				был я. Сейчас напишу со всех аккаунтов.
 			</div>
 			<div className={style.reviewImages}>
 				<Link className={style.reviewImageLink} href={'#'}>
 					<Image
 						className={style.reviewImage}
-						src={``}
+						src={mainImage}
 						alt={'image'}
 						width={100}
 						height={100}
@@ -63,7 +57,7 @@ const Review: FC = () => {
 				<Link className={style.reviewImageLink} href={'#'}>
 					<Image
 						className={style.reviewImage}
-						src={``}
+						src={mainImage}
 						alt={'image'}
 						width={100}
 						height={100}
@@ -83,32 +77,15 @@ const Review: FC = () => {
 					)}
 					{theme && (
 						<>
-							<Image
-								src={starDarkIcon}
-								alt={'starDarkIcon'}
-							/>
-							<Image
-								src={starDarkIcon}
-								alt={'starDarkIcon'}
-							/>
-							<Image
-								src={starDarkIcon}
-								alt={'starDarkIcon'}
-							/>
-							<Image
-								src={starDarkIcon}
-								alt={'starDarkIcon'}
-							/>
-							<Image
-								src={starDarkIcon}
-								alt={'starDarkIcon'}
-							/>
+							<Image src={starDarkIcon} alt={'starDarkIcon'} />
+							<Image src={starDarkIcon} alt={'starDarkIcon'} />
+							<Image src={starDarkIcon} alt={'starDarkIcon'} />
+							<Image src={starDarkIcon} alt={'starDarkIcon'} />
+							<Image src={starDarkIcon} alt={'starDarkIcon'} />
 						</>
 					)}
 				</div>
-				<button className={style.complain}>
-					Пожаловаться
-				</button>
+				<button className={style.complain}>Пожаловаться</button>
 			</div>
 		</div>
 	)

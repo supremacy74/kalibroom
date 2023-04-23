@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 const App = ({ Component, pageProps }: AppProps) => {
 	const router = useRouter()
 
-	const arrayOfHeroVisibleURLs = ['/', '/products', '/ideas']
+	const arrayOfHeroVisibleURLs = ['/']
 
 	return (
 		<Provider store={store}>
