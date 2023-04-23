@@ -1,31 +1,31 @@
 .label {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
 }
 
 .input {
-  margin-left: auto;
-  appearance: none;
-  border-radius: 50%;
-  border: var(--colorStroke) solid 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 1.5rem;
-  height: 1.5rem;
-  &:before {
-    content: '';
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    border-radius: inherit;
-    background: transparent;
-    transition: .25s ease-in-out;
-  }
-  &:checked:before {
-    background: var(--colorAccent);
-  }
+	margin-left: auto;
+	appearance: none;
+	border-radius: 50%;
+	border: var(--colorStroke) solid 1px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 1.5rem;
+	height: 1.5rem;
+	&:before {
+		content: '';
+		position: absolute;
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: inherit;
+		background: transparent;
+		transition: 0.25s ease-in-out;
+	}
+	&:checked:before {
+		background: var(--colorAccent);
+	}
 }

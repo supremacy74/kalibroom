@@ -5,6 +5,7 @@ import products from '@/store/reducers/products'
 import paths from '@/store/reducers/paths'
 import search from '@/store/reducers/search'
 import popups from '@/store/reducers/popups'
+import bodyOverflow from '@/store/reducers/bodyOverflow'
 
 import { combineReducers } from 'redux'
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 	paths: paths,
 	search: search,
 	popups: popups,
+	bodyOverflow: bodyOverflow,
 })
 
 export default rootReducer

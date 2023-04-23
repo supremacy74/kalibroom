@@ -8,8 +8,8 @@ import { useEffect } from 'react'
 import { pathT, setPaths } from '@/store/reducers/paths'
 import { useAppDispatch } from '@/store/hooks'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
-import PopupSelectMaterial from "@/main/3ui/Popups/PopupSelectMaterial";
-import PopupSizes from "@/main/3ui/Popups/PopupSizes";
+import PopupSelectMaterial from '@/main/3ui/Popups/PopupSelectMaterial'
+import PopupSizes from '@/main/3ui/Popups/PopupSizes'
 
 interface ProductProps {}
 
@@ -32,7 +32,9 @@ const ProductPage: NextPage<ProductProps> = () => {
 				label: 'category',
 			},
 			{
-				url: `/products/${arrayOfProducts[0].category_id}/${arrayOfProducts[0].name.toLowerCase()}`,
+				url: `/products/${
+					arrayOfProducts[0].category_id
+				}/${arrayOfProducts[0].name.toLowerCase()}`,
 				label: `${arrayOfProducts[0].name}`,
 			},
 		]

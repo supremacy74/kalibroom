@@ -10,7 +10,7 @@ import Button from '@/main/3ui/Buttons/Button/Button'
 import Radio from '@/main/3ui/Buttons/Radio/Radio'
 
 const PopupSizes: FC = () => {
-	const [currentRadio, setCurrentRadio] = useState(0)
+	const [currentRadio, setCurrentRadio] = useState(1)
 
 	const isVisible = useAppSelector(state => state.popups.sizePopup.isVisible)
 	const theme = useAppSelector(state => state.theme.isDarkTheme)
@@ -21,16 +21,16 @@ const PopupSizes: FC = () => {
 		justifyContent: 'flex-end',
 	}
 
-	const sizes = ['123', '123', '123', '123', '123', '123', '123']
+	const sizes = ['120 см', '140 см', '150 см', '160 см', '170 см', '180 см', '190 см']
 
 	const labelStyle: CSSProperties = {
-		padding: '0.875rem 2.5rem'
+		padding: '0.875rem 2.5rem',
 	}
 
 	return (
 		<AnimatePresence>
 			{isVisible && (
-				<PopupWrapper style={wrapperStyles}>
+				<PopupWrapper style={wrapperStyles} onClick={() => dispatch(sizePopupHandleVisible(false))}>
 					<div className={style.sizePopup}>
 						<div className={style.top}>
 							<h4 className={style.title}>Размер</h4>
@@ -45,9 +45,10 @@ const PopupSizes: FC = () => {
 							</button>
 						</div>
 						<main className={style.sizeMain}>
-							{sizes.map((value, index) => {
+							{[...sizes, ...sizes, ...sizes, ...sizes].map((value, index) => {
 								return (
 									<Radio
+										key={index}
 										title={value}
 										name={'size'}
 										onChange={() => setCurrentRadio(index)}

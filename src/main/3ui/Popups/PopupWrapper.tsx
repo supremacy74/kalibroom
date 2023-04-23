@@ -7,6 +7,7 @@ import { getCommonAnimation, getEaseAnimation } from '@/helpers/animations'
 interface PopupWrapper {
 	children: ReactNode
 	style?: CSSProperties
+	onClick?: CallableFunction
 }
 
 const PopupWrapper: FC<PopupWrapper> = props => {
@@ -17,6 +18,10 @@ const PopupWrapper: FC<PopupWrapper> = props => {
 			transition={getEaseAnimation()}
 			style={props.style}
 			className={style.wrapper}>
+			<div
+				className={style.back}
+				onClick={() => props.onClick && props.onClick()}
+			/>
 			{props.children}
 		</motion.div>
 	)

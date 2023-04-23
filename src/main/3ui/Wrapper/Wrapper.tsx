@@ -1,6 +1,6 @@
 import {FC, memo, ReactNode, useEffect} from 'react'
 import style from './styles/Wrapper.module.scss'
-import {useAppDispatch} from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {useTheme} from "@/helpers/useTheme";
 
 interface WrapperProps {
@@ -9,6 +9,17 @@ interface WrapperProps {
 
 const Wrapper: FC<WrapperProps> = props => {
 	useTheme()
+
+	const bodyOverflow = useAppSelector(state => state.bodyOverflow)
+
+	useEffect(() => {
+		console.log(bodyOverflow)
+		if (!bodyOverflow) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = 'unset'
+		}
+	}, [bodyOverflow])
 
 	return (
 		<div className={style.outerWrapper}>

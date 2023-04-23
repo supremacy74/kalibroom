@@ -18,7 +18,7 @@ const Radio: FC<RadioI> = props => {
 				className={style.input}
 				name={props.name}
 				type='radio'
-				value={props.value}
+				checked={props.value === props.index}
 				onChange={() => props.onChange()}
 			/>
 		</label>
