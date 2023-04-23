@@ -49,7 +49,7 @@ const ProductPage: NextPage<ProductProps> = () => {
 				<Content />
 
 				<PopupSelectMaterial />
-				{/*<PopupSizes />*/}
+				<PopupSizes />
 			</Main>
 		</>
 	)

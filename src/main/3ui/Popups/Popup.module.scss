@@ -27,6 +27,9 @@
 
 .sizePopup {
 	width: min(100%, 25rem);
+	background: var(--colorBackground);
+	height: 100%;
+	max-height: 100vh;
 }
 
 .top {
@@ -34,9 +37,12 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 1.5rem 2.5rem;
+	border-bottom: var(--colorStroke) solid 1px;
 }
 
 .topTitle {
+	font-size: 1.5rem;
+	font-weight: 500;
 }
 
 .title {
@@ -44,6 +50,7 @@
 	font-weight: 500;
 }
 
+.sizeMain,
 .main {
 	overflow: hidden auto;
 	height: 40vh;
@@ -66,6 +73,12 @@
 		border-radius: 2rem;
 		background: var(--colorFont);
 	}
+}
+
+.sizeMain {
+	height: 100%;
+	padding: 0;
+	gap: 0;
 }
 
 .materialsMain {
@@ -98,10 +111,18 @@
 	gap: 1.875rem;
 }
 
+.sizeButtons,
 .buttons {
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
+}
+
+.sizeButtons {
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+	padding: 1.125rem 2.5rem;
 }
 
 .button {
