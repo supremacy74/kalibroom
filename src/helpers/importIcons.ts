@@ -47,7 +47,7 @@ export const vectorDownDarkIcon = require('/public/icons/vectorDownDark.svg')
 export const moonIcon = require('/public/icons/moon.svg')
 export const sunIcon = require('/public/icons/sun.svg')
 
-// vector down
+// vector top
 export const vectorTopImage = require('/public/icons/vectorTop.svg')
 export const vectorTopDarkImage = require('/public/icons/vectorDarkTop.svg')
 

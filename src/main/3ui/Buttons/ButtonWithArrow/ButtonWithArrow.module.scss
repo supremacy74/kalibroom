@@ -1,0 +1,63 @@
+.buttonWrapper {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	height: 2.5rem;
+
+	@media (max-width: 800px) {
+		height: 2rem;
+	}
+
+	& .text,
+	& .circle {
+		transition: 0.25s ease-in-out;
+	}
+	&:hover[data-disabled='false'] .text,
+	&[data-is-active='true'] {
+		border: none;
+		background: var(--colorAccent);
+		color: #1c1c1c;
+	}
+	&:hover[data-disabled='false'] .circle,
+	&[data-is-active='true'] {
+		background: var(--colorAccent);
+		rotate: 90deg;
+	}
+	&:active[data-disabled='false'] .text,
+	&:active[data-disabled='false'] .circle {
+		transition: 0.15s ease-out;
+		opacity: 0.8;
+	}
+	&[data-disabled='true'] .text,
+	&[data-disabled='true'] .circle {
+		filter: grayscale(1) brightness(0.5);
+	}
+}
+
+.text {
+	border-radius: 10rem;
+	height: 100%;
+	min-width: 11.25rem;
+	border: var(--colorFont) solid 1px;
+	color: var(--colorFont);
+	font-size: 1.125rem;
+	text-transform: capitalize;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+
+	@media (max-width: 800px) {
+		min-width: 6.25rem;
+	}
+}
+
+.circle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	height: 100%;
+	aspect-ratio: 1/1;
+	background: var(--colorFont);
+}

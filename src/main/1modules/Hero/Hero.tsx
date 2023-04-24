@@ -8,6 +8,7 @@ import {
 	getSpringTransition,
 } from '@/helpers/animations'
 import { titleV } from '@/main/1modules/Hero/styles/variants'
+import ButtonWithArrow from "@/main/3ui/Buttons/ButtonWithArrow/ButtonWithArrow";
 
 const Title: FC = () => {
 	return (
@@ -32,12 +33,8 @@ const Hero: FC = props => {
 				{router.pathname === '/' && <Title />}
 			</AnimatePresence>
 			<div className={style.buttons}>
-				<RoundedButtonWithCircle link={'/products'}>
-					Товары
-				</RoundedButtonWithCircle>
-				<RoundedButtonWithCircle link={'/ideas'}>
-					Идеи
-				</RoundedButtonWithCircle>
+				<ButtonWithArrow text={'Товары'} href={'/products'} disabled={false} />
+				<ButtonWithArrow text={'Идеи'} href={'/ideas'} disabled={false} />
 			</div>
 		</div>
 	)

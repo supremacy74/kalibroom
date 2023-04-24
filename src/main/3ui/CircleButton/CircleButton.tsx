@@ -1,12 +1,5 @@
-import {
-	Dispatch,
-	FC,
-	memo,
-	SetStateAction,
-	useEffect,
-	useState,
-} from 'react'
-import style from './styles/CircleButton.module.scss'
+import { Dispatch, FC, memo, SetStateAction, useState } from 'react'
+import style from './CircleButton.module.scss'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
@@ -34,8 +27,7 @@ const CircleButton: FC<CircleButtonProps> = props => {
 			onMouseLeave={() => handleHover(false)}
 			onClick={() => {
 				props.onClick && props.onClick()
-				props.handleActive &&
-					props.handleActive(prev => !prev)
+				props.handleActive && props.handleActive(prev => !prev)
 			}}
 			className={`${style.button} ${props.className}`}>
 			<motion.div
@@ -45,11 +37,7 @@ const CircleButton: FC<CircleButtonProps> = props => {
 						? { opacity: 1 }
 						: { opacity: 0 }
 				}>
-				<Image
-					className={style.icon}
-					src={props.icon}
-					alt={'icon'}
-				/>
+				<Image className={style.icon} src={props.icon} alt={'icon'} />
 			</motion.div>
 			<motion.div
 				className={style.iconWrapper}
@@ -58,24 +46,14 @@ const CircleButton: FC<CircleButtonProps> = props => {
 						? { opacity: 1 }
 						: { opacity: 0 }
 				}>
-				<Image
-					className={style.icon}
-					src={props.hoverIcon}
-					alt={'icon'}
-				/>
+				<Image className={style.icon} src={props.hoverIcon} alt={'icon'} />
 			</motion.div>
 			<motion.div
 				className={style.iconWrapper}
 				animate={
-					props.activeIcon && props.isActive
-						? { opacity: 1 }
-						: { opacity: 0 }
+					props.activeIcon && props.isActive ? { opacity: 1 } : { opacity: 0 }
 				}>
-				<Image
-					className={style.icon}
-					src={props.activeIcon}
-					alt={'icon'}
-				/>
+				<Image className={style.icon} src={props.activeIcon} alt={'icon'} />
 			</motion.div>
 		</button>
 	)

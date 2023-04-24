@@ -5,6 +5,7 @@ import Main from '@/main/3ui/Main/Main'
 import style from '@/styles/products/ProductCategory.module.scss'
 import RadioHandler from '@/main/3ui/Buttons/Handler/Handler'
 import { useState } from 'react'
+import ButtonWithArrow from "@/main/3ui/Buttons/ButtonWithArrow/ButtonWithArrow";
 
 const ProductsCategory: NextPage = () => {
 	const router = useRouter()
@@ -23,6 +24,7 @@ const ProductsCategory: NextPage = () => {
 					onChange={() => handleHandler(prev => !prev)}
 					name={'handler'}
 				/>
+				<ButtonWithArrow text={'товары'} disabled={false} onClick={() => {}} />
 			</Main>
 		</>
 	)
