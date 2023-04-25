@@ -1,5 +1,3 @@
-import { propertyI } from '@/interfaces/product'
-
 export interface categoryI {
 	id: number
 	name?: string
