@@ -1,66 +1,38 @@
 import { useAppDispatch } from '@/store/hooks'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { setHeaderBottomPartVisible } from '@/store/reducers/headerBottomPart'
-export const useHeaderVisible: Function = () => {
-	const [headerBottomIsVisible, handleHeaderBottomVisible] = useState(true)
 
+export const useHeaderVisible: Function = () => {
 	const dispatch = useAppDispatch()
 
-	useEffect(() => {
-		dispatch(setHeaderBottomPartVisible(headerBottomIsVisible))
-	}, [headerBottomIsVisible])
+	// let lastPosition = 0
 
-	let lastScrollPosition = 0
-
-	// const scrollEventListener = () => {
-	// 	if (lastScrollPosition > scrollY && scrollY < 300) {
-	// 		handleHeaderBottomVisible(true)
-	// 	} else if (lastScrollPosition < scrollY && scrollY > 300) {
-	// 		handleHeaderBottomVisible(false)
-	// 	}
-	//
-	// 	lastScrollPosition = scrollY
-	//
-	// 	setTimeout(() => {
-	// 		lastScrollPosition = scrollY
-	// 	}, 100)
-	//
-	// 	console.log(lastScrollPosition, scrollY)
-	// }
-
-	const wheelEventListener = (e: WheelEvent) => {
-		if (scrollY > 300 && e.deltaY > 0) {
-			handleHeaderBottomVisible(false)
-		} else if (scrollY < 300 && e.deltaY < 0) {
-			handleHeaderBottomVisible(true)
+	const checkWidthSizeAndScroll = () => {
+		if (innerWidth < 1300) {
+			dispatch(setHeaderBottomPartVisible(false))
+			return
 		}
 
-		if (innerWidth <= 1300) {
-			handleHeaderBottomVisible(false)
-		}
-	}
-
-	const resizeEventListener = () => {
-		if (innerWidth <= 1300) {
-			handleHeaderBottomVisible(false)
+		if (scrollY < 320) {
+			setTimeout(() => {
+				dispatch(setHeaderBottomPartVisible(true))
+			}, 1000)
 		} else {
-			handleHeaderBottomVisible(true)
+			setTimeout(() => {
+				dispatch(setHeaderBottomPartVisible(false))
+			}, 1000)
 		}
+
+		// if (scrollY > 400) {
+		// 	dispatch(setHeaderBottomPartVisible(false))
+		// } else if (scrollY <= 400) {
+		// 	dispatch(setHeaderBottomPartVisible(true))
+		// }
 	}
 
 	useEffect(() => {
-		if (innerWidth <= 1300) {
-			handleHeaderBottomVisible(false)
-		}
-
-		document.addEventListener('wheel', (e: WheelEvent) => wheelEventListener(e))
-		// document.addEventListener('scroll', scrollEventListener)
-		window.addEventListener('resize', resizeEventListener)
-
-		return () => {
-			document.removeEventListener('wheel', (e: WheelEvent) => wheelEventListener(e))
-			// document.removeEventListener('scroll', scrollEventListener)
-			window.removeEventListener('resize', resizeEventListener)
-		}
+		checkWidthSizeAndScroll()
+		document.addEventListener('scroll', checkWidthSizeAndScroll)
+		window.addEventListener('resize', checkWidthSizeAndScroll)
 	}, [])
 }
