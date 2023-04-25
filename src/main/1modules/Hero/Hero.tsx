@@ -12,15 +12,15 @@ import ButtonWithArrow from "@/main/3ui/Buttons/ButtonWithArrow/ButtonWithArrow"
 
 const Title: FC = () => {
 	return (
-		<motion.h3
-			variants={titleV}
-			{...getCommonAnimation()}
+		<h3
+			// variants={titleV}
+			// {...getCommonAnimation()}
 			// transition={getSpringTransition(25, 100)}
 			className={style.title}>
 			Переключайтесь между товарами и идеями, чтобы перейти
 			в каталог товаров, либо посмотреть идеи для
 			вдохновения
-		</motion.h3>
+		</h3>
 	)
 }
 

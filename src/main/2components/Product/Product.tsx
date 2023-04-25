@@ -23,9 +23,7 @@ const Product: FC<ProductProps> = props => {
 		useState<boolean>(false)
 
 	return (
-		<motion.div
-			{...inViewAnimation}
-			className={style.product}>
+		<div className={style.product}>
 			<motion.div
 				animate={
 					isLoaded
@@ -59,7 +57,7 @@ const Product: FC<ProductProps> = props => {
 				isActive={isActive}
 				product={props.product}
 			/>
-		</motion.div>
+		</div>
 	)
 }
 
