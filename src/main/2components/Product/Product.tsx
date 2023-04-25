@@ -1,5 +1,5 @@
 import { FC, memo, useState } from 'react'
-import style from './styles/Product.module.scss'
+import style from './Product.module.scss'
 import { motion } from 'framer-motion'
 import { getSpringTransition, inViewAnimation } from '@/helpers/animations'
 import { productI } from '@/interfaces/product'

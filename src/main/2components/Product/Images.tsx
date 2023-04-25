@@ -1,7 +1,7 @@
 import { productI } from '@/interfaces/product'
 import { Dispatch, FC, memo, SetStateAction } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import style from '@/main/2components/Product/styles/Product.module.scss'
+import style from '@/main/2components/Product/Product.module.scss'
 import Image from 'next/image'
 import ImageNotFoundBlock from '@/main/3ui/ImageNotFoundBlock/ImageNotFoundBlock'
 

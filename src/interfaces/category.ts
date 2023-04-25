@@ -1,8 +1,8 @@
 import { propertyI } from '@/interfaces/product'
 
 export interface categoryI {
-	id: string
-	title: string
-	slug: string
-	properties: propertyI[]
+	id: number
+	name?: string
+	slug?: string
+	parent_id?: number
 }

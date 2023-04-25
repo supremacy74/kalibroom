@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { FC, memo } from 'react'
-import style from './styles/CatalogMenu.module.scss'
+import style from './CatalogMenu.module.scss'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { getCommonAnimation, getSpringTransition } from '@/helpers/animations'
 import { menuV } from '@/helpers/variants'

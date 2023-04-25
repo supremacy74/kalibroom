@@ -1,6 +1,6 @@
 import { Dispatch, FC, memo, SetStateAction } from 'react'
 import { productI } from '@/interfaces/product'
-import style from '@/main/2components/Product/styles/Product.module.scss'
+import style from '@/main/2components/Product/Product.module.scss'
 import CircleButton from '@/main/3ui/CircleButton/CircleButton'
 import { cartActiveIcon, cartHoverIcon, cartIcon, downloadIcon, heartDarkIcon, scoreIcon } from '@/helpers/importIcons'
 import Image from 'next/image'

@@ -1,7 +1,7 @@
 import { productI } from '@/interfaces/product'
 import { Dispatch, FC, memo, SetStateAction } from 'react'
 import Link from 'next/link'
-import style from '@/main/2components/Product/styles/Product.module.scss'
+import style from '@/main/2components/Product/Product.module.scss'
 import { createPrice } from '@/helpers/commonFunctions'
 import CircleButton from '@/main/3ui/CircleButton/CircleButton'
 import { cartActiveIcon, cartHoverIcon, cartIcon } from '@/helpers/importIcons'

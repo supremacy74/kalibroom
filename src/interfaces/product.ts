@@ -1,16 +1,16 @@
 export interface productI {
 	// main data
-	id: string
-	slug: string
-	article: string
-	name: string
+	id: number
+	slug?: string
+	article?: string
+	name?: string
 
 	// price and discount
-	price: number
+	price?: number
 	discount?: number
 
 	// category
-	category_id: number
+	category_id?: number
 
 	// common
 	model_3d?: string
@@ -22,8 +22,8 @@ export interface productI {
 	showrooms?: showroomI[]
 
 	// customization
-	images: imageI[]
-	materials: materialI[]
+	images?: imageI[]
+	materials?: materialI[]
 
 	// content
 	videos?: string[]
@@ -35,9 +35,9 @@ export interface productI {
 }
 
 export interface imageI {
-	color: string
-	material: string
-	imageURL: string
+	color?: string
+	material?: string
+	imageURL?: string
 }
 
 export interface propertyI {
