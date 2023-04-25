@@ -8,14 +8,10 @@ interface ContainerForCellsProps {
 	array: productI[]
 }
 
-const ContainerForCells: FC<
-	ContainerForCellsProps
-> = props => {
-	const [columnsArray, setColumnsArray] = useState([
-		1, 2, 3, 4,
-	])
+const ContainerForCells: FC<ContainerForCellsProps> = props => {
+	const [columnsArray, setColumnsArray] = useState([1, 2, 3, 4])
 
-	const checkClientWidth = () => {
+	const checkClientWidth = async () => {
 		if (window.innerWidth <= 840) {
 			setColumnsArray([1, 2])
 		} else if (window.innerWidth <= 1200) {
@@ -27,13 +23,9 @@ const ContainerForCells: FC<
 
 	useEffect(() => {
 		checkClientWidth()
-		window.addEventListener('resize', () =>
-			checkClientWidth()
-		)
+		window.addEventListener('resize', async () => checkClientWidth())
 		return () =>
-			window.removeEventListener('resize', () =>
-				checkClientWidth()
-			)
+			window.removeEventListener('resize', async () => checkClientWidth())
 	}, [])
 
 	return (
@@ -42,13 +34,8 @@ const ContainerForCells: FC<
 				return (
 					<motion.div key={columnIndex} className={style.column}>
 						{props.array.map((product, index) => {
-							if (
-								columnIndex ===
-								index % columnsArray.length
-							) {
-								return (
-									<Product key={index} product={product} />
-								)
+							if (columnIndex === index % columnsArray.length) {
+								return <Product key={index} product={product} />
 							}
 						})}
 					</motion.div>
@@ -59,4 +46,4 @@ const ContainerForCells: FC<
 }
 
 ContainerForCells.displayName = 'ContainerForCells'
-export default memo(ContainerForCells)
+export default ContainerForCells

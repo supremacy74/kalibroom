@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import style from './styles/BottomHeaderPart.module.scss'
 import CatalogButton from '@/main/3ui/headerUi/CatalogButton/CatalogButton'
@@ -43,12 +43,12 @@ const BottomHeaderPart: FC = () => {
 		{
 			title: 'Товары',
 			active: productsIsOpen,
-			onClick: () => dispatch(toggleCatalogCategoryToProducts()),
+			onClick: async () => dispatch(toggleCatalogCategoryToProducts()),
 		},
 		{
 			title: 'Идеи',
 			active: ideasIsOpen,
-			onClick: () => dispatch(toggleCatalogCategoryToIdeas()),
+			onClick: async () => dispatch(toggleCatalogCategoryToIdeas()),
 		},
 	]
 
@@ -64,7 +64,8 @@ const BottomHeaderPart: FC = () => {
 					}}
 					className={style.part}>
 					<CatalogButton />
-					{!catalogIsOpen && setTimeout(() => false, 1000) &&
+					{!catalogIsOpen &&
+						setTimeout(() => false, 1000) &&
 						catalogMenuData.products.map((value, index) => {
 							if (index < 5) {
 								return (
@@ -97,4 +98,4 @@ const BottomHeaderPart: FC = () => {
 }
 
 BottomHeaderPart.displayName = 'BottomHeaderPart'
-export default memo(BottomHeaderPart)
+export default BottomHeaderPart

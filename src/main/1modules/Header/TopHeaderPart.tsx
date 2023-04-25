@@ -39,4 +39,4 @@ const TopHeaderPart: FC = () => {
 }
 
 TopHeaderPart.displayName = 'TopHeaderPart'
-export default memo(TopHeaderPart)
+export default TopHeaderPart

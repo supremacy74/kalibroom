@@ -25,4 +25,4 @@ const ProductBreadcrumb: FC = () => {
 	)
 }
 
-export default memo(ProductBreadcrumb)
+export default ProductBreadcrumb

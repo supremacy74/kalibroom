@@ -25,15 +25,16 @@ const Images: FC<ImagesI> = props => {
 										data-is-loaded={props.isLoaded}
 										className={style.innerImageWrapper}>
 										<Image
-											onLoad={() =>
+											onLoad={async () =>
 												props.handleIsLoaded(true)
 											}
-											quality={80}
+											quality={60}
 											className={style.image}
 											src={image.imageURL}
 											alt={'productImage'}
 											width={800}
-											height={1200}
+											height={800}
+											loading='lazy'
 										/>
 									</motion.div>
 								)}

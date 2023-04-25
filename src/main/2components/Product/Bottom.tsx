@@ -4,11 +4,7 @@ import Link from 'next/link'
 import style from '@/main/2components/Product/styles/Product.module.scss'
 import { createPrice } from '@/helpers/commonFunctions'
 import CircleButton from '@/main/3ui/CircleButton/CircleButton'
-import {
-	cartActiveIcon,
-	cartHoverIcon,
-	cartIcon,
-} from '@/helpers/importIcons'
+import { cartActiveIcon, cartHoverIcon, cartIcon } from '@/helpers/importIcons'
 
 interface BottomI {
 	product: productI
@@ -25,14 +21,9 @@ const Bottom: FC<BottomI> = props => {
 				<div className={style.text}>
 					<div className={style.title}>
 						<span>{props.product.name}</span>
-						<span className={style.discount}>
-							{' '}
-							-{props.product.discount}%
-						</span>
+						<span className={style.discount}> -{props.product.discount}%</span>
 					</div>
-					<div className={style.category}>
-						{props.product.category_id}
-					</div>
+					<div className={style.category}>{props.product.category_id}</div>
 				</div>
 				<div className={style.price}>
 					<span className={style.currentPrice}>
@@ -42,8 +33,7 @@ const Bottom: FC<BottomI> = props => {
 						<span className={style.oldPrice}>
 							{createPrice(
 								props.product.price +
-									(props.product.price / 100) *
-										props.product.discount
+									(props.product.price / 100) * props.product.discount
 							)}{' '}
 							₽
 						</span>
@@ -62,4 +52,4 @@ const Bottom: FC<BottomI> = props => {
 	)
 }
 
-export default memo(Bottom)
+export default Bottom

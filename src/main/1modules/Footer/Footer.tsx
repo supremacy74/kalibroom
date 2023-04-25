@@ -21,20 +21,14 @@ import {
 	worldIcon,
 } from '@/helpers/importIcons'
 import Logo from '@/main/3ui/Logo/Logo'
-import {
-	footerLinks,
-	footerLinksI,
-} from '@/data/footerLinks'
+import { footerLinks, footerLinksI } from '@/data/footerLinks'
 import { useAppSelector } from '@/store/hooks'
 import Location from '@/main/3ui/Location/Location'
 import { motion } from 'framer-motion'
-import {getCommonAnimation} from "@/helpers/animations";
-
+import { getCommonAnimation } from '@/helpers/animations'
 
 const Footer: FC = () => {
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
+	const theme = useAppSelector(state => state.theme.isDarkTheme)
 
 	return (
 		<div className={style.footer}>
@@ -43,51 +37,27 @@ const Footer: FC = () => {
 				<Logo className={style.logo} />
 				<div className={style.rightPart}>
 					{footerLinks.map((block, blockIndex) => {
-						return (
-							<FooterBlock key={blockIndex} block={block} />
-						)
+						return <FooterBlock key={blockIndex} block={block} />
 					})}
 				</div>
 			</main>
 			<div className={style.bottom}>
-				<div className={style.copyright}>
-					© 2022–2023 ООО «Kalibroom»
-				</div>
+				<div className={style.copyright}>© 2022–2023 ООО «Kalibroom»</div>
 				<div className={style.paymentMethod}>
-					<div className={style.paymentMethodTitle}>
-						Способы оплаты
-					</div>
+					<div className={style.paymentMethodTitle}>Способы оплаты</div>
 					<div className={style.paymentMethodList}>
 						{!theme && (
 							<>
-								<Image
-									src={mastercardIcon}
-									alt={'mastercardIcon'}
-								/>
-								<Image
-									src={visaIcon}
-									alt={'mastercardIcon'}
-								/>
-								<Image
-									src={worldIcon}
-									alt={'mastercardIcon'}
-								/>
+								<Image src={mastercardIcon} alt={'mastercardIcon'} />
+								<Image src={visaIcon} alt={'mastercardIcon'} />
+								<Image src={worldIcon} alt={'mastercardIcon'} />
 							</>
 						)}
 						{theme && (
 							<>
-								<Image
-									src={mastercardDarkIcon}
-									alt={'mastercardIcon'}
-								/>
-								<Image
-									src={visaDarkIcon}
-									alt={'mastercardIcon'}
-								/>
-								<Image
-									src={worldDarkIcon}
-									alt={'mastercardIcon'}
-								/>
+								<Image src={mastercardDarkIcon} alt={'mastercardIcon'} />
+								<Image src={visaDarkIcon} alt={'mastercardIcon'} />
+								<Image src={worldDarkIcon} alt={'mastercardIcon'} />
 							</>
 						)}
 					</div>
@@ -111,16 +81,12 @@ interface FooterBlockI {
 }
 
 const FooterBlock: FC<FooterBlockI> = props => {
-	const theme = useAppSelector(
-		state => state.theme.isDarkTheme
-	)
+	const theme = useAppSelector(state => state.theme.isDarkTheme)
 
-	const [isVisible, handleVisible] =
-		useState<boolean>(false)
-	const [isMobile, handleIiMobile] =
-		useState<boolean>(false)
+	const [isVisible, handleVisible] = useState<boolean>(false)
+	const [isMobile, handleIiMobile] = useState<boolean>(false)
 
-	const resizeFunction = () => {
+	const resizeFunction = async () => {
 		if (innerWidth > 720) {
 			handleIiMobile(false)
 		} else {
@@ -130,8 +96,7 @@ const FooterBlock: FC<FooterBlockI> = props => {
 
 	useEffect(() => {
 		window.addEventListener('resize', resizeFunction)
-		return () =>
-			window.removeEventListener('resize', resizeFunction)
+		return () => window.removeEventListener('resize', resizeFunction)
 	}, [])
 
 	return (
@@ -168,10 +133,7 @@ const FooterBlock: FC<FooterBlockI> = props => {
 					className={style.list}>
 					{props.block.blockList.map((item, itemIndex) => {
 						return (
-							<Link
-								key={itemIndex}
-								className={style.item}
-								href={item.link}>
+							<Link key={itemIndex} className={style.item} href={item.link}>
 								{item.name}
 							</Link>
 						)
@@ -187,16 +149,13 @@ const Contacts: FC<{ theme: boolean }> = ({ theme }) => {
 		<div className={style.contacts}>
 			<div className={style.contactsBlock}>
 				<Location className={style.location} />
-				<div
-					className={`${style.mailContact} ${style.contact}`}>
+				<div className={`${style.mailContact} ${style.contact}`}>
 					mymailadress@kalibroom.com
 				</div>
-				<div
-					className={`${style.phoneContact} ${style.contact}`}>
+				<div className={`${style.phoneContact} ${style.contact}`}>
 					Тел:+7 999 999-99-99
 				</div>
-				<div
-					className={`${style.timeContact} ${style.contact}`}>
+				<div className={`${style.timeContact} ${style.contact}`}>
 					Работаем: пн-пт с 9 до 21
 				</div>
 			</div>
@@ -210,23 +169,12 @@ const Contacts: FC<{ theme: boolean }> = ({ theme }) => {
 					{theme && <Image src={vkDarkIcon} alt={'vk'} />}
 				</Link>
 				<Link className={style.link} href={''}>
-					{!theme && (
-						<Image src={telegramIcon} alt={'telegram'} />
-					)}
-					{theme && (
-						<Image
-							src={telegramDarkIcon}
-							alt={'telegram'}
-						/>
-					)}
+					{!theme && <Image src={telegramIcon} alt={'telegram'} />}
+					{theme && <Image src={telegramDarkIcon} alt={'telegram'} />}
 				</Link>
 				<Link className={style.link} href={''}>
-					{!theme && (
-						<Image src={whatsappIcon} alt={'3d'} />
-					)}
-					{theme && (
-						<Image src={whatsappDarkIcon} alt={'3d'} />
-					)}
+					{!theme && <Image src={whatsappIcon} alt={'3d'} />}
+					{theme && <Image src={whatsappDarkIcon} alt={'3d'} />}
 				</Link>
 			</div>
 		</div>

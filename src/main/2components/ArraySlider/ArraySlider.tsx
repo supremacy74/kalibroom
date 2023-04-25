@@ -18,13 +18,13 @@ const ArraySlider: FC<ArraySliderI> = props => {
 		state => state.theme.isDarkTheme
 	)
 
-	const leftSlide = () => {
+	const leftSlide = async () => {
 		if (currentSlide >= 1) {
 			setSlide(prev => prev - 1)
 		}
 	}
 
-	const rightSlide = () => {
+	const rightSlide = async () => {
 		if (currentSlide <= props.array.length - 4) {
 			setSlide(prev => prev + 1)
 		}
@@ -84,4 +84,4 @@ const ArraySlider: FC<ArraySliderI> = props => {
 }
 
 ArraySlider.displayName = 'ArraySlider'
-export default memo(ArraySlider)
+export default ArraySlider

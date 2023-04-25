@@ -1,10 +1,7 @@
 import { FC, memo, useState } from 'react'
 import style from './styles/Product.module.scss'
 import { motion } from 'framer-motion'
-import {
-	getSpringTransition,
-	inViewAnimation,
-} from '@/helpers/animations'
+import { getSpringTransition, inViewAnimation } from '@/helpers/animations'
 import { productI } from '@/interfaces/product'
 import Skeleton from '@/main/3ui/Skeleton/Skeleton'
 import Bottom from '@/main/2components/Product/Bottom'
@@ -17,19 +14,13 @@ interface ProductProps {
 
 const Product: FC<ProductProps> = props => {
 	const [isActive, handleActive] = useState<boolean>(false)
-	const [currentImage, setCurrentImage] =
-		useState<number>(0)
-	const [isLoaded, handleIsLoaded] =
-		useState<boolean>(false)
+	const [currentImage, setCurrentImage] = useState<number>(0)
+	const [isLoaded, handleIsLoaded] = useState<boolean>(false)
 
 	return (
 		<div className={style.product}>
 			<motion.div
-				animate={
-					isLoaded
-						? { height: 'auto' }
-						: { height: '10rem' }
-				}
+				animate={isLoaded ? { height: 'auto' } : { height: '10rem' }}
 				data-is-active={isActive}
 				transition={{
 					...getSpringTransition(20, 50, -1),

@@ -34,12 +34,12 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 		{
 			title: 'Товары',
 			active: productsIsOpen,
-			onClick: () => dispatch(toggleCatalogCategoryToProducts()),
+			onClick: async () => dispatch(toggleCatalogCategoryToProducts()),
 		},
 		{
 			title: 'Идеи',
 			active: ideasIsOpen,
-			onClick: () => dispatch(toggleCatalogCategoryToIdeas()),
+			onClick: async () => dispatch(toggleCatalogCategoryToIdeas()),
 		},
 	]
 
@@ -119,4 +119,4 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 }
 
 CatalogMenu.displayName = 'CatalogMenu'
-export default memo(CatalogMenu)
+export default CatalogMenu

@@ -16,7 +16,7 @@ interface ImageLayoutI {
 }
 
 const ImageLayout: FC<ImageLayoutI> = props => {
-	const handleImageLeft = () => {
+	const handleImageLeft = async () => {
 		if (props.currentImage > 0) {
 			props.setCurrentImage(prev => prev - 1)
 		} else {
@@ -25,7 +25,7 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 		props.handleIsLoaded(false)
 	}
 
-	const handleImageRight = () => {
+	const handleImageRight = async () => {
 		if (
 			props.currentImage <
 			props.product.images.length - 1
@@ -95,4 +95,4 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 	)
 }
 
-export default memo(ImageLayout)
+export default ImageLayout

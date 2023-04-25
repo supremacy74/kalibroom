@@ -41,4 +41,4 @@ const Hero: FC = props => {
 }
 
 Hero.displayName = 'Hero'
-export default memo(Hero)
+export default Hero

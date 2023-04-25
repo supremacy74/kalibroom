@@ -60,4 +60,4 @@ const CategoryMenu: FC<CategoryMenuProps> = props => {
 }
 
 CategoryMenu.displayName = 'CategoryMenu'
-export default memo(CategoryMenu)
+export default CategoryMenu

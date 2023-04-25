@@ -10,4 +10,4 @@ const Skeleton: FC<SkeletonI> = props => {
 }
 
 Skeleton.displayName = 'Skeleton'
-export default memo(Skeleton)
+export default Skeleton

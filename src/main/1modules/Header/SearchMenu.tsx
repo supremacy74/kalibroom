@@ -170,4 +170,4 @@ const SearchMenu: FC = () => {
 }
 
 SearchMenu.displayName = 'SearchMenu'
-export default memo(SearchMenu)
+export default SearchMenu

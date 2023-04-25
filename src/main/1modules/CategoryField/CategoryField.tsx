@@ -88,4 +88,4 @@ const PropertyBlock: FC<PropertyBlockI> = props => {
 }
 
 CategoryField.displayName = 'CategoryField'
-export default memo(CategoryField)
+export default CategoryField
