@@ -3,9 +3,9 @@
   display: flex;
   justify-content: center;
   overflow-x: hidden;
+  position: relative;
 }
 
 .innerWrapper {
   width: min(100%, 90rem);
-  position: relative;
 }

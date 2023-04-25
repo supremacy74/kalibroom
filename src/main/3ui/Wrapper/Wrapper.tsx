@@ -1,6 +1,6 @@
 import {FC, memo, ReactNode, useEffect} from 'react'
 import style from './styles/Wrapper.module.scss'
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppSelector } from "@/store/hooks";
 import {useTheme} from "@/helpers/useTheme";
 
 interface WrapperProps {
