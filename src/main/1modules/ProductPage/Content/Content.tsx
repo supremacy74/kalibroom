@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import WrapperInner from '@/main/3ui/WrapperInner/WrapperInner'
-import style from './styles/Content.module.scss'
+import style from './Content.module.scss'
 import Description from '@/main/1modules/ProductPage/Description/Description'
 import MainLeftPart from '@/main/1modules/ProductPage/MainLeftPart/MainLeftPart'
 import MainRightPart from '@/main/1modules/ProductPage/MainRightPart/MainRightPart'

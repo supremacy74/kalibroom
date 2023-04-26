@@ -1,5 +1,5 @@
 import { FC, memo, useState } from 'react'
-import style from './styles/MayLike.module.scss'
+import style from './MayLike.module.scss'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 import ContainerForCells from '@/main/1modules/ContainerForCells/ContainerForCells'
 import LoadMoreButton from '@/main/3ui/LoadMoreButton/LoadMoreButton'

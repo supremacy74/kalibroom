@@ -1,5 +1,5 @@
 import { FC, memo, useState } from 'react'
-import style from './styles/MainLeftPart.module.scss'
+import style from './MainLeftPart.module.scss'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 import Image from 'next/image'
 import { motion } from 'framer-motion'

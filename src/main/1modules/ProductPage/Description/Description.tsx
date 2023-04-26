@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode } from 'react'
-import style from './styles/Description.module.scss'
+import style from './Description.module.scss'
 
 interface DescriptionProps {
 	children?: ReactNode

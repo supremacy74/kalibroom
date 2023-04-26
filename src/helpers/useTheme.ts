@@ -7,7 +7,7 @@ import {
 	setDarkTheme,
 	setLightTheme,
 } from '@/helpers/changeTheme'
-import { setterDarkTheme } from '@/store/reducers/theme'
+import { setterDarkTheme } from '@/store/reducers/global/theme'
 
 export const useTheme = () => {
 	const dispatch = useAppDispatch()

@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/store/hooks'
 import { useEffect } from 'react'
-import { setHeaderBottomPartVisible } from '@/store/reducers/headerBottomPart'
+import { setHeaderBottomPartVisible } from '@/store/reducers/header/headerBottomPart'
 
 export const useHeaderVisible: Function = () => {
 	const dispatch = useAppDispatch()

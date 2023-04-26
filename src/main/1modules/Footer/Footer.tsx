@@ -1,5 +1,5 @@
 import { FC, memo, useEffect, useState } from 'react'
-import style from './styles/Footer.module.scss'
+import style from './Footer.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
 import {

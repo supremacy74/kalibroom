@@ -1,5 +1,5 @@
 import { memo, FC } from 'react'
-import style from './styles/CategoryMenu.module.scss'
+import style from './CategoryMenu.module.scss'
 import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
 import Link from 'next/link'
 import { AnimatePresence, motion } from "framer-motion";

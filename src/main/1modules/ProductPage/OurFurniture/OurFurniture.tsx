@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import style from './styles/OurFurniture.module.scss'
+import style from './OurFurniture.module.scss'
 import ArraySlider from '@/main/2components/ArraySlider/ArraySlider'
 import Image from 'next/image'
 import { getRandom } from '@/helpers/commonFunctions'

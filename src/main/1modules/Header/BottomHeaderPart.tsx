@@ -12,7 +12,7 @@ import WideButton from '@/main/3ui/headerUi/WideButton/WideButton'
 import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
-} from '@/store/reducers/catalog'
+} from '@/store/reducers/header/catalog'
 import { catalogMenuData } from '@/data/catalogMenuData'
 
 export interface categoriesI {
@@ -65,7 +65,6 @@ const BottomHeaderPart: FC = () => {
 					className={style.part}>
 					<CatalogButton />
 					{!catalogIsOpen &&
-						setTimeout(() => false, 1000) &&
 						catalogMenuData.products.map((value, index) => {
 							if (index < 5) {
 								return (

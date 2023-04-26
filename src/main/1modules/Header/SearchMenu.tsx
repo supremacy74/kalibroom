@@ -16,7 +16,7 @@ import {
 	timeIcon,
 } from '@/helpers/importIcons'
 import Link from 'next/link'
-import { handleSearchMenu } from '@/store/reducers/search'
+import { handleSearchMenu } from '@/store/reducers/header/search'
 
 interface searchTemplateI {
 	label: string

@@ -1,5 +1,5 @@
 import { FC, memo, useEffect, useState } from 'react'
-import style from './styles/ContainerForCells.module.scss'
+import style from './ContainerForCells.module.scss'
 import Product from '@/main/2components/Product/Product'
 import { productI } from '@/interfaces/product'
 import { motion } from 'framer-motion'

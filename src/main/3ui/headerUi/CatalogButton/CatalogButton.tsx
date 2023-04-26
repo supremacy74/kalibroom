@@ -11,8 +11,8 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from '@/store/hooks'
-import {setCatalogCategoryIndexInHeader, toggleCatalogMenu} from '@/store/reducers/catalog'
-import { handleSearchMenu } from "@/store/reducers/search";
+import {setCatalogCategoryIndexInHeader, toggleCatalogMenu} from '@/store/reducers/header/catalog'
+import { handleSearchMenu } from "@/store/reducers/header/search";
 
 interface CatalogButtonI {
 	className?: string

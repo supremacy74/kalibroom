@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import style from './styles/MainRightPart.module.scss'
+import style from './MainRightPart.module.scss'
 import Image from 'next/image'
 import { questionIcon } from '@/helpers/importIcons'
 import Properties from '@/main/1modules/ProductPage/Properties/Properties'

@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import style from './styles/CategoryField.module.scss'
+import style from './CategoryField.module.scss'
 import { categoryI } from '@/interfaces/category'
 import Link from 'next/link'
 import { propertyI } from '@/interfaces/product'

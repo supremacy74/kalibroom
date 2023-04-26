@@ -25,15 +25,12 @@ const popups = createSlice({
 		colorPopupHandleVisible(state: popupsI, action) {
 			state.colorPopup.isVisible = action.payload
 		},
-		colorPopupToggleVisible(state: popupsI) {
-			state.colorPopup.isVisible = !state.colorPopup.isVisible
-		},
 		sizePopupHandleVisible(state: popupsI, action) {
 			state.sizePopup.isVisible = action.payload
 		},
 	},
 })
 
-export const { colorPopupHandleVisible, colorPopupToggleVisible, sizePopupHandleVisible } =
+export const { colorPopupHandleVisible, sizePopupHandleVisible } =
 	popups.actions
 export default popups.reducer

@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import style from './styles/RelatedProducts.module.scss'
+import style from './RelatedProducts.module.scss'
 import Product from '@/main/2components/Product/Product'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 

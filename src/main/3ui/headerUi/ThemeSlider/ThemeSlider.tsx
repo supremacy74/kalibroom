@@ -8,7 +8,7 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from '@/store/hooks'
-import {setterDarkTheme, toggleDarkTheme} from '@/store/reducers/theme'
+import {setterDarkTheme, toggleDarkTheme} from '@/store/reducers/global/theme'
 
 const ThemeSlider: FC = () => {
 	const isDarkTheme = useAppSelector(

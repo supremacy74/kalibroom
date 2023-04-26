@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import style from './styles/Reviews.module.scss'
+import style from './Reviews.module.scss'
 import Image from 'next/image'
 import { starDarkIcon, starIcon } from '@/helpers/importIcons'
 import { useAppSelector } from '@/store/hooks'

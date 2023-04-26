@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode, useState } from 'react'
-import style from './styles/Properties.module.scss'
+import style from './Properties.module.scss'
 import { productI } from '@/interfaces/product'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 import Image from 'next/image'

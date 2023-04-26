@@ -1,13 +1,7 @@
-import { FC, memo } from 'react'
-import style from './styles/Hero.module.scss'
-import RoundedButtonWithCircle from '@/main/3ui/RoundedButtonWithCircle/RoundedButtonWithCircle'
+import { FC } from 'react'
+import style from './Hero.module.scss'
 import { useRouter } from 'next/router'
-import { AnimatePresence, motion } from 'framer-motion'
-import {
-	getCommonAnimation,
-	getSpringTransition,
-} from '@/helpers/animations'
-import { titleV } from '@/main/1modules/Hero/styles/variants'
+import { AnimatePresence } from 'framer-motion'
 import ButtonWithArrow from "@/main/3ui/Buttons/ButtonWithArrow/ButtonWithArrow";
 
 const Title: FC = () => {

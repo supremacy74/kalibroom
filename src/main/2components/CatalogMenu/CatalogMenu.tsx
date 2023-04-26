@@ -10,7 +10,7 @@ import Link from 'next/link'
 import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
-} from '@/store/reducers/catalog'
+} from '@/store/reducers/header/catalog'
 import WideButton from '@/main/3ui/headerUi/WideButton/WideButton'
 
 interface CategoriesMenuI {

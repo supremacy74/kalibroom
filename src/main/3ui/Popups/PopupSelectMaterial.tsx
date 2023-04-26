@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import Color from '@/main/3ui/Buttons/Color/Color'
 import Material from '@/main/3ui/Buttons/Material/Material'
 import { colorPopupHandleVisible } from '@/store/reducers/popups'
-import { setBodyOverflow } from '@/store/reducers/bodyOverflow'
+import { setBodyOverflow } from '@/store/reducers/global/bodyOverflow'
 import { mainImage } from '@/helpers/importImages'
 
 const PopupSelectMaterial: FC = () => {

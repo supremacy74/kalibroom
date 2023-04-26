@@ -6,11 +6,11 @@ import { getSpringTransition } from '@/helpers/animations'
 import Image from 'next/image'
 import { vectorDownDarkIcon, vectorDownIcon } from '@/helpers/importIcons'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { setCatalogCategoryIndexInHeader } from '@/store/reducers/catalog'
+import { setCatalogCategoryIndexInHeader } from '@/store/reducers/header/catalog'
 import { useOnClickOutside } from '@/helpers/customHooks'
 import CategoryMenu from '@/main/2components/CategoryMenu/CategoryMenu'
 import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
-import { handleSearchMenu } from "@/store/reducers/search";
+import { handleSearchMenu } from "@/store/reducers/header/search";
 
 interface CategoryButtonI {
 	title: string

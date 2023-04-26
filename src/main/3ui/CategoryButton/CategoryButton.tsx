@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import style from './CategoryButton.module.scss'
 import Image from 'next/image'
 import { rightArrowDarkIcon, rightArrowIcon } from '@/helpers/importIcons'
-import { setCatalogCategoryIndex } from '@/store/reducers/catalog'
+import { setCatalogCategoryIndex } from '@/store/reducers/header/catalog'
 
 interface CatalogButtonI {
 	index: number

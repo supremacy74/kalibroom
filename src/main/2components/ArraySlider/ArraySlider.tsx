@@ -1,6 +1,6 @@
 import { FC, memo, ReactNode, useState } from 'react'
 import { useAppSelector } from '@/store/hooks'
-import style from './styles/ArraySlider.module.scss'
+import style from './ArraySlider.module.scss'
 import Image from 'next/image'
 import { rightArrowDarkIcon, rightArrowIcon } from '@/helpers/importIcons'
 import { motion } from 'framer-motion'

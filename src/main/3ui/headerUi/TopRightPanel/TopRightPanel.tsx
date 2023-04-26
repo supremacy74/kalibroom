@@ -7,8 +7,8 @@ import {
 	searchIcon,
 } from '@/helpers/importIcons'
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { toggleSearchMenu } from "@/store/reducers/search";
-import { setCatalogCategoryIndexInHeader, setCatalogMenu } from "@/store/reducers/catalog";
+import { toggleSearchMenu } from "@/store/reducers/header/search";
+import { setCatalogCategoryIndexInHeader, setCatalogMenu } from "@/store/reducers/header/catalog";
 
 const TopRightPanel: FC = () => {
 	const theme = useAppSelector(state => state.theme.isDarkTheme)

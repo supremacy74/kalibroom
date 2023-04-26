@@ -5,7 +5,7 @@ const arrayOfCategories1: categoryI[] = []
 
 for (let i = 0; i < 2; i++) {
 		arrayOfCategories1.push({
-				id: `${Math.random()}`,
+				id: Math.random(),
 				title: 'Диваны',
 				slug: 'sofas',
 				properties: [
