@@ -42,14 +42,6 @@ const BottomHeaderPart: FC = () => {
 
 	const dispatch = useAppDispatch()
 
-	const setterCategories = async (data: categoryI[]) => {
-		dispatch(setCategories(data))
-	}
-
-	useEffect(() => {
-		getAllCategories(setterCategories)
-	}, [])
-
 	const wideButtons = [
 		{
 			title: 'Товары',
@@ -75,19 +67,6 @@ const BottomHeaderPart: FC = () => {
 					}}
 					className={style.part}>
 					<CatalogButton />
-					{/*{!catalogIsOpen &&*/}
-					{/*	catalogMenuData.products.map((value, index) => {*/}
-					{/*		if (index < 5) {*/}
-					{/*			return (*/}
-					{/*				<CategoryButton*/}
-					{/*					key={index}*/}
-					{/*					title={value.title}*/}
-					{/*					index={index}*/}
-					{/*					category={value}*/}
-					{/*				/>*/}
-					{/*			)*/}
-					{/*		}*/}
-					{/*	})}*/}
 					{!catalogIsOpen &&
 						categories.categories
 							.filter(item => item.id === item.parent_id)
@@ -102,8 +81,9 @@ const BottomHeaderPart: FC = () => {
 									)
 								}
 							})}
-					{!catalogIsOpen && !categories.categories.length &&
-						Array.from({length: 5}).map((value, index) => {
+					{!catalogIsOpen &&
+						!categories.categories.length &&
+						Array.from({ length: 5 }).map((value, index) => {
 							return <CategoryButton key={index} index={index} title={'-'} />
 						})}
 					{catalogIsOpen &&
