@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux'
+
 import themeReducer from '@/store/reducers/global/theme'
 import catalogReducer from '@/store/reducers/header/catalog'
 import headerBottomPart from '@/store/reducers/header/headerBottomPart'
@@ -6,8 +8,7 @@ import paths from '@/store/reducers/paths'
 import search from '@/store/reducers/header/search'
 import popups from '@/store/reducers/popups'
 import bodyOverflow from '@/store/reducers/global/bodyOverflow'
-
-import { combineReducers } from 'redux'
+import categories from '@/store/reducers/header/categories'
 
 const rootReducer = combineReducers({
 	theme: themeReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
 	search: search,
 	popups: popups,
 	bodyOverflow: bodyOverflow,
+	categories: categories,
 })
 
 export default rootReducer

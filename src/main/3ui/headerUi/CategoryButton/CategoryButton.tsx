@@ -1,4 +1,4 @@
-import { FC, memo, useRef, useState } from 'react'
+import {FC, memo, useEffect, useRef, useState} from 'react'
 import style from './styles/CategoryButton.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
 import { vectorDownV } from './styles/variants'
@@ -13,9 +13,8 @@ import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
 import { handleSearchMenu } from "@/store/reducers/header/search";
 
 interface CategoryButtonI {
-	title: string
+	title: string | undefined
 	index: number
-	category: categoriesI
 }
 
 const CategoryButton: FC<CategoryButtonI> = props => {
@@ -23,9 +22,6 @@ const CategoryButton: FC<CategoryButtonI> = props => {
 	const theme = useAppSelector(state => state.theme.isDarkTheme)
 	const indexOfCurrentCategoryInHeader = useAppSelector(
 		state => state.catalog.indexOfCurrentCategoryInHeader
-	)
-	const headerBottomPartIsVisible = useAppSelector(
-		state => state.headerBottomPart.isVisible
 	)
 
 	const dispatch = useAppDispatch()

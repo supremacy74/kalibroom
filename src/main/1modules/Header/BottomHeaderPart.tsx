@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import style from './styles/BottomHeaderPart.module.scss'
 import CatalogButton from '@/main/3ui/headerUi/CatalogButton/CatalogButton'
@@ -13,7 +13,9 @@ import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/header/catalog'
-import { catalogMenuData } from '@/data/catalogMenuData'
+import { setCategories } from '@/store/reducers/header/categories'
+import { categoryI } from '@/interfaces/category'
+import { getAllCategories } from '@/data/apiController'
 
 export interface categoriesI {
 	title: string
@@ -36,8 +38,17 @@ const BottomHeaderPart: FC = () => {
 	const catalogIsOpen = useAppSelector(state => state.catalog.isOpen)
 	const ideasIsOpen = useAppSelector(state => state.catalog.ideasIsOpen)
 	const productsIsOpen = useAppSelector(state => state.catalog.productsIsOpen)
+	const categories = useAppSelector(state => state.categories)
 
 	const dispatch = useAppDispatch()
+
+	const setterCategories = async (data: categoryI[]) => {
+		dispatch(setCategories(data))
+	}
+
+	useEffect(() => {
+		getAllCategories(setterCategories)
+	}, [])
 
 	const wideButtons = [
 		{
@@ -64,18 +75,36 @@ const BottomHeaderPart: FC = () => {
 					}}
 					className={style.part}>
 					<CatalogButton />
+					{/*{!catalogIsOpen &&*/}
+					{/*	catalogMenuData.products.map((value, index) => {*/}
+					{/*		if (index < 5) {*/}
+					{/*			return (*/}
+					{/*				<CategoryButton*/}
+					{/*					key={index}*/}
+					{/*					title={value.title}*/}
+					{/*					index={index}*/}
+					{/*					category={value}*/}
+					{/*				/>*/}
+					{/*			)*/}
+					{/*		}*/}
+					{/*	})}*/}
 					{!catalogIsOpen &&
-						catalogMenuData.products.map((value, index) => {
-							if (index < 5) {
-								return (
-									<CategoryButton
-										key={index}
-										title={value.title}
-										index={index}
-										category={value}
-									/>
-								)
-							}
+						categories.categories
+							.filter(item => item.id === item.parent_id)
+							.map((category, index) => {
+								if (index !== 0 && index < 6) {
+									return (
+										<CategoryButton
+											key={index}
+											title={category.name}
+											index={index}
+										/>
+									)
+								}
+							})}
+					{!catalogIsOpen && !categories.categories.length &&
+						Array.from({length: 5}).map((value, index) => {
+							return <CategoryButton key={index} index={index} title={'-'} />
 						})}
 					{catalogIsOpen &&
 						wideButtons.map((value, index) => {
