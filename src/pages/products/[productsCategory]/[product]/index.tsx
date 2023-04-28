@@ -6,8 +6,7 @@ import style from '@/styles/products/ProductPage.module.scss'
 import Content from '@/main/1modules/ProductPage/Content/Content'
 import { useEffect } from 'react'
 import { pathT, setPaths } from '@/store/reducers/paths'
-import { useAppDispatch } from '@/store/hooks'
-import { arrayOfProducts } from '@/data/arrayOfProducts'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import PopupSelectMaterial from '@/main/3ui/Popups/PopupSelectMaterial'
 import PopupSizes from '@/main/3ui/Popups/PopupSizes'
 
@@ -15,29 +14,33 @@ const ProductPage: NextPage = () => {
 	const router = useRouter()
 	const dispatch = useAppDispatch()
 
-	useEffect(() => {
-		const paths: pathT[] = [
-			{
-				url: '/',
-				label: 'главная',
-			},
-			{
-				url: `/products`,
-				label: 'товары',
-			},
-			{
-				url: `/products/${arrayOfProducts[0].category_id}`,
-				label: 'category',
-			},
-			{
-				url: `/products/${
-					arrayOfProducts[0].category_id
-				}/${arrayOfProducts[0].name.toLowerCase()}`,
-				label: `${arrayOfProducts[0].name}`,
-			},
-		]
+	const currentPage = useAppSelector(state => state.productPage.currentProduct)
 
-		dispatch(setPaths(paths))
+	useEffect(() => {
+		if (currentPage && currentPage.name) {
+			const paths: pathT[] = [
+				{
+					url: '/',
+					label: 'главная',
+				},
+				{
+					url: `/products`,
+					label: 'товары',
+				},
+				{
+					url: `/products/${currentPage.category_id}`,
+					label: 'category',
+				},
+				{
+					url: `/products/${
+						currentPage.category_id
+					}/${currentPage.name.toLowerCase()}`,
+					label: `${currentPage.name}`,
+				},
+			]
+
+			dispatch(setPaths(paths))
+		}
 	}, [])
 
 	return (

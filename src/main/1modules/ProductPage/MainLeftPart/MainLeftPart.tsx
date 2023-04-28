@@ -1,6 +1,5 @@
 import { FC, memo, useState } from 'react'
 import style from './MainLeftPart.module.scss'
-import { arrayOfProducts } from '@/data/arrayOfProducts'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { getSpringTransition } from '@/helpers/animations'
