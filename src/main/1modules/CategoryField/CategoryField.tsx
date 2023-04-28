@@ -22,11 +22,18 @@ const Top: FC<CategoryFieldProps> = props => {
 	return (
 		<div className={style.top}>
 			<span className={style.title}>
-				{props.category.title}
+				{
+					// @ts-ignore
+					props.category.title
+				}
 				<sup>268</sup>
 			</span>
 			<Link className={style.topLink} href={`/products/${props.category.slug}`}>
-				Все {props.category.title}
+				Все{' '}
+				{
+					// @ts-ignore
+					props.category.title
+				}
 			</Link>
 		</div>
 	)
@@ -35,15 +42,18 @@ const Top: FC<CategoryFieldProps> = props => {
 const Field: FC<CategoryFieldProps> = props => {
 	return (
 		<div className={style.field}>
-			{props.category.properties.map((property, index) => {
-				return (
-					<PropertyBlock
-						key={index}
-						property={property}
-						category={props.category}
-					/>
-				)
-			})}
+			{
+				// @ts-ignore
+				props.category.properties.map((property, index) => {
+					return (
+						<PropertyBlock
+							key={index}
+							property={property}
+							category={props.category}
+						/>
+					)
+				})
+			}
 		</div>
 	)
 }
