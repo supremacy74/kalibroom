@@ -1,12 +1,11 @@
 import { productI } from '@/interfaces/product'
-import { getRandom } from '@/helpers/commonFunctions'
 import {mainImage} from "@/helpers/importImages";
 
 const arrayOfProducts1: productI[] = []
 
 for (let i = 0; i < 12; i++) {
 	arrayOfProducts1.push({
-		id: `${Math.random()}`,
+		id: Math.random(),
 		name: 'INDUSTRIAL',
 		article: '',
 		slug: 'industrial',
@@ -17,12 +16,12 @@ for (let i = 0; i < 12; i++) {
 		sizes: ['125 см', '250 см', 'my cock'],
 		images: [
 			{
-				imageURL: mainImage,
+				url: mainImage,
 				color: 'gray',
 				material: 'material',
 			},
 			{
-				imageURL: mainImage,
+				url: mainImage,
 				color: 'gray',
 				material: 'material',
 			},
