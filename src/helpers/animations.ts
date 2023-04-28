@@ -39,11 +39,9 @@ export const getEaseAnimation = (
 
 export const inViewAnimationV: Variants = {
 	on: {
-		y: '0rem',
 		opacity: 1,
 	},
 	off: {
-		y: `2.5rem`,
 		opacity: 0,
 	},
 }
