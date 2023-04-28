@@ -10,6 +10,7 @@ import InStockButton from '@/main/3ui/headerUi/InStockButton/InStockButton'
 import { categoryI } from '@/interfaces/category'
 import { setCategories } from '@/store/reducers/header/categories'
 import { getAllCategories } from '@/data/apiController'
+import {setCatalogCategoryIndexInHeader} from "@/store/reducers/header/catalog";
 
 const TopHeaderPart: FC = () => {
 	const headerBottomPartIsVisible = useAppSelector(
@@ -25,6 +26,12 @@ const TopHeaderPart: FC = () => {
 	useEffect(() => {
 		getAllCategories(setterCategories)
 	}, [])
+
+	useEffect(() => {
+		if (!headerBottomPartIsVisible) {
+			dispatch(setCatalogCategoryIndexInHeader(-1))
+		}
+	}, [headerBottomPartIsVisible])
 
 	return (
 		<div className={style.part}>

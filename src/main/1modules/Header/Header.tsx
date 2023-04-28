@@ -36,7 +36,7 @@ const CategoriesMenu = () => {
 	return (
 		<>
 			{catalogMenuData.products.map((category, index) => {
-				if (index !== 0 && index < 6) {
+				if (index < 6) {
 					return (
 						<CategoryMenu key={index} category={category} index={index} />
 					)

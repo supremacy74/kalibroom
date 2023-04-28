@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import style from './styles/BottomHeaderPart.module.scss'
 import CatalogButton from '@/main/3ui/headerUi/CatalogButton/CatalogButton'
@@ -40,6 +40,8 @@ const BottomHeaderPart: FC = () => {
 	const productsIsOpen = useAppSelector(state => state.catalog.productsIsOpen)
 	const categories = useAppSelector(state => state.categories)
 
+	const [categoryArray, setCategoryArray] = useState(categories.categories)
+
 	const dispatch = useAppDispatch()
 
 	const wideButtons = [
@@ -54,6 +56,30 @@ const BottomHeaderPart: FC = () => {
 			onClick: async () => dispatch(toggleCatalogCategoryToIdeas()),
 		},
 	]
+	useEffect(() => {
+		const categoriesTemp: categoryI[] = []
+
+		const emptyCategory: categoryI = {
+			id: -2,
+			name: '—',
+			parent_id: -2,
+		}
+
+		for (let i = 0; i < 5; i++) {
+			const possibleCategory = categories.categories.filter(
+				item => item.id === item.parent_id
+			)[i]
+			if (possibleCategory?.name) {
+				categoriesTemp.push(possibleCategory)
+			} else {
+				categoriesTemp.push(emptyCategory)
+			}
+		}
+
+		console.log(categoriesTemp)
+
+		setCategoryArray(categoriesTemp)
+	}, [categories])
 
 	return (
 		<AnimatePresence>
@@ -67,25 +93,11 @@ const BottomHeaderPart: FC = () => {
 					}}
 					className={style.part}>
 					<CatalogButton />
-					{!catalogIsOpen &&
-						categories.categories
-							.filter(item => item.id === item.parent_id)
-							.map((category, index) => {
-								if (index !== 0 && index < 6) {
-									return (
-										<CategoryButton
-											key={index}
-											title={category.name}
-											index={index}
-										/>
-									)
-								}
-							})}
-					{!catalogIsOpen &&
-						!categories.categories.length &&
-						Array.from({ length: 5 }).map((value, index) => {
-							return <CategoryButton key={index} index={index} title={'-'} />
-						})}
+					{!catalogIsOpen && categoryArray.map((category, index) => {
+						return (
+							<CategoryButton key={index} title={category.name} index={index} />
+						)
+					})}
 					{catalogIsOpen &&
 						wideButtons.map((value, index) => {
 							return (

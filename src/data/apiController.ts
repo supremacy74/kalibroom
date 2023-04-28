@@ -11,7 +11,7 @@ export const getAllCategories = async (setter: Function) => {
 			console.error('getAllCategories error in apiController!')
 		}
 	} catch (e) {
-		console.log(e)
+		console.error(e)
 	}
 }
 
@@ -28,7 +28,7 @@ export const getCategoryByIdOrSlug = async (
 			console.error('getCategoryByIdOrSlug error in apiController!')
 		}
 	} catch (e) {
-		console.log(e)
+		console.error(e)
 	}
 }
 
@@ -48,6 +48,6 @@ export const getAllProducts = async (
 			console.error('getAllProducts error in apiController!')
 		}
 	} catch (e) {
-		console.log(e)
+		console.error(e)
 	}
 }
