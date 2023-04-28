@@ -13,7 +13,7 @@ import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/header/catalog'
-import { setCategories } from '@/store/reducers/header/categories'
+import {setCategories, setFirstFiveCategories} from '@/store/reducers/header/categories'
 import { categoryI } from '@/interfaces/category'
 import { getAllCategories } from '@/data/apiController'
 
@@ -39,8 +39,7 @@ const BottomHeaderPart: FC = () => {
 	const ideasIsOpen = useAppSelector(state => state.catalog.ideasIsOpen)
 	const productsIsOpen = useAppSelector(state => state.catalog.productsIsOpen)
 	const categories = useAppSelector(state => state.categories)
-
-	const [categoryArray, setCategoryArray] = useState(categories.categories)
+	const firstFiveCategories = useAppSelector(state => state.categories.firstFiveCategories)
 
 	const dispatch = useAppDispatch()
 
@@ -56,6 +55,7 @@ const BottomHeaderPart: FC = () => {
 			onClick: async () => dispatch(toggleCatalogCategoryToIdeas()),
 		},
 	]
+
 	useEffect(() => {
 		const categoriesTemp: categoryI[] = []
 
@@ -76,9 +76,9 @@ const BottomHeaderPart: FC = () => {
 			}
 		}
 
-		console.log(categoriesTemp)
-
-		setCategoryArray(categoriesTemp)
+		setTimeout(() => {
+			dispatch(setFirstFiveCategories(categoriesTemp))
+		}, 100)
 	}, [categories])
 
 	return (
@@ -93,7 +93,7 @@ const BottomHeaderPart: FC = () => {
 					}}
 					className={style.part}>
 					<CatalogButton />
-					{!catalogIsOpen && categoryArray.map((category, index) => {
+					{!catalogIsOpen && firstFiveCategories.map((category, index) => {
 						return (
 							<CategoryButton key={index} title={category.name} index={index} />
 						)

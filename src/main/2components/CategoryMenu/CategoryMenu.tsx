@@ -1,4 +1,4 @@
-import { memo, FC } from 'react'
+import { FC } from 'react'
 import style from './CategoryMenu.module.scss'
 import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
 import Link from 'next/link'
@@ -9,9 +9,10 @@ import {
 } from '@/helpers/animations'
 import { menuV } from '@/helpers/variants'
 import { useAppSelector } from "@/store/hooks";
+import {categoryI} from "@/interfaces/category";
 
 interface CategoryMenuProps {
-	category: categoriesI
+	category: categoryI
 	index: number
 }
 
@@ -27,31 +28,31 @@ const CategoryMenu: FC<CategoryMenuProps> = props => {
 					variants={menuV}
 					transition={getSpringTransition(10, 30)}
 					className={style.menu}>
-					<div className={style.blocks}>
-						{props.category.blocks.map((block,  index) => {
-							return (
-								<div key={index} className={style.block}>
-							<span className={style.blockTitle}>
-								{block.title}
-							</span>
-									<div className={style.links}>
-										{block.links.map((link, index) => {
-											return (
-												<Link
-													key={index}
-													className={style.link}
-													href={link.link}>
-													{link.title}
-												</Link>
-											)
-										})}
-									</div>
-								</div>
-							)
-						})}
-					</div>
+					{/*<div className={style.blocks}>*/}
+					{/*	{props.category.blocks.map((block,  index) => {*/}
+					{/*		return (*/}
+					{/*			<div key={index} className={style.block}>*/}
+					{/*		<span className={style.blockTitle}>*/}
+					{/*			{block.title}*/}
+					{/*		</span>*/}
+					{/*				<div className={style.links}>*/}
+					{/*					{block.links.map((link, index) => {*/}
+					{/*						return (*/}
+					{/*							<Link*/}
+					{/*								key={index}*/}
+					{/*								className={style.link}*/}
+					{/*								href={link.link}>*/}
+					{/*								{link.title}*/}
+					{/*							</Link>*/}
+					{/*						)*/}
+					{/*					})}*/}
+					{/*				</div>*/}
+					{/*			</div>*/}
+					{/*		)*/}
+					{/*	})}*/}
+					{/*</div>*/}
 					<Link className={style.link} href={''}>
-						Все {props.category.title}
+						Все {props.category.name}
 					</Link>
 				</motion.div>
 			)}

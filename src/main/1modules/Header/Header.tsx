@@ -33,14 +33,14 @@ const Header: FC = () => {
 }
 
 const CategoriesMenu = () => {
+	const firstFiveCategories = useAppSelector(state => state.categories.firstFiveCategories)
+
 	return (
 		<>
-			{catalogMenuData.products.map((category, index) => {
-				if (index < 6) {
-					return (
-						<CategoryMenu key={index} category={category} index={index} />
-					)
-				}
+			{firstFiveCategories.map((category, index) => {
+				return (
+					<CategoryMenu key={index} category={category} index={index} />
+				)
 			})}
 		</>
 	)
