@@ -8,16 +8,13 @@ import Reviews from '@/main/1modules/ProductPage/Reviews/Reviews'
 import RelatedProducts from '@/main/1modules/ProductPage/RelatedProducts/RelatedProducts'
 import OurFurniture from '@/main/1modules/ProductPage/OurFurniture/OurFurniture'
 import MayLike from '@/main/1modules/ProductPage/MayLike/MayLike'
-import { arrayOfProducts } from '@/data/arrayOfProducts'
 
 const Content: FC = () => {
-	const product = arrayOfProducts[0]
-
 	return (
 		<WrapperInner className={style.content}>
 			<main className={style.main}>
 				<MainLeftPart />
-				<MainRightPart product={product} />
+				<MainRightPart />
 				<Description>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam

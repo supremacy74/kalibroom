@@ -5,23 +5,26 @@ import Image from 'next/image'
 import { getRandom } from '@/helpers/commonFunctions'
 import { arrayOfProducts } from '@/data/arrayOfProducts'
 import {mainImage} from "@/helpers/importImages";
+import {useAppSelector} from "@/store/hooks";
 
 interface OurFurnitureProps {}
 
 const OurFurniture: FC<OurFurnitureProps> = () => {
+	const currentProduct = useAppSelector(state => state.productPage.currentProduct)
+
 	return (
 		<>
-			{arrayOfProducts[0].images_in_interiors && (
+			{currentProduct && currentProduct.images_in_interiors && (
 				<ArraySlider
 					title={'Наша мебель в интерьере'}
-					array={arrayOfProducts[0].images_in_interiors}>
-					{arrayOfProducts[0].images_in_interiors?.map(
+					array={currentProduct.images_in_interiors}>
+					{currentProduct.images_in_interiors.map(
 						(image, index) => {
 							return (
 								<Image
 									key={index}
 									className={style.image}
-									src={mainImage}
+									src={image}
 									alt={'image'}
 									width={900}
 									height={900}

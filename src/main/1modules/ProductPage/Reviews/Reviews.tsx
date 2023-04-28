@@ -3,10 +3,9 @@ import style from './Reviews.module.scss'
 import Image from 'next/image'
 import { starDarkIcon, starIcon } from '@/helpers/importIcons'
 import { useAppSelector } from '@/store/hooks'
-import { getRandom } from '@/helpers/commonFunctions'
 import Link from 'next/link'
 import ArraySlider from '@/main/2components/ArraySlider/ArraySlider'
-import {mainImage} from "@/helpers/importImages";
+import { mainImage } from '@/helpers/importImages'
 
 interface ReviewsProps {}
 
@@ -28,9 +27,7 @@ const Review: FC = () => {
 	return (
 		<div className={style.review}>
 			<div className={style.reviewTop}>
-				<div className={style.avatar}>
-
-				</div>
+				<div className={style.avatar}></div>
 				<div className={style.reviewTitles}>
 					<h4 className={style.name}>Дарья</h4>
 					<span className={style.date}>

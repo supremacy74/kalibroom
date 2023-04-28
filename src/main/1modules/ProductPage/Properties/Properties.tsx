@@ -21,38 +21,42 @@ import {
 const Properties: FC = () => {
 	// TODO: считывать текущий продукт из состояния в хранилище
 
+	const currentProduct = useAppSelector(state => state.productPage.currentProduct)
+
 	const dispatch = useAppDispatch()
 
 	return (
-		<div className={style.properties}>
-			<div className={style.colorAndMaterial}>
-				<PropertyName>Цвет и материал</PropertyName>
-				<ColorAndMaterialBody product={arrayOfProducts[0]} />
-				<PropertyAll onClick={() => dispatch(colorPopupHandleVisible(true))}>
-					Все цвета
-				</PropertyAll>
+		currentProduct && (
+			<div className={style.properties}>
+				<div className={style.colorAndMaterial}>
+					<PropertyName>Цвет и материал</PropertyName>
+					<ColorAndMaterialBody product={currentProduct}/>
+					<PropertyAll onClick={() => dispatch(colorPopupHandleVisible(true))}>
+						Все цвета
+					</PropertyAll>
+				</div>
+				<div className={style.sizes}>
+					<PropertyName>Размер</PropertyName>
+					<Sizes product={currentProduct} />
+					<PropertyAll onClick={() => dispatch(sizePopupHandleVisible(true))}>
+						Все размеры
+					</PropertyAll>
+				</div>
+				<Delivery product={currentProduct} />
+				<Accordion name={'характеристики'}>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
+					doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
+					mollitia porro quam recusandae reiciendis, repellendus repudiandae
+					vitae, voluptatibus.
+				</Accordion>
+				<Accordion name={'посмотреть наличие в шоурумах'}>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
+					doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
+					mollitia porro quam recusandae reiciendis, repellendus repudiandae
+					vitae, voluptatibus.
+				</Accordion>
 			</div>
-			<div className={style.sizes}>
-				<PropertyName>Размер</PropertyName>
-				<Sizes product={arrayOfProducts[0]} />
-				<PropertyAll onClick={() => dispatch(sizePopupHandleVisible(true))}>
-					Все размеры
-				</PropertyAll>
-			</div>
-			<Delivery product={arrayOfProducts[0]} />
-			<Accordion name={'характеристики'}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
-				doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
-				mollitia porro quam recusandae reiciendis, repellendus repudiandae
-				vitae, voluptatibus.
-			</Accordion>
-			<Accordion name={'посмотреть наличие в шоурумах'}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
-				doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
-				mollitia porro quam recusandae reiciendis, repellendus repudiandae
-				vitae, voluptatibus.
-			</Accordion>
-		</div>
+		)
 	)
 }
 
