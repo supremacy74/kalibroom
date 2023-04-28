@@ -1,7 +1,7 @@
 import { FC, memo, useState } from 'react'
 import style from './Product.module.scss'
 import { motion } from 'framer-motion'
-import { getSpringTransition, inViewAnimation } from '@/helpers/animations'
+import { getSpringTransition } from '@/helpers/animations'
 import { productI } from '@/interfaces/product'
 import Skeleton from '@/main/3ui/Skeleton/Skeleton'
 import Bottom from '@/main/2components/Product/Bottom'

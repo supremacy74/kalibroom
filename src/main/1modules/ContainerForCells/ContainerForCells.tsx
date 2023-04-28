@@ -32,7 +32,13 @@ const ContainerForCells: FC<ContainerForCellsProps> = props => {
 		<div className={style.container}>
 			{columnsArray.map((columnValue, columnIndex) => {
 				return (
-					<motion.div key={columnIndex} className={style.column}>
+					<motion.div
+						key={columnIndex}
+						className={style.column}
+						style={{
+							maxWidth: `calc(${100 / columnsArray.length}% - .75rem)`,
+						}}
+					>
 						{props.array.map((product, index) => {
 							if (columnIndex === index % columnsArray.length) {
 								return <Product key={index} product={product} />

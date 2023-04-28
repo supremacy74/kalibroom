@@ -6,6 +6,7 @@ const arrayOfCategories1: categoryI[] = []
 for (let i = 0; i < 2; i++) {
 	arrayOfCategories1.push({
 		id: Math.random(),
+		// @ts-ignore
 		title: 'Диваны',
 		slug: 'sofas',
 		properties: [

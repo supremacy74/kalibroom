@@ -15,7 +15,6 @@ export interface productI {
 	// common
 	model_3d?: string
 	instruction?: string
-	scores?: string
 	quantity?: number
 	description?: string
 	sizes?: string[]
@@ -37,7 +36,7 @@ export interface productI {
 export interface imageI {
 	color?: string
 	material?: string
-	imageURL?: string
+	url?: string
 }
 
 export interface propertyI {

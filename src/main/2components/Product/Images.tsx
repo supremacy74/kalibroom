@@ -15,7 +15,7 @@ interface ImagesI {
 const Images: FC<ImagesI> = props => {
 	return (
 		<>
-			{props.product.images.length ? (
+			{props.product.images && props.product.images.length ? (
 				<>
 					{props.product.images.map((image, index) => {
 						return (
@@ -25,12 +25,10 @@ const Images: FC<ImagesI> = props => {
 										data-is-loaded={props.isLoaded}
 										className={style.innerImageWrapper}>
 										<Image
-											onLoad={async () =>
-												props.handleIsLoaded(true)
-											}
+											onLoad={async () => props.handleIsLoaded(true)}
 											quality={60}
 											className={style.image}
-											src={image.imageURL}
+											src={image.url ? image.url : ''}
 											alt={'productImage'}
 											width={800}
 											height={800}
@@ -43,10 +41,7 @@ const Images: FC<ImagesI> = props => {
 					})}
 				</>
 			) : (
-				<ImageNotFoundBlock
-					height={`10rem`}
-					onLoad={props.handleIsLoaded}
-				/>
+				<ImageNotFoundBlock height={`min(15rem, 100%)`} onLoad={props.handleIsLoaded} />
 			)}
 		</>
 	)

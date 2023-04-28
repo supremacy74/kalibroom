@@ -1,10 +1,12 @@
 import { productI } from '@/interfaces/product'
-import { Dispatch, FC, memo, SetStateAction } from 'react'
+import {Dispatch, FC, memo, SetStateAction, useEffect, useState} from 'react'
 import Link from 'next/link'
 import style from '@/main/2components/Product/Product.module.scss'
 import { createPrice } from '@/helpers/commonFunctions'
 import CircleButton from '@/main/3ui/CircleButton/CircleButton'
 import { cartActiveIcon, cartHoverIcon, cartIcon } from '@/helpers/importIcons'
+import {getCategoryByIdOrSlug} from "@/data/apiController";
+import {categoryI} from "@/interfaces/category";
 
 interface BottomI {
 	product: productI
@@ -13,6 +15,14 @@ interface BottomI {
 }
 
 const Bottom: FC<BottomI> = props => {
+	const [category, setCategory] = useState<categoryI | undefined>(undefined)
+
+	useEffect(() => {
+		if (props.product.category_id) {
+			getCategoryByIdOrSlug(setCategory, props.product.category_id)
+		}
+	}, [props.product.category_id])
+
 	return (
 		<>
 			<Link
@@ -20,16 +30,16 @@ const Bottom: FC<BottomI> = props => {
 				className={style.bottom}>
 				<div className={style.text}>
 					<div className={style.title}>
-						<span>{props.product.name}</span>
-						<span className={style.discount}> -{props.product.discount}%</span>
+						<span className={style.titleText}>{props.product.name}</span>
+						{props.product.discount && <span className={style.discount}> -{props.product.discount}%</span>}
 					</div>
-					<div className={style.category}>{props.product.category_id}</div>
+					<div className={style.category}>{category?.name}</div>
 				</div>
 				<div className={style.price}>
 					<span className={style.currentPrice}>
-						{createPrice(props.product.price)} ₽
+						{createPrice(props.product.price ? props.product.price : 100000)} ₽
 					</span>
-					{props.product.discount && (
+					{props.product.discount && props.product.price && (
 						<span className={style.oldPrice}>
 							{createPrice(
 								props.product.price +

@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { productI } from '@/interfaces/product'
-import { arrayOfProducts } from '@/data/arrayOfProducts'
 
-const initialState: productI[] = arrayOfProducts
+const initialState: productI[] = []
 
 const productsSlice = createSlice({
 	name: 'products',
@@ -11,6 +10,9 @@ const productsSlice = createSlice({
 		setProducts(state: productI[], action: PayloadAction<productI[]>) {
 			state.splice(0, state.length, ...action.payload)
 		},
+		addProducts(state: productI[], action: PayloadAction<productI[]>) {
+			state.push(...action.payload)
+		}
 	},
 })
 
