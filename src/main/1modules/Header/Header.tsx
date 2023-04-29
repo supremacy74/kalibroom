@@ -5,7 +5,6 @@ import TopHeaderPart from '@/main/1modules/Header/TopHeaderPart'
 import { useHeaderVisible } from '@/main/1modules/Header/helpers/useHeaderVisible'
 import Breadcrumb from '@/main/1modules/Header/ProductBreadcrumb'
 import CatalogMenu from '@/main/2components/CatalogMenu/CatalogMenu'
-import { catalogMenuData } from '@/data/catalogMenuData'
 import { useAppSelector } from '@/store/hooks'
 import SearchMenu from "@/main/1modules/Header/SearchMenu";
 import CategoryMenu from "@/main/2components/CategoryMenu/CategoryMenu";
@@ -23,7 +22,7 @@ const Header: FC = () => {
 					<BottomHeaderPart />
 					{paths.length ? <Breadcrumb /> : null}
 
-					<CatalogMenu categories={catalogMenuData} />
+					{/*<CatalogMenu categories={catalogMenuData} />*/}
 					<CategoriesMenu />
 					<SearchMenu />
 				</header>
