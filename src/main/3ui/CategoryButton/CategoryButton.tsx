@@ -1,14 +1,14 @@
-import { categoriesI } from '@/main/1modules/Header/BottomHeaderPart'
 import { FC, memo } from 'react'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import style from './CategoryButton.module.scss'
 import Image from 'next/image'
 import { rightArrowDarkIcon, rightArrowIcon } from '@/helpers/importIcons'
 import { setCatalogCategoryIndex } from '@/store/reducers/header/catalog'
+import {categoryI} from "@/interfaces/category";
 
 interface CatalogButtonI {
 	index: number
-	buttonValues: categoriesI
+	buttonValues: categoryI
 }
 
 const CategoryButton: FC<CatalogButtonI> = props => {
@@ -28,7 +28,7 @@ const CategoryButton: FC<CatalogButtonI> = props => {
 			}
 			onClick={() => dispatch(setCatalogCategoryIndex(props.index))}
 			className={style.category}>
-			<span className={style.categoryName}>{props.buttonValues.title}</span>
+			<span className={style.categoryName}>{props.buttonValues.name}</span>
 			{!theme && <Image src={rightArrowIcon} alt={'rightArrowIcon'} />}
 			{theme && <Image src={rightArrowDarkIcon} alt={'rightArrowDarkIcon'} />}
 		</button>
