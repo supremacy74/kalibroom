@@ -26,16 +26,16 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 	const handleImageLeft = async () => {
 		if (props.currentImage > 0) {
 			props.setCurrentImage(prev => prev - 1)
-		} else if (props.product.images) {
-			props.setCurrentImage(props.product.images.length - 1)
+		} else if (props.product.fore_images) {
+			props.setCurrentImage(props.product.fore_images.length - 1)
 		}
 		props.handleIsLoaded(false)
 	}
 
 	const handleImageRight = async () => {
 		if (
-			props.product.images &&
-			props.currentImage < props.product.images.length - 1
+			props.product.fore_images &&
+			props.currentImage < props.product.fore_images.length - 1
 		) {
 			props.setCurrentImage(prev => prev + 1)
 		} else {
@@ -54,7 +54,7 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 				isActive={props.isActive}
 				handleActive={props.handleActive}
 			/>
-			{props.product.images && props.product.images.length ? (
+			{props.product.fore_images && props.product.fore_images.length ? (
 				<>
 					<button
 						onClick={() => handleImageLeft()}
@@ -84,8 +84,8 @@ const ImageLayout: FC<ImageLayoutI> = props => {
 				</div>
 			)}
 			<div className={style.pagination}>
-				{props.product.images &&
-					props.product.images.map((value, index) => {
+				{props.product.fore_images &&
+					props.product.fore_images.map((value, index) => {
 						return (
 							<div
 								key={index}

@@ -172,13 +172,13 @@ const ColorAndMaterialBody: FC<PropertyI> = props => {
 						onClick={() => {
 							setCurrentColor(index)
 						}}>
-						<Image
-							className={style.handlerImage}
-							src={material.image}
-							alt={material.title}
-							width={40}
-							height={40}
-						/>
+						{/*<Image*/}
+						{/*	className={style.handlerImage}*/}
+						{/*	src={material.image}*/}
+						{/*	alt={material.type}*/}
+						{/*	width={40}*/}
+						{/*	height={40}*/}
+						{/*/>*/}
 						{currentColor === index && (
 							<motion.div
 								className={style.handlerBorderColor}
