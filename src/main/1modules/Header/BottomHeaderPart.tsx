@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import style from './styles/BottomHeaderPart.module.scss'
 import CatalogButton from '@/main/3ui/headerUi/CatalogButton/CatalogButton'
@@ -13,25 +13,8 @@ import {
 	toggleCatalogCategoryToIdeas,
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/header/catalog'
-import {setCategories, setFirstFiveCategories} from '@/store/reducers/header/categories'
+import { setFirstFiveCategories } from '@/store/reducers/header/categories'
 import { categoryI } from '@/interfaces/category'
-import { getAllCategories } from '@/data/apiController'
-
-export interface categoriesI {
-	title: string
-	blocks: {
-		title: string
-		links: {
-			title: string
-			link: string
-		}[]
-	}[]
-}
-
-export interface catalogI {
-	products: categoriesI[]
-	ideas: categoriesI[]
-}
 
 const BottomHeaderPart: FC = () => {
 	const isVisible = useAppSelector(state => state.headerBottomPart.isVisible)
@@ -39,7 +22,9 @@ const BottomHeaderPart: FC = () => {
 	const ideasIsOpen = useAppSelector(state => state.catalog.ideasIsOpen)
 	const productsIsOpen = useAppSelector(state => state.catalog.productsIsOpen)
 	const categories = useAppSelector(state => state.categories)
-	const firstFiveCategories = useAppSelector(state => state.categories.firstFiveCategories)
+	const firstFiveCategories = useAppSelector(
+		state => state.categories.firstFiveCategories
+	)
 
 	const dispatch = useAppDispatch()
 
@@ -76,9 +61,10 @@ const BottomHeaderPart: FC = () => {
 			}
 		}
 
+		// TODO: edit
 		setTimeout(() => {
 			dispatch(setFirstFiveCategories(categoriesTemp))
-		}, 100)
+		}, 300)
 	}, [categories])
 
 	return (
@@ -93,11 +79,16 @@ const BottomHeaderPart: FC = () => {
 					}}
 					className={style.part}>
 					<CatalogButton />
-					{!catalogIsOpen && firstFiveCategories.map((category, index) => {
-						return (
-							<CategoryButton key={index} title={category.name} index={index} />
-						)
-					})}
+					{!catalogIsOpen &&
+						firstFiveCategories.map((category, index) => {
+							return (
+								<CategoryButton
+									key={index}
+									title={category.name}
+									index={index}
+								/>
+							)
+						})}
 					{catalogIsOpen &&
 						wideButtons.map((value, index) => {
 							return (

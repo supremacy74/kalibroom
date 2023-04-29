@@ -15,14 +15,6 @@ interface BottomI {
 }
 
 const Bottom: FC<BottomI> = props => {
-	const [category, setCategory] = useState<categoryI | undefined>(undefined)
-
-	useEffect(() => {
-		if (props.product.category_id) {
-			getCategoryByIdOrSlug(setCategory, props.product.category_id)
-		}
-	}, [props.product.category_id])
-
 	return (
 		<>
 			<Link
@@ -33,7 +25,7 @@ const Bottom: FC<BottomI> = props => {
 						<span className={style.titleText}>{props.product.name}</span>
 						{props.product.discount && <span className={style.discount}> -{props.product.discount}%</span>}
 					</div>
-					<div className={style.category}>{category?.name}</div>
+					<div className={style.category}>{props.product?.category_name}</div>
 				</div>
 				<div className={style.price}>
 					<span className={style.currentPrice}>

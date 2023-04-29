@@ -9,12 +9,26 @@ import { pathT, setPaths } from '@/store/reducers/paths'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import PopupSelectMaterial from '@/main/3ui/Popups/PopupSelectMaterial'
 import PopupSizes from '@/main/3ui/Popups/PopupSizes'
+import { productI } from '@/interfaces/product'
+import { setCurrentProduct } from '@/store/reducers/products/productPage'
+import { getProductByIdOrSlug } from '@/data/apiController'
 
 const ProductPage: NextPage = () => {
 	const router = useRouter()
 	const dispatch = useAppDispatch()
 
 	const currentPage = useAppSelector(state => state.productPage.currentProduct)
+
+	const setterCurrentProduct = (data: productI) => {
+		dispatch(setCurrentProduct(data))
+	}
+
+	useEffect(() => {
+		const { product } = router.query
+		if (typeof product === 'string') {
+			getProductByIdOrSlug(setterCurrentProduct, product)
+		}
+	}, [router])
 
 	useEffect(() => {
 		if (currentPage && currentPage.name) {
@@ -41,7 +55,7 @@ const ProductPage: NextPage = () => {
 
 			dispatch(setPaths(paths))
 		}
-	}, [])
+	}, [currentPage])
 
 	return (
 		<>

@@ -4,7 +4,6 @@ import style from './CatalogMenu.module.scss'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { getCommonAnimation, getSpringTransition } from '@/helpers/animations'
 import { menuV } from '@/helpers/variants'
-import { catalogI } from '@/main/1modules/Header/BottomHeaderPart'
 import CatalogButton from '@/main/3ui/CategoryButton/CategoryButton'
 import Link from 'next/link'
 import {
@@ -12,9 +11,10 @@ import {
 	toggleCatalogCategoryToProducts,
 } from '@/store/reducers/header/catalog'
 import WideButton from '@/main/3ui/headerUi/WideButton/WideButton'
+import {categoryI} from "@/interfaces/category";
 
 interface CategoriesMenuI {
-	categories: catalogI
+	categories: categoryI[]
 }
 
 const CatalogMenu: FC<CategoriesMenuI> = props => {
@@ -52,26 +52,26 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 					transition={getSpringTransition(10, 30)}
 					className={style.menu}>
 					<div className={style.nav}>
-						{productsIsOpen &&
-							props.categories.products.map((value, index) => {
-								return (
-									<CatalogButton
-										key={index}
-										index={index}
-										buttonValues={value}
-									/>
-								)
-							})}
-						{ideasIsOpen &&
-							props.categories.ideas.map((value, index) => {
-								return (
-									<CatalogButton
-										key={index}
-										index={index}
-										buttonValues={value}
-									/>
-								)
-							})}
+						{/*{productsIsOpen &&*/}
+						{/*	props.categories.map((value, index) => {*/}
+						{/*		return (*/}
+						{/*			<CatalogButton*/}
+						{/*				key={index}*/}
+						{/*				index={index}*/}
+						{/*				buttonValues={value}*/}
+						{/*			/>*/}
+						{/*		)*/}
+						{/*	})}*/}
+						{/*{ideasIsOpen &&*/}
+						{/*	props.categories.ideas.map((value, index) => {*/}
+						{/*		return (*/}
+						{/*			<CatalogButton*/}
+						{/*				key={index}*/}
+						{/*				index={index}*/}
+						{/*				buttonValues={value}*/}
+						{/*			/>*/}
+						{/*		)*/}
+						{/*	})}*/}
 					</div>
 					<main className={style.categories}>
 						<div className={style.buttons}>
@@ -88,28 +88,28 @@ const CatalogMenu: FC<CategoriesMenuI> = props => {
 								})}
 						</div>
 						<div className={style.categoriesInner}>
-							{productsIsOpen &&
-								props.categories.products[indexOfCurrentCategory].blocks.map(
-									(block, index) => {
-										return (
-											<div key={index} className={style.block}>
-												<span className={style.blockTitle}>{block.title}</span>
-												<div className={style.links}>
-													{block.links.map((link, index) => {
-														return (
-															<Link
-																key={index}
-																className={style.link}
-																href={link.link}>
-																{link.title}
-															</Link>
-														)
-													})}
-												</div>
-											</div>
-										)
-									}
-								)}
+							{/*{productsIsOpen &&*/}
+							{/*	props.categories.products[indexOfCurrentCategory].blocks.map(*/}
+							{/*		(block, index) => {*/}
+							{/*			return (*/}
+							{/*				<div key={index} className={style.block}>*/}
+							{/*					<span className={style.blockTitle}>{block.title}</span>*/}
+							{/*					<div className={style.links}>*/}
+							{/*						{block.links.map((link, index) => {*/}
+							{/*							return (*/}
+							{/*								<Link*/}
+							{/*									key={index}*/}
+							{/*									className={style.link}*/}
+							{/*									href={link.link}>*/}
+							{/*									{link.title}*/}
+							{/*								</Link>*/}
+							{/*							)*/}
+							{/*						})}*/}
+							{/*					</div>*/}
+							{/*				</div>*/}
+							{/*			)*/}
+							{/*		}*/}
+							{/*	)}*/}
 						</div>
 					</main>
 				</motion.div>

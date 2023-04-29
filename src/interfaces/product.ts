@@ -11,30 +11,37 @@ export interface productI {
 
 	// category
 	category_id?: number
+	category_name?: string
 
 	// common
+	breadcrumbs?: breadcrumbI[]
 	model_3d?: string
 	instruction?: string
 	quantity?: number
 	description?: string
 	sizes?: string[]
 	showrooms?: showroomI[]
+	related_products?: productI[]
 
 	// customization
-	images?: imageI[]
+	fore_images?: imageI[]
 	materials?: materialI[]
 
 	// content
 	videos?: string[]
-	images_in_interiors?: string[]
+	interior_images?: string[]
 
 	// other
 	properties?: propertyI[]
 	reviews?: reviewI[]
 }
 
+export interface breadcrumbI {
+	slug: string
+	title: string
+}
+
 export interface imageI {
-	color?: string
 	material?: string
 	url?: string
 }
@@ -49,9 +56,18 @@ export interface showroomI {
 	quantity: number
 }
 
+export interface colorI {
+	id: number
+	color: string
+	color_name: string
+	material_id: number
+	product_id:number
+}
+
 export interface materialI {
-	colors: string[]
-	title: string
+	id: number
+	product_id: number
+	colors: colorI[]
 	type: string
 	image: string
 }

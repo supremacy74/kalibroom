@@ -1,7 +1,6 @@
 import { FC, memo } from 'react'
 import style from './RelatedProducts.module.scss'
 import Product from '@/main/2components/Product/Product'
-import { arrayOfProducts } from '@/data/arrayOfProducts'
 import {useAppSelector} from "@/store/hooks";
 
 interface RelatedProductsProps {}
@@ -15,9 +14,9 @@ const RelatedProducts: FC<RelatedProductsProps> = props => {
 			<div className={style.relatedProducts}>
 				<h3 className={style.title}>Сопутствующие товары</h3>
 				<main className={style.main}>
-					{products.map((value, index) => {
+					{currentProduct.related_products?.map((product, index) => {
 						return (
-							<Product key={index} product={currentProduct} />
+							<Product key={index} product={product} />
 						)
 					})}
 				</main>

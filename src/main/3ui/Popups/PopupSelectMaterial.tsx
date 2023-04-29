@@ -1,4 +1,4 @@
-import { CSSProperties, FC, memo, useEffect, useState } from 'react'
+import { CSSProperties, FC, memo, useState } from 'react'
 import style from './Popup.module.scss'
 import Image from 'next/image'
 import { crossDarkIcon, crossIcon } from '@/helpers/importIcons'
@@ -20,6 +20,7 @@ const PopupSelectMaterial: FC = () => {
 
 const Main: FC = () => {
 	const theme = useAppSelector(state => state.theme.isDarkTheme)
+	const currentProduct = useAppSelector(state => state.productPage.currentProduct)
 
 	const dispatch = useAppDispatch()
 
@@ -32,7 +33,6 @@ const Main: FC = () => {
 		justifyContent: 'center',
 	}
 
-	const colors = ['#c04', '#fa0', '#30f', '#0af', '#6c4']
 	const materials = [
 		mainImage,
 		mainImage,
@@ -63,12 +63,12 @@ const Main: FC = () => {
 					<div className={style.block}>
 						<h4 className={style.title}>Цвет</h4>
 						<div className={style.colorsMap}>
-							{[...colors, ...colors, ...colors, ...colors].map(
-								(value, index) => {
+							{currentProduct?.materials && currentProduct.materials[currentMaterial].colors.map(
+								(color, index) => {
 									return (
 										<Color
 											key={index}
-											hex={value}
+											hex={color.color}
 											index={index}
 											currentIndex={currentColor}
 											setCurrentIndex={setCurrentColor}
@@ -83,11 +83,11 @@ const Main: FC = () => {
 						<div className={style.materialsMain}>
 							<h5 className={style.materialTitle}>Алькантара</h5>
 							<div className={style.materialMap}>
-								{materials.map((value, index) => {
+								{currentProduct?.materials && currentProduct.materials.map((material, index) => {
 									return (
 										<Material
 											key={index}
-											image={value}
+											image={material.image}
 											index={index}
 											currentIndex={currentMaterial}
 											setCurrentIndex={setCurrentMaterial}

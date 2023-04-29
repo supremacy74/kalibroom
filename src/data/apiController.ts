@@ -51,3 +51,21 @@ export const getAllProducts = async (
 		console.error(e)
 	}
 }
+
+export const getProductByIdOrSlug = async (
+	setter: Function,
+	idOrSlug: number | string
+) => {
+	try {
+		const response = await fetch(`https://api.kalibroom.ru/api/products/${idOrSlug}`)
+		if (response.ok) {
+			const data = await response.json() as productI
+			setter(data)
+			console.log(data)
+		} else {
+			console.error('getProductByIdOrSlug error in apiController!')
+		}
+	} catch (e) {
+		console.error(e)
+	}
+}

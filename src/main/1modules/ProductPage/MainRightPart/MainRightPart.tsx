@@ -18,7 +18,9 @@ const MainRightPart: FC = props => {
 						<h3 className={style.title}>
 							{currentProduct.name}
 						</h3>
-						<p className={style.category}>{currentProduct.category_id}</p>
+						{currentProduct.breadcrumbs && (
+							<p className={style.category}>{currentProduct.breadcrumbs[1].title}</p>
+						)}
 					</div>
 					<div className={style.pricePart}>
 						<div className={style.pricePartTop}>

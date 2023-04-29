@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react'
+import {FC, memo, useEffect, useState} from 'react'
 import style from './MainLeftPart.module.scss'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -22,11 +22,15 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 	const currentProduct = useAppSelector(state => state.productPage.currentProduct)
 	const [currentImage, setCurrentImage] = useState<number>(0)
 
+	useEffect(() => {
+		console.log(currentProduct?.fore_images)
+	}, [currentProduct])
+
 	return (
 		currentProduct && (
 			<div className={style.contentWithImage}>
 				<div className={style.imagesSelector}>
-					{currentProduct.images && currentProduct.images.map((image, index) => {
+					{currentProduct.fore_images && currentProduct.fore_images.map((image, index) => {
 						return (
 							<button
 								key={index}
@@ -58,7 +62,7 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 						<Skeleton className={style.skeleton} />
 						<Image
 							className={style.currentImage}
-							src={currentProduct.images ? currentProduct.images[currentImage].url : mainImage}
+							src={currentProduct.fore_images ? currentProduct.fore_images[currentImage].url : mainImage}
 							alt={'current image'}
 							width={2000}
 							height={2000}

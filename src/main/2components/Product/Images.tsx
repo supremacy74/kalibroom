@@ -18,9 +18,9 @@ const Images: FC<ImagesI> = props => {
 
 	return (
 		<>
-			{props.product.images && props.product.images.length ? (
+			{props.product.fore_images && props.product.fore_images.length ? (
 				<>
-					{props.product.images.map((image, index) => {
+					{props.product.fore_images.map((image, index) => {
 						return (
 							<AnimatePresence key={index}>
 								{props.currentImage === index && (
