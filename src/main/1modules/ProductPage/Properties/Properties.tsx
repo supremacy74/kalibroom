@@ -1,7 +1,6 @@
 import { FC, memo, ReactNode, useState } from 'react'
 import style from './Properties.module.scss'
 import { productI } from '@/interfaces/product'
-import { arrayOfProducts } from '@/data/arrayOfProducts'
 import Image from 'next/image'
 import { AnimatePresence, motion, Variants } from 'framer-motion'
 import { getCommonAnimation, getSpringTransition } from '@/helpers/animations'
