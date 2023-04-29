@@ -20,9 +20,30 @@ export const getCategoryByIdOrSlug = async (
 	idOrSlug: number | string
 ) => {
 	try {
-		const response = await fetch(`https://api.kalibroom.ru/api/categories/${idOrSlug}`)
+		const response = await fetch(
+			`https://api.kalibroom.ru/api/categories/${idOrSlug}`
+		)
 		if (response.ok) {
 			const data = (await response.json()) as categoryI
+			setter(data)
+		} else {
+			console.error('getCategoryByIdOrSlug error in apiController!')
+		}
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+export const getCategoryChildrens = async (
+	setter: Function,
+	idOrSlug: number | string
+) => {
+	try {
+		const response = await fetch(
+			`https://api.kalibroom.ru/api/categories/${idOrSlug}/children`
+		)
+		if (response.ok) {
+			const data = (await response.json()) as categoryI[]
 			setter(data)
 		} else {
 			console.error('getCategoryByIdOrSlug error in apiController!')
@@ -57,9 +78,11 @@ export const getProductByIdOrSlug = async (
 	idOrSlug: number | string
 ) => {
 	try {
-		const response = await fetch(`https://api.kalibroom.ru/api/products/${idOrSlug}`)
+		const response = await fetch(
+			`https://api.kalibroom.ru/api/products/${idOrSlug}`
+		)
 		if (response.ok) {
-			const data = await response.json() as productI
+			const data = (await response.json()) as productI
 			setter(data)
 			console.log(data)
 		} else {

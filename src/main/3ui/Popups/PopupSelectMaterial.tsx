@@ -87,7 +87,7 @@ const Main: FC = () => {
 									return (
 										<Material
 											key={index}
-											image={material.image}
+											image={material.image === 'image' ? mainImage : material.image}
 											index={index}
 											currentIndex={currentMaterial}
 											setCurrentIndex={setCurrentMaterial}

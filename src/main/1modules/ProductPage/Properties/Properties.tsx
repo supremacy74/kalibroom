@@ -16,6 +16,7 @@ import {
 	colorPopupHandleVisible,
 	sizePopupHandleVisible,
 } from '@/store/reducers/popups'
+import {mainImage} from "@/helpers/importImages";
 
 const Properties: FC = () => {
 	// TODO: считывать текущий продукт из состояния в хранилище
@@ -171,13 +172,13 @@ const ColorAndMaterialBody: FC<PropertyI> = props => {
 						onClick={() => {
 							setCurrentColor(index)
 						}}>
-						{/*<Image*/}
-						{/*	className={style.handlerImage}*/}
-						{/*	src={material.image}*/}
-						{/*	alt={material.type}*/}
-						{/*	width={40}*/}
-						{/*	height={40}*/}
-						{/*/>*/}
+						<Image
+							className={style.handlerImage}
+							src={material.image === 'image' ? mainImage : material.image}
+							alt={material.type}
+							width={40}
+							height={40}
+						/>
 						{currentColor === index && (
 							<motion.div
 								className={style.handlerBorderColor}

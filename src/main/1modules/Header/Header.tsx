@@ -11,6 +11,7 @@ import CategoryMenu from "@/main/2components/CategoryMenu/CategoryMenu";
 
 const Header: FC = () => {
 	const paths = useAppSelector(state => state.paths)
+	const categories = useAppSelector(state => state.categories.categories)
 
 	useHeaderVisible()
 
@@ -22,7 +23,7 @@ const Header: FC = () => {
 					<BottomHeaderPart />
 					{paths.length ? <Breadcrumb /> : null}
 
-					{/*<CatalogMenu categories={catalogMenuData} />*/}
+					<CatalogMenu categories={categories} />
 					<CategoriesMenu />
 					<SearchMenu />
 				</header>
