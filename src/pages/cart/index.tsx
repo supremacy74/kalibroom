@@ -3,11 +3,12 @@ import { NextPage } from 'next'
 import EmptyCart from '@/main/2components/EmptyCart/EmptyCart'
 import FilledCart from '@/main/2components/FilledCart/FilledCart'
 import { setCartProducts } from '@/store/reducers/cart/cart'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import {useAppSelector} from "@/store/hooks";
 
 const Cart: NextPage = () => {
 	const dispatch = useDispatch()
-	const cart = useSelector((state: any) => state.cart)
+	const cart = useAppSelector(state => state.cart)
 
 	useEffect(() => {
 		const userCart = localStorage.getItem('cart')
