@@ -10,8 +10,6 @@ import popups from '@/store/reducers/popups'
 import bodyOverflow from '@/store/reducers/global/bodyOverflow'
 import categories from '@/store/reducers/header/categories'
 import productPage from '@/store/reducers/products/productPage'
-import discount from '@/store/reducers/cart/discount'
-import cart from '@/store/reducers/cart/cart'
 
 const rootReducer = combineReducers({
 	theme: themeReducer,
@@ -24,8 +22,6 @@ const rootReducer = combineReducers({
 	bodyOverflow,
 	categories,
 	productPage,
-	cart,
-	discount,
 })
 
 export default rootReducer
