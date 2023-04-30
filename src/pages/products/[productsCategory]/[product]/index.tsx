@@ -19,9 +19,13 @@ const ProductPage: NextPage = () => {
 
 	const currentPage = useAppSelector(state => state.productPage.currentProduct)
 
-	const setterCurrentProduct = (data: productI) => {
+	const setterCurrentProduct = (data: productI | null) => {
 		dispatch(setCurrentProduct(data))
 	}
+
+	useEffect(() => {
+		setterCurrentProduct(null)
+	}, [])
 
 	useEffect(() => {
 		const { product } = router.query

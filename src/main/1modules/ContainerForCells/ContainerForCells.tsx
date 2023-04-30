@@ -3,6 +3,7 @@ import style from './ContainerForCells.module.scss'
 import Product from '@/main/2components/Product/Product'
 import { productI } from '@/interfaces/product'
 import { motion } from 'framer-motion'
+import {commonProduct} from "@/data/commonProduct";
 
 interface ContainerForCellsProps {
 	array: productI[]
@@ -10,6 +11,7 @@ interface ContainerForCellsProps {
 
 const ContainerForCells: FC<ContainerForCellsProps> = props => {
 	const [columnsArray, setColumnsArray] = useState([1, 2, 3, 4])
+	const skeletons = Array.from({length: 20})
 
 	const checkClientWidth = async () => {
 		if (window.innerWidth <= 840) {
@@ -39,7 +41,7 @@ const ContainerForCells: FC<ContainerForCellsProps> = props => {
 							maxWidth: `calc(${100 / columnsArray.length}% - .75rem)`,
 						}}
 					>
-						{props.array.map((product, index) => {
+						{props.array.length && props.array.map((product, index) => {
 							if (columnIndex === index % columnsArray.length) {
 								return <Product key={index} product={product} />
 							}

@@ -11,6 +11,7 @@ import Material from '@/main/3ui/Buttons/Material/Material'
 import { colorPopupHandleVisible } from '@/store/reducers/popups'
 import { setBodyOverflow } from '@/store/reducers/global/bodyOverflow'
 import { mainImage } from '@/helpers/importImages'
+import { setCurrentMaterial } from '@/store/reducers/products/productPage'
 
 const PopupSelectMaterial: FC = () => {
 	const isVisible = useAppSelector(state => state.popups.colorPopup.isVisible)
@@ -20,27 +21,20 @@ const PopupSelectMaterial: FC = () => {
 
 const Main: FC = () => {
 	const theme = useAppSelector(state => state.theme.isDarkTheme)
-	const currentProduct = useAppSelector(state => state.productPage.currentProduct)
+	const currentProduct = useAppSelector(
+		state => state.productPage.currentProduct
+	)
 
 	const dispatch = useAppDispatch()
 
 	const [buttonDisabled, handleButtonDisabled] = useState(false)
-	const [currentColor, setCurrentColor] = useState(0)
-	const [currentMaterial, setCurrentMaterial] = useState(0)
+	const [currentIndexColor, setCurrentIndexColor] = useState(0)
+	const [currentIndexMaterial, setCurrentIndexMaterial] = useState(0)
 
 	const wrapperStyles: CSSProperties = {
 		alignItems: 'center',
 		justifyContent: 'center',
 	}
-
-	const materials = [
-		mainImage,
-		mainImage,
-		mainImage,
-		mainImage,
-		mainImage,
-		mainImage,
-	]
 
 	return (
 		<PopupWrapper
@@ -63,19 +57,20 @@ const Main: FC = () => {
 					<div className={style.block}>
 						<h4 className={style.title}>Цвет</h4>
 						<div className={style.colorsMap}>
-							{currentProduct?.materials && currentProduct.materials[currentMaterial].colors.map(
-								(color, index) => {
-									return (
-										<Color
-											key={index}
-											hex={color.color}
-											index={index}
-											currentIndex={currentColor}
-											setCurrentIndex={setCurrentColor}
-										/>
-									)
-								}
-							)}
+							{currentProduct?.materials &&
+								currentProduct.materials[currentIndexMaterial].colors.map(
+									(color, index) => {
+										return (
+											<Color
+												key={index}
+												hex={color.color}
+												index={index}
+												currentIndex={currentIndexColor}
+												setCurrentIndex={setCurrentIndexColor}
+											/>
+										)
+									}
+								)}
 						</div>
 					</div>
 					<div className={style.block}>
@@ -83,23 +78,53 @@ const Main: FC = () => {
 						<div className={style.materialsMain}>
 							<h5 className={style.materialTitle}>Алькантара</h5>
 							<div className={style.materialMap}>
-								{currentProduct?.materials && currentProduct.materials.map((material, index) => {
-									return (
-										<Material
-											key={index}
-											image={material.image === 'image' ? mainImage : material.image}
-											index={index}
-											currentIndex={currentMaterial}
-											setCurrentIndex={setCurrentMaterial}
-										/>
-									)
-								})}
+								{currentProduct?.materials &&
+									currentProduct.materials.map((material, index) => {
+										return (
+											<Material
+												key={index}
+												image={
+													material.image === 'image'
+														? mainImage
+														: material.image
+												}
+												index={index}
+												currentIndex={currentIndexMaterial}
+												setCurrentIndex={setCurrentIndexMaterial}
+											/>
+										)
+									})}
 							</div>
 						</div>
 					</div>
 				</main>
 				<div className={style.buttons}>
 					<Button
+						onClick={() => {
+							if (
+								currentProduct?.materials &&
+								currentProduct.materials[currentIndexMaterial]
+								// &&
+								// currentProduct.materials[currentIndexMaterial].colors &&
+								// currentProduct.materials[currentIndexMaterial].colors[
+								// 	currentIndexColor
+								// ]
+							) {
+								dispatch(colorPopupHandleVisible(false))
+								dispatch(
+									setCurrentMaterial(
+										currentProduct.materials[currentIndexMaterial]
+									)
+								)
+								// dispatch(
+								// 	setCurrentMaterialColor(
+								// 		currentProduct.materials[currentIndexMaterial].colors[
+								// 			currentIndexColor
+								// 		]
+								// 	)
+								// )
+							}
+						}}
 						type={'flat'}
 						disabled={buttonDisabled}
 						className={style.button}>

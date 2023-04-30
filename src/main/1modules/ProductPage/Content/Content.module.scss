@@ -10,4 +10,5 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 7.5rem 3rem;
+  min-width: 100%;
 }

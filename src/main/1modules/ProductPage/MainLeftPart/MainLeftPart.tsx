@@ -1,12 +1,12 @@
-import {FC, memo, useEffect, useState} from 'react'
+import { FC, memo, ReactNode, useEffect, useState } from 'react'
 import style from './MainLeftPart.module.scss'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { getSpringTransition } from '@/helpers/animations'
 import Skeleton from '@/main/3ui/Skeleton/Skeleton'
 import {
-	cubeDarkIcon,
-	cubeIcon,
+	downloadDarkIcon,
+	downloadIcon,
 	increaseDarkIcon,
 	increaseIcon,
 	instructionDarkIcon,
@@ -14,55 +14,86 @@ import {
 } from '@/helpers/importIcons'
 import { useAppSelector } from '@/store/hooks'
 import { mainImage } from '@/helpers/importImages'
+import { imageI } from '@/interfaces/product'
 
 interface MainLeftPartProps {}
 
 const MainLeftPart: FC<MainLeftPartProps> = props => {
 	const theme = useAppSelector(state => state.theme.isDarkTheme)
-	const currentProduct = useAppSelector(state => state.productPage.currentProduct)
+	const currentProduct = useAppSelector(
+		state => state.productPage.currentProduct
+	)
+	const currentMaterial = useAppSelector(
+		state => state.productPage.currentMaterial
+	)
+	const currentMaterialColor = useAppSelector(
+		state => state.productPage.currentMaterialColor
+	)
+
 	const [currentImage, setCurrentImage] = useState<number>(0)
+	const [images, setImages] = useState<imageI[]>([])
 
 	useEffect(() => {
 		console.log(currentProduct?.fore_images)
 	}, [currentProduct])
 
+	useEffect(() => {
+		getImages()
+	}, [currentMaterial])
+
+	const getImages = () => {
+		setCurrentImage(0)
+		if (currentProduct && currentProduct.fore_images && currentMaterial) {
+			setImages(
+				currentProduct.fore_images.filter(
+					image => image.material_id === currentMaterial.id
+				)
+			)
+		}
+	}
+
 	return (
 		currentProduct && (
 			<div className={style.contentWithImage}>
 				<div className={style.imagesSelector}>
-					{currentProduct.fore_images && currentProduct.fore_images.map((image, index) => {
-						return (
-							<button
-								key={index}
-								data-is-current={currentImage === index}
-								onClick={() => setCurrentImage(index)}
-								className={style.imageSelectorButton}>
-								<Image
-									className={style.selectorImage}
-									src={image.url ? image.url : mainImage}
-									alt={'image'}
-									width={300}
-									height={300}
-								/>
-								{currentImage === index && (
-									<motion.div
-										layoutId={'currentImage'}
-										transition={{
-											...getSpringTransition(20, 70),
-										}}
-										className={style.imageSelectorBorder}
+					{images.length ? (
+						images.map((image, index) => {
+							return (
+								<button
+									key={index}
+									data-is-current={currentImage === index}
+									onClick={() => setCurrentImage(index)}
+									className={style.imageSelectorButton}>
+									<Image
+										className={style.selectorImage}
+										src={image?.url ? image?.url : mainImage}
+										alt={'image'}
+										width={300}
+										height={300}
+										priority={true}
 									/>
-								)}
-							</button>
-						)
-					})}
+									{currentImage === index && (
+										<motion.div
+											layoutId={'currentImage'}
+											transition={{
+												...getSpringTransition(20, 70),
+											}}
+											className={style.imageSelectorBorder}
+										/>
+									)}
+								</button>
+							)
+						})
+					) : (
+						<div className={style.imageSelectorButton} />
+					)}
 				</div>
 				<div className={style.imageBlock}>
 					<div className={style.currentImageWrapper}>
 						<Skeleton className={style.skeleton} />
 						<Image
 							className={style.currentImage}
-							src={currentProduct.fore_images ? currentProduct.fore_images[currentImage].url : mainImage}
+							src={images ? images[currentImage]?.url : mainImage}
 							alt={'current image'}
 							width={2000}
 							height={2000}
@@ -88,19 +119,19 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 							)}
 						</button>
 						<button className={style.imageBlockButton}>
-							<span className={style.imageBlockText}>Посмотреть в 3D</span>
+							<span className={style.imageBlockText}>3D модель</span>
 							{!theme && (
 								<Image
 									className={style.imageBlockIcon}
-									src={cubeIcon}
-									alt={'cubeIcon'}
+									src={downloadIcon}
+									alt={'downloadIcon'}
 								/>
 							)}
 							{theme && (
 								<Image
 									className={style.imageBlockIcon}
-									src={cubeDarkIcon}
-									alt={'cubeDarkIcon'}
+									src={downloadDarkIcon}
+									alt={'downloadDarkIcon'}
 								/>
 							)}
 						</button>

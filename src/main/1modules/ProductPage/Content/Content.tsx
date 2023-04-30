@@ -25,7 +25,10 @@ const Content: FC = () => {
 				)}
 			</main>
 			<Reviews />
-			<RelatedProducts />
+			{currentProduct?.related_products &&
+			currentProduct.related_products.length ? (
+				<RelatedProducts />
+			) : null}
 			<OurFurniture />
 			<MayLike />
 		</WrapperInner>

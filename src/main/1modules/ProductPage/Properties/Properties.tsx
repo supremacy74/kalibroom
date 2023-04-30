@@ -1,27 +1,22 @@
-import { FC, memo, ReactNode, useState } from 'react'
+import { FC, memo } from 'react'
 import style from './Properties.module.scss'
-import { productI } from '@/interfaces/product'
-import Image from 'next/image'
-import { AnimatePresence, motion, Variants } from 'framer-motion'
-import { getCommonAnimation, getSpringTransition } from '@/helpers/animations'
-import Link from 'next/link'
-import {
-	rightArrowDarkIcon,
-	rightArrowIcon,
-	vectorDownDarkIcon,
-	vectorDownIcon,
-} from '@/helpers/importIcons'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
 	colorPopupHandleVisible,
 	sizePopupHandleVisible,
 } from '@/store/reducers/popups'
-import {mainImage} from "@/helpers/importImages";
+import Specification from '@/main/3ui/Specification/Specification'
+import Accordion from '@/main/3ui/Accordion/Accordion'
+import PropertyAll from '@/main/1modules/ProductPage/Properties/PropertyAllButton'
+import PropertyName from '@/main/1modules/ProductPage/Properties/PropertyName'
+import Delivery from '@/main/1modules/ProductPage/Properties/Delivery'
+import ColorAndMaterial from '@/main/1modules/ProductPage/Properties/ColorAndMaterial'
+import Sizes from '@/main/1modules/ProductPage/Properties/Sizes'
 
 const Properties: FC = () => {
-	// TODO: считывать текущий продукт из состояния в хранилище
-
-	const currentProduct = useAppSelector(state => state.productPage.currentProduct)
+	const currentProduct = useAppSelector(
+		state => state.productPage.currentProduct
+	)
 
 	const dispatch = useAppDispatch()
 
@@ -30,7 +25,7 @@ const Properties: FC = () => {
 			<div className={style.properties}>
 				<div className={style.colorAndMaterial}>
 					<PropertyName>Цвет и материал</PropertyName>
-					<ColorAndMaterialBody product={currentProduct}/>
+					<ColorAndMaterial product={currentProduct} />
 					<PropertyAll onClick={() => dispatch(colorPopupHandleVisible(true))}>
 						Все цвета
 					</PropertyAll>
@@ -43,174 +38,26 @@ const Properties: FC = () => {
 					</PropertyAll>
 				</div>
 				<Delivery product={currentProduct} />
-				<Accordion name={'характеристики'}>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
-					doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
-					mollitia porro quam recusandae reiciendis, repellendus repudiandae
-					vitae, voluptatibus.
+				<Accordion name={'характеристики'} className={style.specifications}>
+					<Specification name={'Спальное место'} value={'189 x 130 см'} />
+					<Specification name={'name'} value={'value'} />
+					<Specification name={'name'} value={'value'} />
 				</Accordion>
-				<Accordion name={'посмотреть наличие в шоурумах'}>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore
-					doloremque, eius error facere minima sint unde. Beatae ea iusto magnam
-					mollitia porro quam recusandae reiciendis, repellendus repudiandae
-					vitae, voluptatibus.
-				</Accordion>
+				{currentProduct?.showrooms && currentProduct.showrooms.length ? (
+					<Accordion name={'посмотреть наличие в шоурумах'}>
+						{currentProduct.showrooms.map((showroom, index) => {
+							return (
+								<span>
+									{showroom?.location}
+									{showroom?.quantity}
+								</span>
+							)
+						})}
+					</Accordion>
+				) : null}
 			</div>
 		)
 	)
-}
-
-interface PropertyI {
-	product: productI
-}
-
-interface AccordionI {
-	name: string
-	children?: ReactNode
-}
-
-const Accordion: FC<AccordionI> = props => {
-	const theme = useAppSelector(state => state.theme.isDarkTheme)
-	const [isExpand, handleExpand] = useState(false)
-
-	const bottomVariants: Variants = {
-		on: {
-			height: 'auto',
-			marginBottom: '1.5rem',
-		},
-		off: {
-			height: '0',
-			marginBottom: '0rem',
-		},
-	}
-
-	return (
-		<div className={style.accordion}>
-			<button
-				onClick={() => handleExpand(prev => !prev)}
-				className={style.accordionTop}>
-				<PropertyName>{props.name}</PropertyName>
-				<div data-is-expand={isExpand} className={style.accordionImageWrapper}>
-					{!theme && <Image src={vectorDownIcon} alt={'vectorDownIcon'} />}
-					{theme && (
-						<Image src={vectorDownDarkIcon} alt={'vectorDownDarkIcon'} />
-					)}
-				</div>
-			</button>
-			<AnimatePresence>
-				{isExpand && (
-					<motion.div
-						{...getCommonAnimation()}
-						variants={bottomVariants}
-						className={style.accordionBottom}>
-						{props.children}
-					</motion.div>
-				)}
-			</AnimatePresence>
-		</div>
-	)
-}
-
-const Delivery: FC<PropertyI> = props => {
-	const theme = useAppSelector(state => state.theme.isDarkTheme)
-
-	return (
-		<div className={style.delivery}>
-			{props.product.quantity && (
-				<>
-					<span className={style.deliveryCount}>
-						В наличии: {props.product.quantity}
-					</span>
-					<Link className={style.deliveryLink} href={'#'}>
-						<span>Рассчитать стоимость доставки</span>
-						{!theme && <Image src={rightArrowIcon} alt={'rightArrowIcon'} />}
-						{theme && (
-							<Image src={rightArrowDarkIcon} alt={'rightArrowDarkIcon'} />
-						)}
-					</Link>
-				</>
-			)}
-			{!props.product.quantity && (
-				<span className={style.deliveryCount}>В наличии нет товаров</span>
-			)}
-		</div>
-	)
-}
-
-const Sizes: FC<PropertyI> = props => {
-	const [currentSize, setCurrentSize] = useState(0)
-
-	return (
-		<div className={style.body}>
-			{props.product.sizes?.map((value, index) => {
-				return (
-					<button
-						key={index}
-						data-is-current-size={currentSize === index}
-						className={style.handlerSize}
-						onClick={() => {
-							setCurrentSize(index)
-						}}>
-						<span className={style.handlerSizeText}>{value}</span>
-					</button>
-				)
-			})}
-		</div>
-	)
-}
-
-const ColorAndMaterialBody: FC<PropertyI> = props => {
-	const [currentColor, setCurrentColor] = useState(0)
-
-	return (
-		<div className={style.body}>
-			{props.product.materials?.map((material, index) => {
-				return (
-					<button
-						key={index}
-						className={style.handlerColor}
-						onClick={() => {
-							setCurrentColor(index)
-						}}>
-						<Image
-							className={style.handlerImage}
-							src={material.image === 'image' ? mainImage : material.image}
-							alt={material.type}
-							width={40}
-							height={40}
-						/>
-						{currentColor === index && (
-							<motion.div
-								className={style.handlerBorderColor}
-								layoutId={'color'}
-								transition={getSpringTransition(20, 100)}
-							/>
-						)}
-					</button>
-				)
-			})}
-		</div>
-	)
-}
-
-interface ComponentWithChildren {
-	children?: ReactNode
-}
-
-interface AllI extends ComponentWithChildren {
-	onClick: CallableFunction
-}
-
-const PropertyAll: FC<AllI> = props => {
-	return (
-		<button className={style.propertyLink} onClick={() => props.onClick()}>
-			{props.children}
-		</button>
-	)
-}
-
-const PropertyName: FC<ComponentWithChildren> = props => {
-	return <span className={style.propertyName}>{props.children}</span>
 }
 
 export default memo(Properties)

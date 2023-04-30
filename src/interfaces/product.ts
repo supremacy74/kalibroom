@@ -42,7 +42,10 @@ export interface breadcrumbI {
 }
 
 export interface imageI {
-	material?: string
+	id?: number
+	material_id?: number
+	in_interior?: number
+	product_id?: number
 	url?: string
 }
 

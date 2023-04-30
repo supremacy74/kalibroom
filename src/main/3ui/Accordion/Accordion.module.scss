@@ -1,0 +1,26 @@
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordionTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.5rem;
+}
+
+.accordionImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s cubic-bezier(0.35, 0.35, 0.5, 1);
+  &[data-is-expand='true'] {
+    rotate: 180deg;
+  }
+}
+
+.accordionBottom {
+  overflow: hidden;
+}

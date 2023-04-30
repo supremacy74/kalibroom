@@ -80,6 +80,7 @@ export const starDarkIcon = require('/public/icons/starDark.svg')
 
 // download
 export const downloadIcon = require('/public/icons/download.svg')
+export const downloadDarkIcon = require('/public/icons/downloadDark.svg')
 
 // scores
 export const scoreIcon = require('/public/icons/score.svg')
