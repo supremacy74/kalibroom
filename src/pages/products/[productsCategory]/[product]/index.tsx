@@ -71,6 +71,7 @@ const ProductPage: NextPage = () => {
 
 				<PopupSelectMaterial />
 				<PopupSizes />
+
 			</Main>
 		</>
 	)

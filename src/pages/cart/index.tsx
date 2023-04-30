@@ -1,12 +1,42 @@
+import { useEffect } from 'react'
 import { NextPage } from 'next'
-import Button from '@/main/3ui/Buttons/Button/Button'
+import EmptyCart from '@/main/2components/EmptyCart/EmptyCart'
+import FilledCart from '@/main/2components/FilledCart/FilledCart'
+import { setCartProducts } from '@/store/reducers/cart/cart'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Cart: NextPage = () => {
+	const dispatch = useDispatch()
+	const cart = useSelector((state: any) => state.cart)
+
+	useEffect(() => {
+		const userCart = localStorage.getItem('cart')
+		if (userCart) {
+			const productsIds: number[] = JSON.parse(userCart).products
+			const productsData: any = []
+			console.log(productsIds)
+			productsIds.forEach(productId => {
+				fetch(`https://api.kalibroom.ru/api/products/${productId}`)
+					.then(response => {
+						productsData.push(response.json())
+						if (productsData.length === productsIds.length) {
+							dispatch(setCartProducts(productsData))
+						}
+					})
+					.catch(error => {
+						console.log(error)
+					})
+			})
+		}
+	}, [])
+
 	return (
 		<>
-			<Button type={'flat'} onClick={() => {}} width={'min(100%, 30rem)'}>
-				button
-			</Button>
+			{cart.products.length > 0 ? (
+				<FilledCart products={cart.products} />
+			) : (
+				<EmptyCart />
+			)}
 		</>
 	)
 }
