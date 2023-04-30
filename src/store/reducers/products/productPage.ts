@@ -7,6 +7,7 @@ interface productPageI {
 	currentMaterialColor: colorI | null
 	currentImages: imageI[] | null
 	currentImageIndex: number
+	galleryIsOpen: boolean
 }
 
 const initialState: productPageI = {
@@ -15,6 +16,7 @@ const initialState: productPageI = {
 	currentMaterialColor: null,
 	currentImages: null,
 	currentImageIndex: 0,
+	galleryIsOpen: false
 }
 
 const productPageSlice = createSlice({
@@ -48,6 +50,9 @@ const productPageSlice = createSlice({
 		setCurrentImageIndex(state: productPageI, action: PayloadAction<number>) {
 			state.currentImageIndex = action.payload
 		},
+		handleGallery(state: productPageI, action: PayloadAction<boolean>) {
+			state.galleryIsOpen = action.payload
+		}
 	},
 })
 
@@ -57,5 +62,6 @@ export const {
 	setCurrentMaterialColor,
 	setCurrentImages,
 	setCurrentImageIndex,
+	handleGallery
 } = productPageSlice.actions
 export default productPageSlice.reducer

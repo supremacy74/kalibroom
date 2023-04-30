@@ -11,6 +11,7 @@ interface ImageSelectorI {
 	currentImage: number
 	setCurrentImage: Function
 	image: imageI | null
+	layoutId: string
 }
 
 const ImageSelector: FC<ImageSelectorI> = props => {
@@ -30,7 +31,7 @@ const ImageSelector: FC<ImageSelectorI> = props => {
 			/>
 			{props.currentImage === props.index && (
 				<motion.div
-					layoutId={'currentImage'}
+					layoutId={props.layoutId}
 					transition={{
 						...getSpringTransition(20, 70),
 					}}

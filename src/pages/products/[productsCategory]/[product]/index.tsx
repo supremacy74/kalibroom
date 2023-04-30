@@ -72,7 +72,7 @@ const ProductPage: NextPage = () => {
 
 				<PopupSelectMaterial />
 				<PopupSizes />
-				{/*<Gallery />*/}
+				<Gallery />
 			</Main>
 		</>
 	)

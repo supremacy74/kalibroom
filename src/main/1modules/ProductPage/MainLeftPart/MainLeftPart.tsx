@@ -15,7 +15,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { mainImage } from '@/helpers/importImages'
 import { imageI } from '@/interfaces/product'
-import {setCurrentImageIndex, setCurrentImages} from '@/store/reducers/products/productPage'
+import {handleGallery, setCurrentImageIndex, setCurrentImages} from '@/store/reducers/products/productPage'
 import ImageSelector from '@/main/3ui/ImageSelector/ImageSelector'
 
 interface MainLeftPartProps {}
@@ -71,6 +71,7 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 									currentImage={currentImageIndex}
 									setCurrentImage={setterCurrentImageIndex}
 									index={index}
+									layoutId={'current image selector'}
 								/>
 							)
 						})
@@ -91,7 +92,9 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 						/>
 					</div>
 					<div className={style.imageBlockButtons}>
-						<button className={style.imageBlockButton}>
+						<button
+							onClick={() => dispatch(handleGallery(true))}
+							className={style.imageBlockButton}>
 							<span className={style.imageBlockText}>Увеличить</span>
 							{!theme && (
 								<Image
