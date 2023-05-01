@@ -1,22 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { colorI, imageI, materialI, productI } from '@/interfaces/product'
+import {colorI, materialI, productI} from '@/interfaces/product'
 
 interface productPageI {
 	currentProduct: productI | null
 	currentMaterial: materialI | null
 	currentMaterialColor: colorI | null
-	currentImages: imageI[] | null
-	currentImageIndex: number
-	galleryIsOpen: boolean
 }
 
 const initialState: productPageI = {
 	currentProduct: null,
 	currentMaterial: null,
-	currentMaterialColor: null,
-	currentImages: null,
-	currentImageIndex: 0,
-	galleryIsOpen: false
+	currentMaterialColor: null
 }
 
 const productPageSlice = createSlice({
@@ -40,28 +34,9 @@ const productPageSlice = createSlice({
 			action: PayloadAction<colorI | null>
 		) {
 			state.currentMaterialColor = action.payload
-		},
-		setCurrentImages(
-			state: productPageI,
-			action: PayloadAction<imageI[] | null>
-		) {
-			state.currentImages = action.payload ? [...action.payload] : null
-		},
-		setCurrentImageIndex(state: productPageI, action: PayloadAction<number>) {
-			state.currentImageIndex = action.payload
-		},
-		handleGallery(state: productPageI, action: PayloadAction<boolean>) {
-			state.galleryIsOpen = action.payload
 		}
 	},
 })
 
-export const {
-	setCurrentProduct,
-	setCurrentMaterial,
-	setCurrentMaterialColor,
-	setCurrentImages,
-	setCurrentImageIndex,
-	handleGallery
-} = productPageSlice.actions
+export const { setCurrentProduct, setCurrentMaterial, setCurrentMaterialColor } = productPageSlice.actions
 export default productPageSlice.reducer

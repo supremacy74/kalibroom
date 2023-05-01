@@ -12,7 +12,6 @@ import PopupSizes from '@/main/3ui/Popups/PopupSizes'
 import { productI } from '@/interfaces/product'
 import { setCurrentProduct } from '@/store/reducers/products/productPage'
 import { getProductByIdOrSlug } from '@/data/apiController'
-import Gallery from "@/main/1modules/ProductPage/Gallery/Gallery";
 
 const ProductPage: NextPage = () => {
 	const router = useRouter()
@@ -72,7 +71,7 @@ const ProductPage: NextPage = () => {
 
 				<PopupSelectMaterial />
 				<PopupSizes />
-				<Gallery />
+
 			</Main>
 		</>
 	)

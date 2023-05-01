@@ -12,11 +12,9 @@ import {
 	instructionDarkIcon,
 	instructionIcon,
 } from '@/helpers/importIcons'
-import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { useAppSelector } from '@/store/hooks'
 import { mainImage } from '@/helpers/importImages'
 import { imageI } from '@/interfaces/product'
-import {handleGallery, setCurrentImageIndex, setCurrentImages} from '@/store/reducers/products/productPage'
-import ImageSelector from '@/main/3ui/ImageSelector/ImageSelector'
 
 interface MainLeftPartProps {}
 
@@ -31,14 +29,9 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 	const currentMaterialColor = useAppSelector(
 		state => state.productPage.currentMaterialColor
 	)
-	const currentImages = useAppSelector(state => state.productPage.currentImages)
-	const currentImageIndex = useAppSelector(state => state.productPage.currentImageIndex)
 
-	const dispatch = useAppDispatch()
-
-	const setterCurrentImageIndex = (data: number) => {
-		dispatch(setCurrentImageIndex(data))
-	}
+	const [currentImage, setCurrentImage] = useState<number>(0)
+	const [images, setImages] = useState<imageI[]>([])
 
 	useEffect(() => {
 		console.log(currentProduct?.fore_images)
@@ -49,12 +42,13 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 	}, [currentMaterial])
 
 	const getImages = () => {
-		setterCurrentImageIndex(0)
+		setCurrentImage(0)
 		if (currentProduct && currentProduct.fore_images && currentMaterial) {
-			const images = currentProduct.fore_images.filter(
-				image => image.material_id === currentMaterial.id
+			setImages(
+				currentProduct.fore_images.filter(
+					image => image.material_id === currentMaterial.id
+				)
 			)
-			dispatch(setCurrentImages(images))
 		}
 	}
 
@@ -62,17 +56,32 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 		currentProduct && (
 			<div className={style.contentWithImage}>
 				<div className={style.imagesSelector}>
-					{currentImages?.length ? (
-						currentImages.map((image, index) => {
+					{images.length ? (
+						images.map((image, index) => {
 							return (
-								<ImageSelector
+								<button
 									key={index}
-									image={image}
-									currentImage={currentImageIndex}
-									setCurrentImage={setterCurrentImageIndex}
-									index={index}
-									layoutId={'current image selector'}
-								/>
+									data-is-current={currentImage === index}
+									onClick={() => setCurrentImage(index)}
+									className={style.imageSelectorButton}>
+									<Image
+										className={style.selectorImage}
+										src={image?.url ? image?.url : mainImage}
+										alt={'image'}
+										width={300}
+										height={300}
+										priority={true}
+									/>
+									{currentImage === index && (
+										<motion.div
+											layoutId={'currentImage'}
+											transition={{
+												...getSpringTransition(20, 70),
+											}}
+											className={style.imageSelectorBorder}
+										/>
+									)}
+								</button>
 							)
 						})
 					) : (
@@ -84,7 +93,7 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 						<Skeleton className={style.skeleton} />
 						<Image
 							className={style.currentImage}
-							src={currentImages ? currentImages[currentImageIndex]?.url : mainImage}
+							src={images ? images[currentImage]?.url : mainImage}
 							alt={'current image'}
 							width={2000}
 							height={2000}
@@ -92,9 +101,7 @@ const MainLeftPart: FC<MainLeftPartProps> = props => {
 						/>
 					</div>
 					<div className={style.imageBlockButtons}>
-						<button
-							onClick={() => dispatch(handleGallery(true))}
-							className={style.imageBlockButton}>
+						<button className={style.imageBlockButton}>
 							<span className={style.imageBlockText}>Увеличить</span>
 							{!theme && (
 								<Image
